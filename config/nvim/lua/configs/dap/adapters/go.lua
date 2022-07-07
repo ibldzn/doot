@@ -3,25 +3,7 @@ local M = {}
 local dap = require("dap")
 
 function M.setup()
-  dap.adapters.lldb = {
-    type = "executable",
-    command = "lldb-vscode",
-    name = "lldb",
-  }
-
-  dap.adapters.python = {
-    type = "executable",
-    command = "/usr/bin/python",
-    args = { "-m", "debugpy.adapter" },
-  }
-
-  dap.adapters.node2 = {
-    type = "executable",
-    command = "node",
-    args = { os.getenv("XDG_DATA_HOME") .. "/vscode-node-debug2/out/src/nodeDebug.js" },
-  }
-
-  dap.adapters.go = function(callback, config)
+  dap.configurations.go = function(callback, config)
     local stdout = vim.loop.new_pipe(false)
     local handle
     local pid_or_err
