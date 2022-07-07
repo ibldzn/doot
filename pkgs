@@ -1,8 +1,12 @@
+# awk '/^[^#]/ {print $1}' % | yay -S --needed -
+
 alacritty                 # terminal emulator
 bat                       # better cat
 breeze-gtk                # breeze theme for gtk apps
 clang                     # c/c++ compiler
+cmake                     # cmake build system
 delve                     # debugger for golang
+dunst                     # notification daemon
 exa                       # better ls
 fcitx5-im                 # fcitx5 input method
 fcitx5-mozc               # japanese ime for fcitx5
@@ -18,6 +22,7 @@ lazygit                   # git tui
 libnotify                 # notify-send
 lldb                      # llvm debugger
 lua                       # lua
+lua-language-server       # lua language server
 luajit                    # lua jit
 lxappearance              # gtk themes
 man-db                    # man
@@ -63,6 +68,7 @@ zsh-syntax-highlighting   # syntax highlighting
 # AUR
 autotiling                # bspwm like tiling for i3/sway
 nerd-fonts-jetbrains-mono # patched jetbrains mono font
+nerd-fonts-noto-sans-mono # patched noto sans mono font
 shellcheck-bin            # shell check
 visual-studio-code-bin    # vscode
 zsh-completions-git       # more completions for zsh
