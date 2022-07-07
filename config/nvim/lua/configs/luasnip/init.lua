@@ -1,14 +1,7 @@
 local M = {}
 
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
-
-local luasnip_ok, luasnip = pcall(require, "luasnip")
-if not luasnip_ok then
-  return
-end
+local wk = require("which-key")
+local luasnip = require("luasnip")
 
 function M.setup()
   luasnip.config.setup({

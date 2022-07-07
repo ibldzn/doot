@@ -1,4 +1,7 @@
-/.config/nvim/plugin
-/.config/zsh/.zcompdump
-/.config/lazygit/state.yml
-/.config/ncmpcpp/error.log
+/.config
+/config/lazygit/state.yml
+/config/ncmpcpp/error.log
+/.local/bin/vscode-json-language-server
+/.local/bin/vscode-eslint-language-server
+/.local/bin/vscode-html-language-server
+/.local/bin/vscode-css-language-server

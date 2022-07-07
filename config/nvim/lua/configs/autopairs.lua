@@ -1,14 +1,7 @@
 local M = {}
 
-local autopairs_ok, autopairs = pcall(require, "nvim-autopairs")
-if not autopairs_ok then
-  return
-end
-
-local cmp_ok, cmp = pcall(require, "cmp")
-if not cmp_ok then
-  return
-end
+local autopairs = require("nvim-autopairs")
+local cmp = require("cmp")
 
 function M.setup()
   autopairs.setup({})

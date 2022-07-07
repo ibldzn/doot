@@ -1,9 +1,6 @@
 local M = {}
 
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
+local wk = require("which-key")
 
 local function toggle_venn()
   local venn_enabled = vim.inspect(vim.b.venn_enabled)

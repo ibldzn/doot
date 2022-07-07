@@ -1,14 +1,7 @@
 local M = {}
 
-local ss_ok, ss = pcall(require, "smart-splits")
-if not ss_ok then
-  return
-end
-
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
+local ss = require("smart-splits")
+local wk = require("which-key")
 
 function M.setup()
   ss.setup({})

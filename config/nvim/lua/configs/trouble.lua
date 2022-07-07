@@ -1,20 +1,8 @@
 local M = {}
 
-local trouble_ok, trouble = pcall(require, "trouble")
-if not trouble_ok then
-  return
-end
-
-local todo_comments_ok, todo_comments = pcall(require, "todo-comments")
-if not todo_comments_ok then
-  return
-end
-
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
-
+local trouble = require("trouble")
+local todo_comments = require("todo-comments")
+local wk = require("which-key")
 local util = require("util")
 
 function M.setup()

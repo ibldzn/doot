@@ -1,7 +1,4 @@
-local alpha_ok, alpha = pcall(require, "alpha")
-if not alpha_ok then
-  return
-end
+local alpha = require("alpha")
 
 -- To split our quote, artist and source.
 -- And automatically center it for screen loader of the header.

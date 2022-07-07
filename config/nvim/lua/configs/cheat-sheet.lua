@@ -1,15 +1,7 @@
 local M = {}
 
-local cheat_sheet_ok, cheat_sheet = pcall(require, "cheat-sheet")
-if not cheat_sheet_ok then
-  return
-end
-
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
-
+local cheat_sheet = require("cheat-sheet")
+local wk = require("which-key")
 local shared = require("shared")
 
 function M.setup()

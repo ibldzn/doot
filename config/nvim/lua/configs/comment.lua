@@ -1,14 +1,7 @@
 local M = {}
 
-local comment_ok, comment = pcall(require, "Comment")
-if not comment_ok then
-  return
-end
-
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
+local comment = require("Comment")
+local wk = require("which-key")
 
 function M.setup()
   comment.setup({

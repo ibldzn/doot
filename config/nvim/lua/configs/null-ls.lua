@@ -1,10 +1,6 @@
 local M = {}
 
-local ns_ok, ns = pcall(require, "null-ls")
-if not ns_ok then
-  return
-end
-
+local ns = require("null-ls")
 local lspconfig = require("configs.lsp")
 
 local fm = ns.builtins.formatting

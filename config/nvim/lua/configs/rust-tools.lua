@@ -1,10 +1,6 @@
 local M = {}
 
-local rust_tools_ok, rust_tools = pcall(require, "rust-tools")
-if not rust_tools_ok then
-  return
-end
-
+local rust_tools = require("rust-tools")
 local lspconfig = require("configs.lsp")
 local shared = require("shared")
 

@@ -1,20 +1,8 @@
 local M = {}
 
-local dap_ok, dap = pcall(require, "dap")
-if not dap_ok then
-  return
-end
-
-local dap_ui_ok, dap_ui = pcall(require, "dapui")
-if not dap_ui_ok then
-  return
-end
-
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
-
+local dap = require("dap")
+local dap_ui = require("dapui")
+local wk = require("which-key")
 local util = require("util")
 
 local function run_dap(prompt)

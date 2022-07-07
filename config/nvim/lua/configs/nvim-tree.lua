@@ -1,14 +1,7 @@
 local M = {}
 
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
-
-local nvim_tree_ok, nvim_tree = pcall(require, "nvim-tree")
-if not nvim_tree_ok then
-  return
-end
+local wk = require("which-key")
+local nvim_tree = require("nvim-tree")
 
 function M.setup()
   nvim_tree.setup({

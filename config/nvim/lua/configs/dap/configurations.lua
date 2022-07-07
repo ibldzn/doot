@@ -1,9 +1,6 @@
 local M = {}
 
-local dap_ok, dap = pcall(require, "dap")
-if not dap_ok then
-  return
-end
+local dap = require("dap")
 
 function M.setup()
   dap.configurations.cpp = {

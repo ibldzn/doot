@@ -1,9 +1,6 @@
 local M = {}
 
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
+local wk = require("which-key")
 
 function M.setup()
   wk.register({

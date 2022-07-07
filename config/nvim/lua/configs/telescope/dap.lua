@@ -1,14 +1,7 @@
 local M = {}
 
-local telescope_ok, telescope = pcall(require, "telescope")
-if not telescope_ok then
-  return
-end
-
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
+local telescope = require("telescope")
+local wk = require("which-key")
 
 function M.setup()
   telescope.load_extension("dap")

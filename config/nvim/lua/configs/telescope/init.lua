@@ -1,20 +1,8 @@
 local M = {}
 
-local telescope_ok, telescope = pcall(require, "telescope")
-if not telescope_ok then
-  return
-end
-
-local telescope_builtin_ok, telescope_builtin = pcall(require, "telescope.builtin")
-if not telescope_builtin_ok then
-  return
-end
-
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
-
+local telescope = require("telescope")
+local telescope_builtin = require("telescope.builtin")
+local wk = require("which-key")
 local util = require("util")
 
 local function find_files(no_ignore)

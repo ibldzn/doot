@@ -1,9 +1,6 @@
 local M = {}
 
-local colorizer_ok, colorizer = pcall(require, "colorizer")
-if not colorizer_ok then
-  return
-end
+local colorizer = require("colorizer")
 
 function M.setup()
   colorizer.setup({})

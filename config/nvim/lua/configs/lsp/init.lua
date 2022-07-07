@@ -1,15 +1,7 @@
 local M = {}
 
-local lsp_installer_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not lsp_installer_ok then
-  return
-end
-
-local wk_ok, wk = pcall(require, "which-key")
-if not wk_ok then
-  return
-end
-
+local lsp_installer = require("nvim-lsp-installer")
+local wk = require("which-key")
 local shared = require("shared")
 local util = require("util")
 
@@ -153,16 +145,14 @@ function M.setup()
   end
 
   -- Diagnostics
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
+  vim.lsp.handlers["textDocument/publishDiagnostics"] =
+    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       underline = true,
       virtual_text = {
         spacing = 2,
         severity_limit = "Warning",
       },
-    }
-  )
+    })
 
   -- Occurences
   vim.lsp.handlers["textDocument/documentHighlight"] = function(...)

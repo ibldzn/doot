@@ -1,9 +1,6 @@
 local M = {}
 
-local lualine_ok, lualine = pcall(require, "lualine")
-if not lualine_ok then
-  return
-end
+local lualine = require("lualine")
 -- local lsp_status = require("lsp-status")
 
 -- stylua: ignore start

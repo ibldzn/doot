@@ -1,10 +1,6 @@
 local M = {}
 
-local lspsignature_ok, lspsignature = pcall(require, "lsp_signature")
-if not lspsignature_ok then
-  return
-end
-
+local lspsignature = require("lsp_signature")
 local shared = require("shared")
 
 function M.setup()

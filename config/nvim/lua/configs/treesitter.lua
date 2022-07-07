@@ -1,9 +1,6 @@
 local M = {}
 
-local ts_config_ok, ts_config = pcall(require, "nvim-treesitter.configs")
-if not ts_config_ok then
-  return
-end
+local ts_config = require("nvim-treesitter.configs")
 
 function M.setup()
   vim.opt.foldmethod = "expr"
