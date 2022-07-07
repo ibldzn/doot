@@ -71,7 +71,7 @@ function M.setup()
 
     view = {
       side = "right",
-      width = 25,
+      width = 30,
     },
   })
 
