@@ -1,0 +1,68 @@
+alacritty                 # terminal emulator
+bat                       # better cat
+breeze-gtk                # breeze theme for gtk apps
+clang                     # c/c++ compiler
+delve                     # debugger for golang
+exa                       # better ls
+fcitx5-im                 # fcitx5 input method
+fcitx5-mozc               # japanese ime for fcitx5
+fd                        # better find
+feh                       # image viewer
+firefox                   # browser
+fzf                       # fuzzy finder
+git                       # git vcs
+git-delta                 # diff viewer
+gnome-keyring             # stores passwords and keys
+go                        # golang
+lazygit                   # git tui
+libnotify                 # notify-send
+lldb                      # llvm debugger
+lua                       # lua
+luajit                    # lua jit
+lxappearance              # gtk themes
+man-db                    # man
+man-pages                 # man pages
+mpv                       # media player
+neovim                    # text editor
+nodejs                    # javascript runtime
+noto-fonts                # noto fonts
+noto-fonts-cjk            # chinese, japanese, korean
+noto-fonts-emoji          # emoji
+noto-fonts-extra          # extra
+npm                       # node package manager
+pipewire                  # audio server
+pipewire-alsa             # alsa
+pipewire-jack             # jack
+pipewire-pulse            # pulse
+polkit                    # system privileges stuff
+polkit-gnome              # gui for system privileges
+prettier                  # code formatter
+pyright                   # python lsp
+python                    # python
+python-black              # python formatter
+python-debugpy            # debugger for python
+qbittorrent               # p2p torrent client
+qt5ct                     # qt themes
+ripgrep                   # better grep
+rust-analyzer             # rust lsp
+rustup                    # rust toolchain installer
+starship                  # shell prompt
+stylua                    # lua formatter
+sway                      # window manager
+swaybg                    # set background for sway
+swaylock                  # lock manager for sway
+tlp                       # power management
+waybar                    # bar for wayland
+wl-clipboard              # clipboard manager for wayland
+zathura                   # document viewer
+zathura-pdf-mupdf         # pdf support for zathura
+zsh                       # shell
+zsh-autosuggestions       # auto suggestions from history
+zsh-syntax-highlighting   # syntax highlighting
+
+# AUR
+autotiling                # bspwm like tiling for i3/sway
+nerd-fonts-jetbrains-mono # patched jetbrains mono font
+shellcheck-bin            # shell check
+visual-studio-code-bin    # vscode
+zsh-completions-git       # more completions for zsh

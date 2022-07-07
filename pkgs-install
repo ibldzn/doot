@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+readonly SELF_PATH="$(dirname "$(realpath -s "$0")")"
+
+err () {
+    echo -e "🚨 \e[31m$1\e[0m" >&2
+}
+
+inf () {
+    echo -e "🚀 \e[32m$1\e[0m"
+}
+
+command -v yay &>/dev/null || {
+    inf "Installing yay.."
+    git clone --depth 1 'https://aur.archlinux.org/yay.git'
+    cd yay
+    makepkg -si --noconfirm
+}
+
+inf "Installing packages.."
+awk '/^[^#]/ {print $1}' "$SELF_PATH/pkgs" | yay -S --needed --noconfirm -

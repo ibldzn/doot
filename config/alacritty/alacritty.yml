@@ -1,0 +1,66 @@
+env:
+  TERM: alacritty
+
+live_config_reload: true
+
+colors:
+  primary:
+    background: "0x1d2021"
+    foreground: "0xdfbf8e"
+
+  normal:
+    red:     "0xea6962"
+    blue:    "0x7daea3"
+    cyan:    "0x89b482"
+    black:   "0x665c54"
+    green:   "0xa9b665"
+    white:   "0xdfbf8e"
+    yellow:  "0xe78a4e"
+    magenta: "0xd3869b"
+
+  bright:
+    red:     "0xea6962"
+    blue:    "0x7daea3"
+    cyan:    "0x89b482"
+    black:   "0x928374"
+    green:   "0xa9b665"
+    white:   "0xdfbf8e"
+    yellow:  "0xe3a84e"
+    magenta: "0xd3869b"
+
+window:
+  padding:
+    x: 5
+    y: 5
+
+  dynamic_padding: true
+  decorations: full
+  opacity: 1.0
+
+  title: Alacritty
+  dynamic_title: true
+
+font:
+  size: 10.0
+
+  normal:
+    family: monospace
+    style: Regular
+
+  bold:
+    family: monospace
+    style: Bold
+
+  italic:
+    family: monospace
+    style: Italic
+
+  bold_italic:
+    family: monospace
+    style: Bold Italic
+
+key_bindings:
+  - { key: C,    mods: Control|Shift, action: Copy }
+  - { key: V,    mods: Control|Shift, action: Paste }
+  - { key: Up,   mods: Control|Shift, action: ScrollLineUp }
+  - { key: Down, mods: Control|Shift, action: ScrollLineDown }

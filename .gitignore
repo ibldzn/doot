@@ -1,0 +1,4 @@
+/.config/nvim/plugin
+/.config/zsh/.zcompdump
+/.config/lazygit/state.yml
+/.config/ncmpcpp/error.log
