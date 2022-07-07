@@ -5,10 +5,10 @@ gaps outer 3
 # smart_gaps on
 
 client.focused          #434c5e #434c5e #eceff4 #434c5e #434c5e
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #333845   #333845
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #333845
+client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
+client.unfocused        #333333 #222222 #888888 #333845 #333845
+client.urgent           #2f343a #900000 #ffffff #900000 #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000 #333845
 client.background       #ffffff
 
 set $mod   Mod4
@@ -18,7 +18,7 @@ set $left  h
 set $down  j
 set $up    k
 set $right l
-set $menu  wofi --show run | xargs swaymsg exec --
+set $menu  wofi --show drun | xargs swaymsg exec --
 
 output * bg ~/dot/papes/flowers.png fill
 
@@ -40,6 +40,7 @@ input type:keyboard {
     xkb_options caps:ctrl_modifier
 }
 
+bindsym $mod+p       exec ~/.local/bin/powermenu
 bindsym $mod+q       kill
 bindsym $mod+Space   exec $menu
 bindsym $mod+Return  exec $term
