@@ -18,6 +18,7 @@ git                       # git vcs
 git-delta                 # diff viewer
 gnome-keyring             # stores passwords and keys
 go                        # golang
+jq                        # command-line json processor
 lazygit                   # git tui
 libnotify                 # notify-send
 lldb                      # llvm debugger

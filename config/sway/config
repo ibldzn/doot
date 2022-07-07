@@ -18,17 +18,17 @@ set $left  h
 set $down  j
 set $up    k
 set $right l
-set $menu  wofi --show drun | xargs swaymsg exec --
+set $menu  wofi --insensitive --show drun | xargs swaymsg exec --
 
 output * bg ~/dot/papes/flowers.png fill
 
 input type:touchpad {
-    dwt enabled
-    tap enabled
-    accel_profile flat
-    tap_button_map lrm
-    natural_scroll enabled
-    scroll_method two_finger
+    dwt              enabled
+    tap              enabled
+    accel_profile    flat
+    scroll_method    two_finger
+    tap_button_map   lrm
+    natural_scroll   enabled
     middle_emulation enabled
 }
 
@@ -52,7 +52,6 @@ bindsym $mod+Shift+r reload
 # Change normal to inverse to use left mouse button for resizing and right
 # mouse button for dragging.
 floating_modifier $mod normal
-
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -127,9 +126,9 @@ bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set 5%+
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # Volume
-bindsym XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 mode "resize" {
     bindsym $left  resize shrink width  10px
