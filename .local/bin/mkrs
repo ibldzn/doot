@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+
+# User settings
+EMAIL="$(git config --get user.email)"
+GITHUB="$(git config --get user.name)"
+LICENSE="MIT"
+
+if [[ ! -z "$(cargo new "$@")" ]]; then
+  exit 1
+fi
+
+until [[ ! -z "$(ls "$1" 2>/dev/null)" ]]; do
+  shift 1
+done
+
+APP="$1"
+cd "$APP"
+rm Cargo.toml
+
+write_to_file () {
+  local file="$1"
+  local dir="$(dirname "$file")"
+  mkdir -p "$dir"
+
+  local content="$2"
+  echo "$content" > "$file"
+  echo "Created $(basename $file)"
+}
+
+write_to_file "Cargo.toml" \
+"[package]
+name = \"$APP\"
+version = \"0.1.0\"
+authors = [\"$GITHUB <$EMAIL>\"]
+edition = \"2021\"
+description = \"...\"
+readme = \"README.md\"
+repository = \"https://github.com/$GITHUB/$APP\"
+license = \"$LICENSE\"
+keywords = []
+categories = []
+
+[dependencies]
+
+[profile.release]
+strip = true
+lto = true
+debug = false
+panic = \"abort\"
+opt-level = 3
+codegen-units = 1" &
+
+# Default content for README.md
+write_to_file "README.md" \
+"# $APP
+
+[![License: $LICENSE](https://img.shields.io/badge/License-$LICENSE-green.svg?style=for-the-badge)](https://opensource.org/licenses/$LICENSE)" &
+
+write_to_file "rustfmt.toml" \
+"group_imports = \"StdExternalCrate\"
+imports_granularity = \"Crate\"" &
+
+write_to_file ".cargo/config" \
+"[target.'cfg(target_env = \"msvc\")']
+rustflags = [
+  \"-C\", \"target-feature=+crt-static\",
+]" &
+
+write_to_file "LICENSE" \
+"MIT License
+
+Copyright (c) $(date +%Y) $(git config --get user.name)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE." &
+
+wait

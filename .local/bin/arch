@@ -1,0 +1,405 @@
+#!/usr/bin/env bash
+
+clear
+
+QUEUED_PACKAGES=(base base-devel linux-firmware btrfs-progs vim rsync efibootmgr zram-generator snapper)
+QUEUED_SERVICES=(snapper-timeline.timer snapper-cleanup.timer systemd-oomd)
+
+trap 'die "Installation ended abruptly!"' SIGINT
+
+inf () {
+    echo -e "\e[1m\e[93m[ \e[92m•\e[93m ] \e[4m$1\e[0m"
+}
+
+err () {
+    echo -e "\e[1m\e[91m[ \e[91m×\e[91m ] \e[4m$1\e[0m"
+}
+
+die () {
+    err "$1"
+    umount -R /mnt &>/dev/null
+    exit 1
+}
+
+[ -d /sys/firmware/efi/efivars ] || die "Only UEFI systems are supported!"
+
+virt_check () {
+    inf "Detecting virtualization.."
+    local hypervisor="$(systemd-detect-virt)"
+    case "$hypervisor" in
+        kvm )
+            inf "KVM has been detected"
+            QUEUED_PACKAGES+=(qemu-quest-agent)
+            QUEUED_SERVICES+=(qemu-quest-agent)
+            ;;
+        vmware )
+            inf "VMWare Workstation/ESX1 has been detected"
+            QUEUED_PACKAGES+=(open-vm-tools)
+            QUEUED_SERVICES+=(vmtoolsd vmware-vmblock-fuse)
+            ;;
+        oracle )
+            inf "VirtualBox has been detected"
+            QUEUED_PACKAGES+=(virtualbox-guest-utils)
+            QUEUED_SERVICES+=(vboxservice)
+            ;;
+        microsoft )
+            inf "Hyper-V has been detected"
+            QUEUED_PACKAGES+=(hyperv)
+            QUEUED_SERVICES+=(hv_{fcopy,kvp,vss}_daemon)
+            ;;
+        * )
+            inf "No virtualization detected"
+            ;;
+    esac
+}
+
+setup_disk () {
+    umount -R /mnt &>/dev/null
+
+    PS3="Enter the disk NUMBER e.g. 1 where Arch Linux is going to be installed: "
+    select ENTRY in $(lsblk -dpno NAME | grep -P "/dev/sd|nvme|vd"); do
+        DISK="$ENTRY"
+        [ -n "$DISK" ] && inf "Installing Arch Linux on $DISK.." && break
+    done
+
+    read -n1 -rp "This will delete the current partition table on $DISK, continue [y/N]? " resp
+    [ -n "$resp" ] && echo
+    [ "${resp,,}" = "y" ] || die "Aborting."
+
+    clean_partition
+    setup_partition
+}
+
+clean_partition () {
+    inf "Wiping $DISK.."
+    wipefs -af "$DISK" &>/dev/null
+    sgdisk -Zo "$DISK" &>/dev/null
+}
+
+setup_partition () {
+    inf "Setting up new partition on $DISK.."
+    parted -s "$DISK" \
+        mklabel gpt \
+        mkpart ESP fat32 1MiB 513MiB \
+        set 1 esp on \
+        mkpart ROOT 513MiB 100%
+
+    inf "Informing the kernel about the new disk change.."
+    partprobe "$DISK"
+
+    ESP="/dev/disk/by-partlabel/ESP"
+    ROOT="/dev/disk/by-partlabel/ROOT"
+
+    inf "Formatting ESP partition as FAT32.."
+    mkfs.fat -F32 -n ESP "$ESP" &>/dev/null
+
+    inf "Formatting ROOT partition as BTRFS.."
+    mkfs.btrfs -fL ROOT "$ROOT" &>/dev/null
+
+    inf "Setting up btrfs subvolumes.."
+    setup_btrfs_subvolume
+}
+
+setup_btrfs_subvolume () {
+    inf "Mounting root partition.."
+    mount "$ROOT" /mnt
+
+    inf "Creating btrfs subvolumes.."
+    for vol in @ @home @snapshots @var_log @var_pkg; do
+        btrfs su cr "/mnt/$vol" &>/dev/null
+    done
+
+    inf "Unmounting root partition.."
+    umount /mnt
+
+    inf "Mounting the newly created partitions.."
+    mount -o ssd,noatime,compress-force=zstd:3,space_cache=v2,discard=async,subvol=@ "$ROOT" /mnt
+    mkdir -p /mnt/{boot,home,.snapshots,var/log,var/cache/pacman/pkg}
+    mount -o ssd,noatime,compress-force=zstd:3,space_cache=v2,discard=async,subvol=@home "$ROOT" /mnt/home
+    mount -o ssd,noatime,compress-force=zstd:3,space_cache=v2,discard=async,subvol=@snapshots "$ROOT" /mnt/.snapshots
+    mount -o ssd,noatime,compress-force=zstd:3,space_cache=v2,discard=async,subvol=@var_log "$ROOT" /mnt/var/log
+    mount -o ssd,noatime,compress-force=zstd:3,space_cache=v2,discard=async,subvol=@var_pkg "$ROOT" /mnt/var/cache/pacman/pkg
+    chattr +C /mnt/var/log
+    mount "$ESP" /mnt/boot
+}
+
+detect_microcode () {
+    inf "Detecting CPU.."
+
+    local cpu="$(grep vendor_id /proc/cpuinfo)"
+
+    if [[ "$cpu" == *"AuthenticAMD"* ]]; then
+        inf "An AMD CPU has been detected, AMD microcode will be installed"
+        MICROCODE="amd-ucode"
+    elif [[ "$cpu" == *"GenuineIntel"* ]]; then
+        inf "An Intel CPU has been detected, Intel microcode will be installed"
+        MICROCODE="intel-ucode"
+    else
+        err "Unable to detect current CPU, no microcode will be installed"
+    fi
+    QUEUED_PACKAGES+=("$MICROCODE")
+}
+
+kernel_selector () {
+    inf "List of kernels:"
+    inf "1) Stable: Vanilla Linux kernel with a few specific Arch Linux patches applied"
+    inf "2) Hardened: A security-focused Linux kernel"
+    inf "3) LTS: Long-term support (LTS) Linux kernel"
+    inf "4) Zen: Linux kernel optimized for desktop usage"
+    while :; do
+        [ -n "$KERNEL" ] && break
+        read -rp "Enter the number of the kernel to install: " choice
+        case $choice in
+            1 ) KERNEL="linux" ;;
+            2 ) KERNEL="linux-hardened" ;;
+            3 ) KERNEL="linux-lts" ;;
+            4 ) KERNEL="linux-zen" ;;
+            * ) err "Invalid choice!" ;;
+        esac
+    done
+    QUEUED_PACKAGES+=("$KERNEL")
+}
+
+network_selector () {
+    inf "List of network utilities:"
+    inf "1) IWD: iNet wireless daemon is a wireless daemon for Linux written by Intel (WiFi-only)"
+    inf "2) NetworkManager: Universal network utility to automatically connect to networks (both WiFi and Ethernet)"
+    inf "3) wpa_supplicant: Cross-platform supplicant with support for WEP, WPA and WPA2 (WiFi-only, a DHCP client will be automatically installed)"
+    inf "4) dhcpcd: Basic DHCP client (Ethernet only or VMs)"
+    inf "5) I will do this on my own (only advanced users)"
+    while :; do
+        read -rp "Enter the number of the networking utility to install: " choice
+        case $choice in
+            1 ) QUEUED_PACKAGES+=(iwd)
+                QUEUED_SERVICES+=(iwd)
+                break
+                ;;
+            2 ) QUEUED_PACKAGES+=(networkmanager)
+                QUEUED_SERVICES+=(NetworkManager)
+                break
+                ;;
+            3 ) QUEUED_PACKAGES+=(wpa_supplicant dhcpcd)
+                QUEUED_SERVICES+=(wpa_supplicant dhcpcd)
+                break
+                ;;
+            4 ) QUEUED_PACKAGES+=(dhcpcd)
+                QUEUED_SERVICES+=(dhcpcd)
+                break
+                ;;
+            5 ) break ;;
+            * ) err "Invalid choice!"
+                ;;
+        esac
+    done
+}
+
+setup_packages () {
+    virt_check
+    detect_microcode
+    kernel_selector
+    network_selector
+
+    inf "Installing the base system (it might take a while).."
+    pacstrap /mnt "${QUEUED_PACKAGES[@]}" &>/dev/null
+
+    inf "Enabling queued services.."
+    for sv in "${QUEUED_SERVICES[@]}"; do
+        systemctl enable --root=/mnt "$sv" &>/dev/null
+    done
+}
+
+setup_host () {
+    while [ -z "$hostname" ]; do
+        read -rp "Enter the hostname: " hostname
+    done
+
+    echo "$hostname" > /mnt/etc/hostname
+
+    inf "Setting up hosts file.."
+    cat << EOF > /mnt/etc/hosts
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   $hostname.localdomain   $hostname
+EOF
+}
+
+setup_kb_layout () {
+    read -rp "Enter the keyboard layout to use (leave blank to use US keyboard layout): " kblayout
+    [ -z "$kblayout" ] && kblayout="us"
+    inf "Setting keyboard layout to $kblayout.."
+    echo "KEYMAP=$kblayout" > /mnt/etc/vconsole.conf
+}
+
+setup_bootloader () {
+    inf "Setting up bootloader.."
+
+    bootctl --esp-path=/mnt/boot install &>/dev/null
+    cat << EOF > /mnt/boot/loader/loader.conf
+default 01-arch.conf
+timeout 5
+console-mode 0
+editor no
+EOF
+
+    local uuid="$(blkid -s UUID -o value "$ROOT")"
+
+    cat << EOF > /mnt/boot/loader/entries/01-arch.conf
+title   Arch Linux
+linux   /vmlinuz-$KERNEL
+initrd  /$MICROCODE.img
+initrd  /initramfs-$KERNEL.img
+options root=UUID=$uuid rootflags=subvol=@ rw
+EOF
+
+    [ -z "$MICROCODE" ] && \
+        err "Failed to detect microcode! Deleting entry from bootloader.." && \
+        sed -i '3 d' /mnt/boot/loader/entries/01-arch.conf
+
+    cp /mnt/boot/loader/entries/{01-arch,02-arch-fallback}.conf
+    sed -i "s:\(initramfs-$KERNEL\):\1-fallback:;s:^\(title.*\):\1 (fallback initramfs):" \
+        /mnt/boot/loader/entries/02-arch-fallback.conf
+}
+
+setup_locale () {
+    read -rp "Enter the locale to use (format: xx_XX or leave blank to use en_US): " locale
+    [ -z "$locale" ] && locale="en_US"
+    inf "Setting locale to $locale"
+    echo "$locale.UTF-8 UTF-8"  > /mnt/etc/locale.gen
+    echo "LANG=$locale.UTF-8" > /mnt/etc/locale.conf
+}
+
+setup_zram () {
+    inf "Setting up zram.."
+    cat << EOF > /mnt/etc/systemd/zram-generator.conf
+[zram0]
+zram-size = min(ram, 8192)
+EOF
+}
+
+setup_rootpass () {
+    while :; do
+        while [ -z "$ROOTPASS" ]; do
+            read -rsp "Enter password for root user: " ROOTPASS
+            echo
+        done
+        read -rsp "Confirm password: " cfrm
+        echo
+        [ "$ROOTPASS" = "$cfrm" ] && break
+        unset ROOTPASS
+        err "Passwords didn't match!"
+    done
+    inf "Setting up root password.."
+    echo "root:$ROOTPASS" | arch-chroot /mnt chpasswd
+}
+
+setup_fstab () {
+    inf "Setting up fstab.."
+    genfstab -U /mnt >> /mnt/etc/fstab
+}
+
+setup_timezone () {
+    inf "Detecting timezone.."
+    TIMEZONE="$(curl -fsSL "http://ip-api.com/line?fields=timezone")"
+    read -n1 -rp "Timezone $TIMEZONE has been detected, is this correct? [Y/n]? " resp
+    [ -n "$resp" ] && echo
+    if [ "${resp,,}" = "n" ]; then
+        while :; do
+            read -rp "Enter your timezone: " TIMEZONE
+            [ -f "/mnt/usr/share/zoneinfo/$TIMEZONE" ] && break
+            err "$TIMEZONE is not a valid timezone!"
+            unset TIMEZONE
+        done
+    fi
+    inf "Setting up timezone to $TIMEZONE.."
+}
+
+setup_pacman_hooks () {
+    local base_dir="/mnt/etc/pacman.d/hooks"
+    mkdir -p "$base_dir"
+
+    inf "Configuring /boot backup when pacman transactions are made.."
+    cat << EOF > "$base_dir/50-bootbackup.hook"
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Path
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Depends = rsync
+Description = Backing up /boot...
+When = PostTransaction
+Exec = /usr/bin/rsync -a --delete /boot /.bootbackup
+EOF
+
+    inf "Configuring systemd-boot auto update.."
+    cat << EOF > "$base_dir/100-systemd-boot.hook"
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = systemd
+
+[Action]
+Description = Gracefully upgrading systemd-boot...
+When = PostTransaction
+Exec = /usr/bin/systemctl restart systemd-boot-update.service
+EOF
+}
+
+setup_in_chroot () {
+    arch-chroot /mnt /bin/bash -e <<EOF
+    echo "Setting up system clock.."
+    ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime &>/dev/null
+    hwclock --systohc
+
+    echo "Generating locales.."
+    locale-gen &>/dev/null
+
+    echo "Configuring Snapper.."
+    umount /.snapshots
+    rm -r /.snapshots
+    snapper --no-dbus -c root create-config /
+    btrfs subvolume delete /.snapshots &>/dev/null
+    mkdir /.snapshots
+    mount -a
+    chmod 750 /.snapshots
+EOF
+}
+
+finalize () {
+    inf "Allowing users of the wheel group for root privilege.."
+    sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /mnt/etc/sudoers
+
+    inf "Enabling color, animations, parallel downloads, and multilib for pacman.."
+    sed -i 's/#Color/Color\nILoveCandy/;s/^#ParallelDownloads.*$/ParallelDownloads = 10/;/\[multilib\]/,/Include/ s/^#//' \
+        /mnt/etc/pacman.conf
+
+    arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm &>/dev/null"
+
+    read -n1 -rp "Installation completed successfully, do you want to do additional configuration [y/N]? " resp
+    [ -n "$resp" ] && echo
+    [ "${resp,,}" = "y" ] && arch-chroot /mnt
+
+    umount -R /mnt
+
+    inf "You can reboot now"
+}
+
+main () {
+    setup_disk
+    setup_packages
+    setup_fstab
+    setup_host
+    setup_kb_layout
+    setup_bootloader
+    setup_locale
+    setup_zram
+    setup_rootpass
+    setup_timezone
+    setup_pacman_hooks
+    setup_in_chroot
+    finalize
+}
+
+main

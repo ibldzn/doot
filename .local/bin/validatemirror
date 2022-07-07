@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+ok () {
+    echo "✅ $1"
+}
+
+err () {
+    echo "🚨 $1"
+}
+
+die () {
+    err "$1"
+    exit 1
+}
+
+mirrors="$(curl -fsSL "https://archlinux.org/mirrorlist/all/")"
+[ -z "$mirrors" ] && die "Failed to retrieve mirrors"
+
+local_mirrors="$(grep '^Server' /etc/pacman.d/mirrorlist | cut -d" " -f3)"
+
+while IFS= read -r mirror; do
+    if printf "%s" "$mirrors" | grep -q "$mirror"; then
+        ok "$mirror"
+    else
+        err "$mirror"
+    fi
+done < <(printf "%s\n" "$local_mirrors")
+

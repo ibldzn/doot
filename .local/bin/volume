@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+[[ "$1" =~ (increase|decrease|mute) ]] || {
+    echo "Usage: ${0##*/} [increase|decrease|mute]" >&2
+    exit 1
+}
+
+[[ "$1" == "mute" ]] && {
+    pulsemixer --toggle-mute
+    exit
+}
+
+cur_vol="$(pulsemixer --get-volume | cut -d' ' -f1)"
+if [[ "$cur_vol" -gt 70 ]]; then
+	step=5
+else
+	step=$((cur_vol / 10))
+	[[ "$step" -eq 0 ]] && step=1
+fi
+
+[[ "$1" == "increase" ]] && pulsemixer --change-volume +$step || pulsemixer --change-volume -$step

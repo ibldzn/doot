@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+err () {
+    echo -e "🚨 \e[31m$1\e[0m" >&2
+}
+
+ok () {
+    echo -e "🚀 \e[32m$1\e[0m"
+}
+
+url="https://raw.githubusercontent.com/bebasid/bebasid/master/releases/hosts"
+hosts="$(curl -fsSL "$url")"
+diffs="$(diff -u <(echo "$hosts") /etc/hosts)"
+
+[ -z "$diffs" ] && err "No update available" && exit 1
+
+echo "$diffs"
+
+read -n1 -rp "Update is available, do you want to update? [Y/n] " upd
+[ -n "$upd" ] && echo && [ "${upd,,}" != "y" ] && err "Update cancelled" && exit 1
+
+[ "$EUID" -ne 0 ] && \
+    echo "$hosts" | sudo tee /etc/hosts >/dev/null || \
+    echo "$hosts" > /etc/hosts
+
+ok "Hosts file updated"
