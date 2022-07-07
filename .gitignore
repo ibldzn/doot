@@ -1,4 +1,3 @@
-/.config
 /config/lazygit/state.yml
 /config/ncmpcpp/error.log
 /.local/bin/vscode-json-language-server
