@@ -1,0 +1,257 @@
+{
+  // General
+  "workbench.iconTheme": "gruvbox-material-icon-theme",
+  "workbench.colorTheme": "Horizon",
+  "window.menuBarVisibility": "toggle",
+  "window.titleBarStyle": "custom",
+  "window.customMenuBarAltFocus": false,
+  "telemetry.telemetryLevel": "off",
+  "workbench.enableExperiments": false,
+  "security.workspace.trust.enabled": false,
+  // Settings Sync
+  "settingsSync.keybindingsPerPlatform": false,
+  "settingsSync.ignoredSettings": ["workbench.colorTheme"],
+  // Editor
+  "editor.wordWrap": "on",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'JetBrainsMono NF'",
+  "editor.fontSize": 15,
+  "editor.fontWeight": "500",
+  "editor.lineNumbers": "relative",
+  "editor.formatOnSave": true,
+  "editor.linkedEditing": true,
+  "editor.cursorBlinking": "phase",
+  "editor.smoothScrolling": true,
+  "editor.minimap.enabled": false,
+  "editor.guides.bracketPairs": "active",
+  "editor.inlineSuggest.enabled": true,
+  // Terminal
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  // Extensions
+  "cmake.buildDirectory": "${workspaceFolder}/_build",
+  "cmake.generator": "Ninja",
+  "cmake.configureOnEdit": false,
+  "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.intelliSenseEngine": "Disabled",
+  "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "rust-analyzer.rustfmt.extraArgs": ["+nightly"],
+  "vim.leader": "<Space>",
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.smartcase": true,
+  "vim.ignorecase": true,
+  "vim.showMarksInGutter": true,
+  "vim.useSystemClipboard": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 700,
+  "vim.highlightedyank.color": "rgba(80, 100, 120, 1.0)",
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["<C-e>"],
+      "after": ["<Esc>", "$", "a"]
+    },
+    {
+      "before": ["<C-a>"],
+      "after": ["<Esc>", "I"]
+    },
+    {
+      "before": ["<C-h>"],
+      "after": ["<Left>"]
+    },
+    {
+      "before": ["<C-j>"],
+      "after": ["<Down>"]
+    },
+    {
+      "before": ["<C-k>"],
+      "after": ["<Up>"]
+    },
+    {
+      "before": ["<C-l>"],
+      "after": ["<Right>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<Esc>"],
+      "commands": [{ "command": ":noh" }],
+      "silent": true
+    },
+    {
+      "before": ["K"],
+      "commands": [{ "command": "editor.action.showHover" }],
+      "silent": true
+    },
+    {
+      "before": ["g", "r"],
+      "commands": [{ "command": "editor.action.goToReferences" }],
+      "silent": true
+    },
+    {
+      "before": ["g", "]"],
+      "commands": [{ "command": "editor.action.marker.next" }],
+      "silent": true
+    },
+    {
+      "before": ["g", "["],
+      "commands": [{ "command": "editor.action.marker.prev" }],
+      "silent": true
+    },
+    {
+      "before": ["g", "c", "c"],
+      "commands": [{ "command": "editor.action.commentLine" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": [{ "command": "workbench.action.quickOpen" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "f", "s"],
+      "commands": [{ "command": "workbench.action.gotoSymbol" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "X"],
+      "commands": [{ "command": "workbench.action.closeAllEditors" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": [{ "command": "workbench.action.closeActiveEditor" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "d", "b"],
+      "commands": [{ "command": "editor.debug.action.toggleBreakpoint" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "d", "d"],
+      "commands": [{ "command": "workbench.action.debug.start" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "d", "i"],
+      "commands": [{ "command": "workbench.action.debug.stepInto" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "d", "o"],
+      "commands": [{ "command": "workbench.action.debug.stepOver" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "d", "O"],
+      "commands": [{ "command": "workbench.action.debug.stepOut" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "d", "n"],
+      "commands": [{ "command": "editor.debug.action.runToCursor" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "d", "t"],
+      "commands": [{ "command": "workbench.action.debug.stop" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "d", "r"],
+      "commands": [{ "command": "workbench.action.debug.restart" }],
+      "silent": true
+    },
+    {
+      "before": ["<Tab>"],
+      "commands": [{ "command": "workbench.action.nextEditor" }],
+      "silent": true
+    },
+    {
+      "before": ["<S-Tab>"],
+      "commands": [{ "command": "workbench.action.previousEditor" }],
+      "silent": true
+    },
+    {
+      "before": ["s", "h"],
+      "commands": [{ "command": ":split" }],
+      "silent": true
+    },
+    {
+      "before": ["s", "v"],
+      "commands": [{ "command": ":vsplit" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "<leader>"],
+      "after": ["<C-^>"]
+    },
+    {
+      "before": ["<C-q>"],
+      "after": ["<C-w>", "q"]
+    },
+    {
+      "before": ["<C-h>"],
+      "after": ["<C-w>", "h"]
+    },
+    {
+      "before": ["<C-j>"],
+      "after": ["<C-w>", "j"]
+    },
+    {
+      "before": ["<C-k>"],
+      "after": ["<C-w>", "k"]
+    },
+    {
+      "before": ["<C-l>"],
+      "after": ["<C-w>", "l"]
+    },
+    {
+      "before": ["<C-lef>"],
+      "after": ["<C-w>", "<"]
+    },
+    {
+      "before": ["<C-right>"],
+      "after": ["<C-w>", ">"]
+    },
+    {
+      "before": ["<C-up>"],
+      "after": ["<C-w>", "+"]
+    },
+    {
+      "before": ["<C-down>"],
+      "after": ["<C-w>", "-"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["g", "c"],
+      "commands": [{ "command": "editor.action.commentLine" }],
+      "silent": true
+    },
+    {
+      "before": [">"],
+      "after": [">", "g", "v"]
+    },
+    {
+      "before": ["<"],
+      "after": ["<", "g", "v"]
+    }
+  ],
+  // Filetypes
+  "[json][jsonc][javascript][javascriptreact][typescript][typescriptreact][css][scss][html][yaml]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[go]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "workbench.activityBar.visible": false
+}
