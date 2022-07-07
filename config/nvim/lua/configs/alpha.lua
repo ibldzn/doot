@@ -218,7 +218,7 @@ local buttons = {
     button("LDR f o", "  Recently opened files", ":Telescope oldfiles<CR>"),
     button("LDR f w", "  Find word", ":Telescope live_grep<CR>"),
     button("LDR e s", "  Settings", ":e $MYVIMRC | :cd %:p:h<CR>"),
-    button("LDR s p", "  Sync plugins", ":PackerSync<CR>"),
+    button("LDR p s", "  Packer sync", ":PackerSync<CR>"),
     button("q", "  Quit", ":qa!<CR>"),
   },
   opts = {
