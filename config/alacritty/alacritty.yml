@@ -5,18 +5,18 @@ live_config_reload: true
 
 colors:
   primary:
-    background: "0x1d2021"
-    foreground: "0xdfbf8e"
+    background: "0x202020"
+    foreground: "0xd0d0d0"
 
   normal:
-    red:     "0xea6962"
-    blue:    "0x7daea3"
-    cyan:    "0x89b482"
-    black:   "0x665c54"
-    green:   "0xa9b665"
-    white:   "0xdfbf8e"
-    yellow:  "0xe78a4e"
-    magenta: "0xd3869b"
+    red:     "0xac4142"
+    blue:    "0x6c99ba"
+    cyan:    "0x7dd5cf"
+    black:   "0x151515"
+    green:   "0x7e8d50"
+    white:   "0xd0d0d0"
+    yellow:  "0xe5b566"
+    magenta: "0x9e4e85"
 
   bright:
     red:     "0xea6962"
