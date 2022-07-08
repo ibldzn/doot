@@ -20,7 +20,7 @@ set $up    k
 set $right l
 set $menu  wofi --insensitive --show drun | xargs swaymsg exec --
 
-output * bg ~/dot/papes/flowers.png fill
+output * bg ~/dot/papes/flowers.png tile
 
 input type:touchpad {
     dwt              enabled
@@ -45,6 +45,10 @@ bindsym $mod+q       kill
 bindsym $mod+Space   exec $menu
 bindsym $mod+Return  exec $term
 bindsym $mod+Shift+r reload
+
+bindsym Print       exec ~/.config/sway/scripts/grimshot --notify save screen
+bindsym Ctrl+Print  exec ~/.config/sway/scripts/grimshot --notify save area
+bindsym Shift+Print exec ~/.config/sway/scripts/grimshot --notify save active
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.

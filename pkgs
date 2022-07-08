@@ -18,6 +18,7 @@ git                       # git vcs
 git-delta                 # diff viewer
 gnome-keyring             # stores passwords and keys
 go                        # golang
+grim                      # screenshot utility for wayland
 jq                        # command-line json processor
 lazygit                   # git tui
 libnotify                 # notify-send
@@ -52,6 +53,7 @@ qt5ct                     # qt themes
 ripgrep                   # better grep
 rust-analyzer             # rust lsp
 rustup                    # rust toolchain installer
+slurp                     # select a region in a wayland compositor
 starship                  # shell prompt
 stylua                    # lua formatter
 sway                      # window manager
