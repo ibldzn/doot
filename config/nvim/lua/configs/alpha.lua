@@ -34,14 +34,6 @@ local function split(s)
   return t
 end
 
--- Function to retrieve console output.
-local function capture(cmd)
-  local handle = assert(io.popen(cmd, "r"))
-  local output = assert(handle:read("*a"))
-  handle:close()
-  return output
-end
-
 -- Create button for initial keybind.
 --- @param sc string
 --- @param txt string
@@ -213,7 +205,6 @@ local footer = {
 local buttons = {
   type = "group",
   val = {
-    button("LDR n b", "  New buffer", ":tabnew<CR>"),
     button("LDR f f", "  Find file", ":Telescope find_files<CR>"),
     button("LDR f o", "  Recently opened files", ":Telescope oldfiles<CR>"),
     button("LDR f w", "  Find word", ":Telescope live_grep<CR>"),
