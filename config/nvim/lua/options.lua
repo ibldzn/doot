@@ -25,7 +25,7 @@ function M.setup()
   -- General
   -----------------------------------------------------------
   -- Font for gui client
-  vim.opt.guifont = "JetBrainsMono Nerd Font:h10"
+  vim.opt.guifont = "monospace:h11"
   -- Enable mouse
   vim.opt.mouse = "a"
   -- Disable swap file
