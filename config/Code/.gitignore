@@ -1,0 +1,8 @@
+*
+!.gitignore
+!User/
+User/*
+!User/snippets
+!User/snippets/*
+!User/settings.json
+!User/keybindings.json
