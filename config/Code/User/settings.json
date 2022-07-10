@@ -1,7 +1,7 @@
 {
   // General
+  "workbench.colorTheme": "Atom One Dark",
   "workbench.iconTheme": "gruvbox-material-icon-theme",
-  "workbench.colorTheme": "Horizon",
   "window.menuBarVisibility": "toggle",
   "window.titleBarStyle": "custom",
   "window.customMenuBarAltFocus": false,
@@ -10,7 +10,12 @@
   "security.workspace.trust.enabled": false,
   // Settings Sync
   "settingsSync.keybindingsPerPlatform": false,
-  "settingsSync.ignoredSettings": ["workbench.colorTheme"],
+  "settingsSync.ignoredSettings": [
+    "workbench.colorTheme",
+    "-clangd.path",
+    "C_Cpp.intelliSenseEngine"
+  ],
+  "settingsSync.ignoredExtensions": ["llvm-vs-code-extensions.vscode-clangd"],
   // Editor
   "editor.wordWrap": "on",
   "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'JetBrainsMono NF'",
@@ -31,6 +36,7 @@
   "cmake.buildDirectory": "${workspaceFolder}/_build",
   "cmake.generator": "Ninja",
   "cmake.configureOnEdit": false,
+  "C_Cpp.default.cppStandard": "c++20",
   "C_Cpp.formatting": "clangFormat",
   "C_Cpp.intelliSenseEngine": "Disabled",
   "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
@@ -105,6 +111,16 @@
     {
       "before": ["g", "c", "c"],
       "commands": [{ "command": "editor.action.commentLine" }],
+      "silent": true
+    },
+    {
+      "before": ["g", "c", "b"],
+      "commands": [{ "command": "editor.action.blockComment" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": [{ "command": "editor.action.rename" }],
       "silent": true
     },
     {
@@ -235,6 +251,11 @@
       "silent": true
     },
     {
+      "before": ["g", "b"],
+      "commands": [{ "command": "editor.action.blockComment" }],
+      "silent": true
+    },
+    {
       "before": [">"],
       "after": [">", "g", "v"]
     },
@@ -253,5 +274,6 @@
       "source.organizeImports": true
     }
   },
+  "workbench.statusBar.visible": false,
   "workbench.activityBar.visible": false
 }
