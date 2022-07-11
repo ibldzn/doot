@@ -61,6 +61,7 @@ swaybg                    # set background for sway
 swaylock                  # lock manager for sway
 tlp                       # power management
 tmux                      # terminal multiplexer
+ttf-cascadia-code         # cascadia font
 waybar                    # bar for wayland
 wl-clipboard              # clipboard manager for wayland
 zathura                   # document viewer
