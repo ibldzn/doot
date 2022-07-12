@@ -5,9 +5,9 @@ op=$(echo -e " Poweroff\n Reboot\n Suspend\n Lock\n Logout" | \
     awk '{print tolower($2)}')
 
 case $op in 
-    lock)     swaylock           ;;
-    logout)   swaymsg   exit     ;;
-    reboot)   systemctl reboot   ;;
-    suspend)  systemctl suspend  ;;
-    poweroff) systemctl poweroff ;;
+    lock)     swaylock  -ti ~/dot/papes/flowers.png ;;
+    logout)   swaymsg   exit                        ;;
+    reboot)   systemctl reboot                      ;;
+    suspend)  systemctl suspend                     ;;
+    poweroff) systemctl poweroff                    ;;
 esac
