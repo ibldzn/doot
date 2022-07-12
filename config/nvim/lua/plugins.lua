@@ -45,8 +45,12 @@ local plugins = {
     end,
   },
 
-  ["nvim-treesitter/nvim-treesitter"] = {
+  ["nvim-treesitter/nvim-treesitter-context"] = {
     event = { "BufRead", "BufNewFile" },
+  },
+
+  ["nvim-treesitter/nvim-treesitter"] = {
+    after = "nvim-treesitter-context",
     run = ":TSUpdate",
     config = function()
       require("configs.treesitter").setup()

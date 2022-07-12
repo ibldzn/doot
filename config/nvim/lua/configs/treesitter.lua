@@ -1,6 +1,8 @@
 local M = {}
 
 local ts_config = require("nvim-treesitter.configs")
+local ts_context = require("treesitter-context")
+local CATEGORY = ts_context.CATEGORY or {}
 
 function M.setup()
   vim.opt.foldmethod = "expr"
@@ -46,6 +48,23 @@ function M.setup()
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false,
+    },
+  })
+
+  ts_context.setup({
+    mode = "topline",
+    truncate_side = "outer",
+    max_lines = 2,
+    categories = {
+      default = {
+        CATEGORY.CLASS,
+        CATEGORY.INTERFACE,
+        CATEGORY.STRUCT,
+        CATEGORY.ENUM,
+        CATEGORY.FUNCTION,
+        CATEGORY.METHOD,
+        CATEGORY.SECTION,
+      },
     },
   })
 end
