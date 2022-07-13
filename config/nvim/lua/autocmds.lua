@@ -52,14 +52,6 @@ function M.setup()
     command = ":%s/\\s\\+$//e",
   })
 
-  autocmd("BufWritePre", {
-    group = augroup("FormatOnSave", {}),
-    pattern = "*",
-    callback = function(opts)
-      util.format_buffer({ bufnr = opts.buf, force = false })
-    end,
-  })
-
   autocmd("BufEnter", {
     group = augroup("NoCommentsOnNewLine", {}),
     pattern = "*",

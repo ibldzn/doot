@@ -32,15 +32,12 @@ function M.format_buffer(opts)
     return
   end
 
-  -- NVIM 0.8
-  -- vim.lsp.buf.format({
-  --   filter = function(client)
-  --     return client.supports_method("textDocument/formatting") and client.name == "null-ls"
-  --   end,
-  --   bufnr = opts.bufnr or vim.api.nvim_get_current_buf(),
-  -- })
-
-  vim.lsp.buf.formatting_sync()
+  vim.lsp.buf.format({
+    filter = function(client)
+      return client.name == "null-ls"
+    end,
+    bufnr = opts.bufnr or vim.api.nvim_get_current_buf(),
+  })
 end
 
 return M

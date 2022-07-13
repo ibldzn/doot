@@ -8,11 +8,7 @@ local dg = ns.builtins.diagnostics
 
 function M.setup()
   ns.setup({
-    on_attach = function(client, bufnr)
-      lspconfig.on_attach(client, bufnr)
-      client.resolved_capabilities.document_formatting = true
-      client.resolved_capabilities.document_range_formatting = true
-    end,
+    on_attach = lspconfig.on_attach,
     debug = false,
     sources = {
       dg.eslint,

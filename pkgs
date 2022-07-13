@@ -30,7 +30,6 @@ lxappearance              # gtk themes
 man-db                    # man
 man-pages                 # man pages
 mpv                       # media player
-neovim                    # text editor
 nodejs                    # javascript runtime
 noto-fonts                # noto fonts
 noto-fonts-cjk            # chinese, japanese, korean
@@ -72,6 +71,7 @@ zsh-syntax-highlighting   # syntax highlighting
 
 # AUR
 autotiling                # bspwm like tiling for i3/sway
+neovim-git                # text editor
 nerd-fonts-jetbrains-mono # patched jetbrains mono font
 nerd-fonts-noto-sans-mono # patched noto sans mono font
 shellcheck-bin            # shell check

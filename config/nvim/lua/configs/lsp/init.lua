@@ -40,7 +40,7 @@ end
 
 function M.on_attach(client, buf)
   -- Occurences
-  if client.resolved_capabilities.document_highlight then
+  if client.supports_method("textDocument/documentHighlight") then
     local group = vim.api.nvim_create_augroup("ConfigLspOccurences", {})
     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
       group = group,
@@ -49,10 +49,14 @@ function M.on_attach(client, buf)
     })
   end
 
-  -- Use null-ls for formatting
-  -- REMOVE ON NVIM 0.8
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
+  if client.supports_method("textDocument/formatting") then
+    local group = vim.api.nvim_create_augroup("LspFormatting", {})
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = group,
+      buffer = buf,
+      callback = util.wrap(util.format_buffer, { bufnr = buf }),
+    })
+  end
 
   wk.register({
     ["<S-A-f>"] = { util.wrap(util.format_buffer, { force = true }), "Format current buffer" },
