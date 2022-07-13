@@ -20,25 +20,15 @@ function M.setup()
   -----------------------------------------------------------
   -- General
   -----------------------------------------------------------
-  -- Font for gui client
   vim.opt.guifont = "monospace:h11"
-  -- Enable mouse
   vim.opt.mouse = "a"
-  -- Disable swap file
   vim.opt.swapfile = false
-  -- Use system clipboard
   vim.opt.clipboard = "unnamedplus"
-  -- Fix backspace
   vim.opt.backspace = "indent,eol,start"
-  -- Line numbers columns
   vim.opt.signcolumn = "yes:2"
-  -- Disable vim compatability
   vim.opt.compatible = false
-  -- Autocomplete options
   vim.opt.completeopt = "menuone,noinsert,noselect"
-  -- Confirm before exiting
   vim.opt.confirm = true
-  -- Show titlebar
   vim.opt.title = true
   vim.opt.showbreak = "⮡   "
   vim.opt.listchars = { space = "·", eol = "⮠" }
@@ -47,84 +37,50 @@ function M.setup()
   -----------------------------------------------------------
   -- UI
   -----------------------------------------------------------
-  -- Show line numbers
   vim.opt.number = true
-  -- Show relative number
   vim.opt.relativenumber = true
-  -- Highlight line
   vim.opt.cursorline = true
-  -- Highligh just the number instead of the whole line
   vim.opt.cursorlineopt = "number"
-  -- Highlight matching parentheses
   vim.opt.showmatch = true
   vim.opt.foldtext =
     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
-  -- Fold level
   vim.opt.foldlevel = 99
-  -- Enable 24bit colors
   vim.opt.termguicolors = true
-  -- Line wrapping
   vim.opt.wrap = true
-  -- Scroll offset
   vim.opt.scrolloff = 5
-  -- SANE side scrolling
   vim.opt.sidescroll = 1
-  -- Side scrolling offset
   vim.opt.sidescrolloff = 5
-  -- Split windows below
   vim.opt.splitbelow = true
-  -- Split windows right
   vim.opt.splitright = true
-  -- Set global status line
   vim.opt.laststatus = 3
-  -- Set background color
   vim.opt.background = "dark"
 
   -----------------------------------------------------------
   -- Search
   -----------------------------------------------------------
-  -- Highlight matching search pattern
   vim.opt.hlsearch = true
-  -- Highlight matching search pattern as it is typed
   vim.opt.incsearch = true
-  -- Case insensitive search
   vim.opt.ignorecase = true
-  -- Override the ignorecase option if there's an uppercase letter
   vim.opt.smartcase = true
 
   -----------------------------------------------------------
   -- Tabs
   -----------------------------------------------------------
-  -- Use spaces instead of tabs
   vim.opt.expandtab = true
-  -- Shift 4 spaces when tab
   vim.opt.shiftwidth = 4
-  -- 1 tab == 4 spaces
   vim.opt.tabstop = 4
-  -- Automatically indent new lines
   vim.opt.smartindent = true
 
   -----------------------------------------------------------
   -- Memory, CPU
   -----------------------------------------------------------
-  -- Enable background buffers
   vim.opt.hidden = true
-  -- Remember N lines in history
   vim.opt.history = 100
-  -- Faster scrolling
   vim.opt.lazyredraw = true
-  -- Max column for syntax highlight
   vim.opt.synmaxcol = 240
   vim.opt.updatetime = 700 -- ms to wait for trigger an event
-
-  -- disable nvim intro
   vim.opt.shortmess:append("sI")
-
-  -- go to previous/next line with h,l,left arrow and right arrow
-  -- when cursor reaches end/beginning of line
   vim.opt.whichwrap:append("<>[]hl")
-
-  -- disable some builtin vim plugins
 
   local default_plugins = {
     "2html_plugin",
