@@ -27,14 +27,7 @@ function M.run(plugins)
   -- load before other plugins
   local notify_ok, notify = pcall(require, "notify")
   if notify_ok then
-    vim.notify = function(msg, lvl, opts)
-      if
-        msg
-        ~= "method textDocument/documentHighlight is not supported by any of the servers registered for the current buffer"
-      then
-        notify(msg, lvl, opts)
-      end
-    end
+    vim.notify = notify
   end
 
   local packer_ok, packer = pcall(require, "packer")

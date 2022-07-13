@@ -106,6 +106,7 @@ function M.setup()
         ["S"] = { telescope_builtin.lsp_workspace_symbols, "LSP workspace symbols" },
         ["w"] = { telescope_builtin.live_grep, "Live grep" },
         ["r"] = { telescope_builtin.resume, "Resume" },
+        ["z"] = { telescope_builtin.current_buffer_fuzzy_find, "Fuzzy find current buffer" },
       },
     },
   })
