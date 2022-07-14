@@ -22,6 +22,7 @@ grim                      # screenshot utility for wayland
 jq                        # command-line json processor
 lazygit                   # git tui
 libnotify                 # notify-send
+libqalculate              # multi-purpose desktop calculator
 lldb                      # llvm debugger
 lua                       # lua
 lua-language-server       # lua language server

@@ -31,7 +31,7 @@ function M.setup()
     ["<C-t>"] = { ":te<CR>", "Open terminal" },
     ["<ESC>"] = { ":nohl<CR>", "Clear search highlights" },
     ["<leader>"] = {
-      ["<leader>"] = { "<C-^>", "Goto previous buffer" },
+      -- ["<leader>"] = { "<C-^>", "Goto previous buffer" },
       ["x"] = { ":bd!<CR>", "Delete current buffer" },
       ["X"] = { ":%bd|e#|bd#<CR>", "Delete all buffers except current one" },
       ["t"] = {
@@ -50,10 +50,8 @@ function M.setup()
     ["gx"] = {
       function()
         -- Basic URL opener
-        local url = string.match(
-          vim.fn.expand("<cfile>"),
-          "https?://[%w-_%.%?%.:/%+=&]+[^ >\"',;`]*"
-        )
+        local url =
+          string.match(vim.fn.expand("<cfile>"), "https?://[%w-_%.%?%.:/%+=&]+[^ >\"',;`]*")
         if url ~= nil then
           if vim.fn.has("mac") == 1 then
             vim.fn.jobstart({ "open", url }, { detach = true })

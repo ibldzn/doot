@@ -262,26 +262,22 @@ local plugins = {
       "typescriptreact",
     },
     config = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        group = vim.api.nvim_create_augroup("Emmet", {}),
-        pattern = {
-          "html",
-          "css",
-          "javascript",
-          "javascriptreact",
-          "typescript",
-          "typescriptreact",
-        },
-        command = "EmmetInstall",
-      })
+      require("configs.emmet").setup()
     end,
+  },
 
-    ["mfussenegger/nvim-jdtls"] = {
-      ft = "java",
-      config = function()
-        require("configs.nvim-jdtls").setup()
-      end,
-    },
+  ["mfussenegger/nvim-jdtls"] = {
+    ft = "java",
+    config = function()
+      require("configs.nvim-jdtls").setup()
+    end,
+  },
+
+  ["phaazon/hop.nvim"] = {
+    event = "BufRead",
+    config = function()
+      require("configs.hop").setup()
+    end,
   },
 }
 
