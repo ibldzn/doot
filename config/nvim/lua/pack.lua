@@ -63,14 +63,9 @@ function M.run(plugins)
 
   packer.startup({
     function(use)
-      local plugins_table = {}
       for name, _ in pairs(plugins) do
         plugins[name][1] = name
-        plugins_table[#plugins_table + 1] = plugins[name]
-      end
-
-      for _, plugin in pairs(plugins_table) do
-        use(plugin)
+        use(plugins[name])
       end
 
       if BOOTSTRAPPED then
