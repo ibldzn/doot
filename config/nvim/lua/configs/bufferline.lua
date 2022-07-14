@@ -32,8 +32,8 @@ function M.setup()
   })
 
   wk.register({
-    ["<Tab>"] = { "<cmd>BufferLineCycleNext<CR>", "Next buffer" },
-    ["<S-Tab>"] = { "<cmd>BufferLineCyclePrev<CR>", "Previous buffer" },
+    ["<Tab>"] = { ":BufferLineCycleNext<CR>", "Next buffer" },
+    ["<S-Tab>"] = { ":BufferLineCyclePrev<CR>", "Previous buffer" },
   })
 end
 

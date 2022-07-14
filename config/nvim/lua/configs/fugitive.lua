@@ -6,8 +6,8 @@ function M.setup()
   wk.register({
     ["<leader>g"] = {
       name = "Git",
-      ["g"] = { "<cmd>0G<CR>", "Menu" },
-      ["cd"] = { "<cmd>Gcd<CR>", "CD to git root" },
+      ["g"] = { ":0G<CR>", "Menu" },
+      ["cd"] = { ":Gcd<CR>", "CD to git root" },
     },
   })
 end

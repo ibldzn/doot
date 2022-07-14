@@ -9,8 +9,8 @@ function M.setup()
   wk.register({
     ["<leader>d"] = {
       name = "Debug",
-      ["s"] = { "<cmd>Telescope dap frames<CR>", "Stack frames" },
-      ["l"] = { "<cmd>Telescope dap list_breakpoints<CR>", "List breakpoints" },
+      ["s"] = { ":Telescope dap frames<CR>", "Stack frames" },
+      ["l"] = { ":Telescope dap list_breakpoints<CR>", "List breakpoints" },
     },
   })
 end

@@ -23,17 +23,17 @@ function M.setup()
       name = "Split",
       ["H"] = { "<C-w>t<C-w>K", "Vertical to horizontal" },
       ["V"] = { "<C-w>t<C-w>H", "Horizontal to vertical" },
-      ["h"] = { "<cmd>split<CR>", "Horizontal" },
-      ["v"] = { "<cmd>vsplit<CR>", "Vertical" },
+      ["h"] = { ":split<CR>", "Horizontal" },
+      ["v"] = { ":vsplit<CR>", "Vertical" },
     },
-    ["<C-s>"] = { "<cmd>w<CR>", "Save file" },
+    ["<C-s>"] = { ":w<CR>", "Save file" },
     ["<C-q>"] = { "<C-w>q<CR>", "Close window" },
-    ["<C-t>"] = { "<cmd>te<CR>", "Open terminal" },
-    ["<ESC>"] = { "<cmd>nohl<CR>", "Clear search highlights" },
+    ["<C-t>"] = { ":te<CR>", "Open terminal" },
+    ["<ESC>"] = { ":nohl<CR>", "Clear search highlights" },
     ["<leader>"] = {
       ["<leader>"] = { "<C-^>", "Goto previous buffer" },
-      ["x"] = { "<cmd>bd!<CR>", "Delete current buffer" },
-      ["X"] = { "<cmd>%bd|e#|bd#<CR>", "Delete all buffers except current one" },
+      ["x"] = { ":bd!<CR>", "Delete current buffer" },
+      ["X"] = { ":%bd|e#|bd#<CR>", "Delete all buffers except current one" },
       ["t"] = {
         name = "Toggle",
         ["f"] = {
@@ -86,16 +86,17 @@ function M.setup()
   }, { mode = "i" })
 
   wk.register({
-    ["<A-u>"] = { "<ESC><cmd>m .-2<CR>==gi", "Move current line up" },
-    ["<A-d>"] = { "<ESC><cmd>m .+1<CR>==gi", "Move current line down" },
+    ["<A-u>"] = { "<ESC>:m .-2<CR>==gi", "Move current line up" },
+    ["<A-d>"] = { "<ESC>:m .+1<CR>==gi", "Move current line down" },
   }, { mode = "i" })
 
   wk.register({
-    ["<A-u>"] = { "<cmd>m .-2<CR>==", "Move current line up" },
-    ["<A-d>"] = { "<cmd>m .+1<CR>==", "Move current line down" },
+    ["<A-u>"] = { ":m .-2<CR>==", "Move current line up" },
+    ["<A-d>"] = { ":m .+1<CR>==", "Move current line down" },
   }, { mode = "n" })
 
   wk.register({
+    ["<C-c>"] = { '"+y', "Copy to system clipboard" },
     ["<A-u>"] = { ":m'<-2<CR>gv=gv", "Move current line up" },
     ["<A-d>"] = { ":m'>+1<CR>gv=gv", "Move current line down" },
     ["<"] = { "<gv", "Un-indent line(s)" },
