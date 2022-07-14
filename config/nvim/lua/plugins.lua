@@ -129,7 +129,13 @@ local plugins = {
     end,
   },
 
-  ["tpope/vim-surround"] = { event = "BufRead" },
+  ["kylechui/nvim-surround"] = {
+    event = "BufRead",
+    config = function()
+      require("configs.nvim-surround").setup()
+    end,
+  },
+
   ["andymass/vim-matchup"] = { event = "BufRead" },
   ["farmergreg/vim-lastplace"] = { event = "BufRead" },
 
