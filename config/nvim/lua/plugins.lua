@@ -6,6 +6,7 @@ local plugins = {
   ["kyazdani42/nvim-web-devicons"] = {},
 
   ["romgrk/barbar.nvim"] = {
+    disable = true,
     after = "nvim-web-devicons",
     config = function()
       require("configs.barbar").setup()
