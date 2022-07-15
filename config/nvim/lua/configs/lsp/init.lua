@@ -4,6 +4,7 @@ local lsp_installer = require("nvim-lsp-installer")
 local wk = require("which-key")
 local shared = require("shared")
 local util = require("util")
+local navic = require("nvim-navic")
 
 local DOCUMENT_HIGHLIGHT_HANDLER = vim.lsp.handlers["textDocument/documentHighlight"]
 
@@ -39,6 +40,10 @@ function M.on_init(client)
 end
 
 function M.on_attach(client, buf)
+  if client.name ~= "null-ls" then
+    navic.attach(client, buf)
+  end
+
   -- Occurences
   if client.supports_method("textDocument/documentHighlight") then
     local group = vim.api.nvim_create_augroup("ConfigLspOccurences", {})

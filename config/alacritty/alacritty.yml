@@ -8,10 +8,10 @@ import:
 
 window:
   padding:
-    x: 5
-    y: 5
+    x: 0
+    y: 0
 
-  dynamic_padding: true
+  dynamic_padding: false
   decorations: full
   opacity: 1.0
 

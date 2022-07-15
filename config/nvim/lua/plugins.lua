@@ -79,6 +79,13 @@ local plugins = {
     end,
   },
 
+  ["SmiteshP/nvim-navic"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require("configs.navic").setup()
+    end,
+  },
+
   ["j-hui/fidget.nvim"] = {
     after = "nvim-lspconfig",
     config = function()
@@ -267,6 +274,7 @@ local plugins = {
   },
 
   ["mfussenegger/nvim-jdtls"] = {
+    disable = true,
     ft = "java",
     config = function()
       require("configs.nvim-jdtls").setup()
