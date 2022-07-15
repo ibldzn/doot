@@ -12,7 +12,7 @@ local function get_filename()
   local hl_group = "FileIconColor" .. file_ext
   vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
 
-  return " %#" .. hl_group .. "#" .. file_icon .. "%* %#NavicText#" .. file_name .. "%*"
+  return " %#" .. hl_group .. "#" .. file_icon, "%* %#NavicText#" .. file_name .. "%*"
 end
 
 function M.setup()
@@ -80,12 +80,9 @@ function M.setup()
         return
       end
 
-      local file = get_filename()
-      if navic.is_available() then
-        vim.o.winbar = file .. " " .. navic.get_location()
-      else
-        vim.o.winbar = file
-      end
+      local icon, filename = get_filename()
+      local file = icon .. " " .. filename .. " %m"
+      vim.wo.winbar = file .. "%=" .. navic.get_location()
     end,
   })
 end
