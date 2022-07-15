@@ -2,6 +2,7 @@ local M = {}
 
 local navic = require("nvim-navic")
 local icons = require("nvim-web-devicons")
+local shared = require("shared")
 
 local function get_filename()
   local file_name = vim.fn.expand("%:t")
@@ -76,13 +77,20 @@ function M.setup()
     group = vim.api.nvim_create_augroup("Navic", {}),
     callback = function()
       if vim.tbl_contains(excluded_filetypes, vim.bo.filetype) then
-        vim.o.winbar = nil
+        vim.wo.winbar = nil
         return
       end
 
       local icon, filename = get_filename()
-      local file = icon .. " " .. filename .. " %m"
-      vim.wo.winbar = file .. "%=" .. navic.get_location()
+
+      local winbar = icon .. " " .. filename
+      if vim.bo.modified then
+        winbar = winbar .. " " .. shared.icons.modified
+      elseif not vim.bo.modifiable or vim.bo.readonly then
+        winbar = winbar .. " " .. shared.icons.readonly
+      end
+
+      vim.wo.winbar = winbar
     end,
   })
 end

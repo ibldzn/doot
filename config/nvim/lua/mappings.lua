@@ -26,11 +26,15 @@ function M.setup()
       ["h"] = { ":split<CR>", "Horizontal" },
       ["v"] = { ":vsplit<CR>", "Vertical" },
     },
+    ["<Tab>"] = { ":bn<CR>", "Next buffer" },
+    ["<S-Tab>"] = { ":bp<CR>", "Previous buffer" },
     ["<C-s>"] = { ":w<CR>", "Save file" },
     ["<C-q>"] = { "<C-w>q<CR>", "Close window" },
     ["<C-t>"] = { ":te<CR>", "Open terminal" },
     ["<ESC>"] = { ":nohl<CR>", "Clear search highlights" },
     ["<leader>"] = {
+      ["x"] = { ":bd!<CR>", "Delete current buffer" },
+      ["X"] = { ":%bd|e#|bd#<CR>", "Delete all buffer except current one" },
       ["<leader>"] = { "<C-^>", "Goto previous buffer" },
       ["t"] = {
         name = "Toggle",

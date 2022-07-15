@@ -1,6 +1,7 @@
 local M = {}
 
 local lualine = require("lualine")
+local shared = require("shared")
 -- local lsp_status = require("lsp-status")
 
 -- stylua: ignore start
@@ -102,8 +103,8 @@ function M.setup()
   local colors = require("colors.mineauto")
   local theme = colors.lualine
   local filename_symbols = {
-    modified = " ",
-    readonly = " ",
+    modified = " " .. shared.icons.modified,
+    readonly = " " .. shared.icons.readonly,
     unnamed = "unnamed",
   }
 

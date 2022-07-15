@@ -13,6 +13,10 @@ local chars = {
 }
 
 return {
+  icons = {
+    modified = "",
+    readonly = "",
+  },
   window = {
     border = {
       chars.corner_nw,
