@@ -89,6 +89,7 @@ function M.setup()
       elseif not vim.bo.modifiable or vim.bo.readonly then
         winbar = winbar .. " " .. shared.icons.readonly
       end
+      winbar = winbar .. "%=" .. navic.get_location()
 
       vim.wo.winbar = winbar
     end,
