@@ -32,8 +32,6 @@ function M.setup()
     ["<ESC>"] = { ":nohl<CR>", "Clear search highlights" },
     ["<leader>"] = {
       ["<leader>"] = { "<C-^>", "Goto previous buffer" },
-      ["x"] = { ":bd!<CR>", "Delete current buffer" },
-      ["X"] = { ":%bd|e#|bd#<CR>", "Delete all buffers except current one" },
       ["t"] = {
         name = "Toggle",
         ["f"] = {

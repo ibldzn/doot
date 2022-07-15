@@ -5,10 +5,10 @@ local plugins = {
   ["lewis6991/impatient.nvim"] = {},
   ["kyazdani42/nvim-web-devicons"] = {},
 
-  ["akinsho/bufferline.nvim"] = {
+  ["romgrk/barbar.nvim"] = {
     after = "nvim-web-devicons",
     config = function()
-      require("configs.bufferline").setup()
+      require("configs.barbar").setup()
     end,
   },
 
