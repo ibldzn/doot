@@ -74,7 +74,7 @@ function M.setup()
           { id = "stacks", size = 0.3 },
         },
         size = 40,
-        position = "left",
+        position = "right",
       },
       -- {
       --   elements = { "repl" },
