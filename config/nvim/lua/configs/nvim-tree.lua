@@ -42,6 +42,9 @@ function M.setup()
     },
 
     renderer = {
+      indent_markers = {
+        enable = true,
+      },
       icons = {
         glyphs = {
           default = "",
