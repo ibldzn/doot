@@ -9,7 +9,7 @@ local function run_dap(prompt)
   local ft = vim.bo.filetype
   if ft == "" then
     vim.notify(
-      "filetype option is required to determine which dap config to use",
+      "Filetype option is required to determine which dap config to use",
       vim.log.levels.ERROR
     )
     return

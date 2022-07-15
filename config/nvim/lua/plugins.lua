@@ -272,13 +272,6 @@ local plugins = {
       require("configs.nvim-jdtls").setup()
     end,
   },
-
-  ["phaazon/hop.nvim"] = {
-    event = "BufRead",
-    config = function()
-      require("configs.hop").setup()
-    end,
-  },
 }
 
 function M.setup()
