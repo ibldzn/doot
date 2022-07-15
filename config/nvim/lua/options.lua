@@ -54,6 +54,8 @@ function M.setup()
   vim.opt.splitright = true
   vim.opt.laststatus = 3
   vim.opt.background = "dark"
+  vim.opt.showtabline = 0
+  vim.opt.cmdheight = 0
 
   -----------------------------------------------------------
   -- Search

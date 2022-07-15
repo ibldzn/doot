@@ -16,6 +16,19 @@ local function get_filename()
 end
 
 function M.setup()
+  local excluded_filetypes = {
+    "",
+    "NvimTree",
+    "TelescopePrompt",
+    "alpha",
+    "dapui_breakpoints",
+    "dapui_repl",
+    "dapui_scopes",
+    "dapui_stacks",
+    "help",
+    "packer",
+  }
+
   navic.setup({
     icons = {
       File = " ",
@@ -62,6 +75,11 @@ function M.setup()
   }, {
     group = vim.api.nvim_create_augroup("Navic", {}),
     callback = function()
+      if vim.tbl_contains(excluded_filetypes, vim.bo.filetype) then
+        vim.o.winbar = nil
+        return
+      end
+
       local file = get_filename()
       if navic.is_available() then
         vim.o.winbar = file .. " " .. navic.get_location()

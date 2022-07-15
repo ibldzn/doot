@@ -31,7 +31,6 @@ function M.setup()
     ["<C-t>"] = { ":te<CR>", "Open terminal" },
     ["<ESC>"] = { ":nohl<CR>", "Clear search highlights" },
     ["<leader>"] = {
-      ["s"] = { ":e $MYVIMRC | :cd %:p:h<CR>", "Edit settings" },
       ["<leader>"] = { "<C-^>", "Goto previous buffer" },
       ["t"] = {
         name = "Toggle",
