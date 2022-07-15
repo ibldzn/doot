@@ -30,6 +30,8 @@ function M.setup()
     "packer",
   }
 
+  vim.g.navic_silence = true
+
   navic.setup({
     icons = {
       File = " ",
