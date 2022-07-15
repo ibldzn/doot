@@ -23,8 +23,8 @@ function M.setup()
     ["<leader>b"] = {
       name = "Buffer",
       ["w"] = { ":BufferWipeout<CR>", "Wipeout" },
-      ["x"] = { ":BufferClose<CR>", "Close current buffer" },
-      ["X"] = { ":BufferCloseAllButCurrentOrPinned<CR>", "Close all but current/pinned buffer" },
+      ["x"] = { ":BufferClose<CR>", "Close current" },
+      ["X"] = { ":BufferCloseAllButCurrentOrPinned<CR>", "Close all but current/pinned" },
       ["p"] = { ":BufferPick<CR>", "Pick" },
       ["P"] = { ":BufferPin<CR>", "Pin" },
 
