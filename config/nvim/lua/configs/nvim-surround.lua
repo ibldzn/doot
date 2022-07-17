@@ -1,11 +1,10 @@
 local M = {}
 
 local surround = require("nvim-surround")
-local surround_utils = require("nvim-surround.utils")
 
 function M.setup()
   surround.setup({
-    keymaps = { -- vim-surround style keymaps
+    keymaps = {
       insert = "ys",
       insert_line = "yss",
       visual = "S",
@@ -13,6 +12,9 @@ function M.setup()
       change = "cs",
     },
     delimiters = {
+      invalid_key_behavior = function()
+        vim.api.nvim_err_writeln("Error: Invalid character!")
+      end,
       pairs = {
         ["("] = { "( ", " )" },
         [")"] = { "(", ")" },
@@ -25,13 +27,13 @@ function M.setup()
         -- Define pairs based on function evaluations!
         ["i"] = function()
           return {
-            surround_utils.get_input("Enter the left delimiter: "),
-            surround_utils.get_input("Enter the right delimiter: "),
+            vim.fn.input({ prompt = "Enter the left delimiter: " }),
+            vim.fn.input({ prompt = "Enter the right delimiter: " }),
           }
         end,
         ["f"] = function()
           return {
-            surround_utils.get_input("Enter the function name: ") .. "(",
+            vim.fn.input({ prompt = "Enter the function name: " }) .. "(",
             ")",
           }
         end,

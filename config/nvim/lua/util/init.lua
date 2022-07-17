@@ -36,7 +36,6 @@ function M.format_buffer(opts)
     filter = function(client)
       return client.name == "null-ls"
     end,
-    bufnr = opts.bufnr or vim.api.nvim_get_current_buf(),
   })
 end
 
