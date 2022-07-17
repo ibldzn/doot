@@ -50,7 +50,11 @@ function M.on_attach(client, buf)
     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
       group = group,
       buffer = buf,
-      callback = vim.lsp.buf.document_highlight,
+      callback = function()
+        if not vim.lsp.client_is_stopped(client.id) then
+          vim.lsp.buf.document_highlight()
+        end
+      end,
     })
   end
 
