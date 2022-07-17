@@ -6,17 +6,20 @@ end
 
 function M.setup()
   local wk_ok, wk = pcall(require, "which-key")
-  local map = vim.api.nvim_set_keymap
+  local map = vim.keymap.set
 
   if not wk_ok then
     vim.notify("which-key isn't installed", vim.log.levels.ERROR)
     return
   end
 
-  map("", "j", "gj", { noremap = true })
-  map("", "gj", "j", { noremap = true })
-  map("", "k", "gk", { noremap = true })
-  map("", "gk", "k", { noremap = true })
+  map("n", "j", "gj", { noremap = true })
+  map("n", "gj", "j", { noremap = true })
+  map("n", "k", "gk", { noremap = true })
+  map("n", "gk", "k", { noremap = true })
+  map("n", "dd", function()
+    return vim.api.nvim_get_current_line():match("^%s*$") and '"_dd' or "dd"
+  end, { noremap = true, expr = true })
 
   wk.register({
     ["s"] = {

@@ -55,7 +55,7 @@ function M.setup()
   vim.opt.laststatus = 3
   vim.opt.background = "dark"
   vim.opt.showtabline = 0
-  vim.opt.cmdheight = 0
+  vim.opt.cmdheight = 1
 
   -----------------------------------------------------------
   -- Search
