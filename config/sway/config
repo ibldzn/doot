@@ -175,6 +175,13 @@ bar {
     height            20
 }
 
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme "Breeze-Dark"
+    gsettings set $gnome-schema icon-theme "Adwaita"
+}
+
 exec --no-startup-id autotiling
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id fcitx5 -d
