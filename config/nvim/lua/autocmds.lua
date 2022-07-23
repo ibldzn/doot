@@ -21,16 +21,6 @@ function M.setup()
     end,
   })
 
-  autocmd("FileType", {
-    group = augroup("SplitHelpWindow", {}),
-    pattern = "help",
-    callback = function()
-      vim.opt_local.bufhidden = "unload"
-      vim.cmd("wincmd L")
-      vim.api.nvim_win_set_width(0, 90)
-    end,
-  })
-
   autocmd("BufWritePre", {
     group = augroup("TrimTrailingWhitespaces", {}),
     pattern = "!*.md",
@@ -41,30 +31,6 @@ function M.setup()
     group = augroup("NoCommentsOnNewLine", {}),
     pattern = "*",
     command = "set fo-=c fo-=r fo-=o",
-  })
-
-  autocmd("FileType", {
-    group = augroup("IndentTwoSpaces", {}),
-    pattern = {
-      "xml",
-      "html",
-      "xhtml",
-      "css",
-      "scss",
-      "javascript",
-      "typescript",
-      "yaml",
-      "typescriptreact",
-      "javascriptreact",
-      "json",
-      "graphql",
-      "lua",
-      "cmake",
-      "tex",
-      "nix",
-      "NvimTree",
-    },
-    command = "setlocal shiftwidth=2 tabstop=2",
   })
 
   autocmd("TermOpen", {
