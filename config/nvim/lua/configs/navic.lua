@@ -28,6 +28,7 @@ function M.setup()
     "dapui_scopes",
     "dapui_stacks",
     "help",
+    "lspinfo",
     "packer",
   }
 

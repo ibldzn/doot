@@ -18,7 +18,9 @@ function M.setup()
       fm.gofmt,
       fm.stylua,
       fm.prettier,
-      fm.clang_format,
+      fm.clang_format.with({
+        extra_args = { "--fallback-style=webkit" },
+      }),
       fm.rustfmt.with({
         args = {
           "+nightly",

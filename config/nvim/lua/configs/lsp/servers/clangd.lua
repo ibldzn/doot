@@ -8,6 +8,17 @@ function M.setup(lspconfig, on_init, on_attach, capabilities)
       client.offset_encoding = "utf-16"
     end,
     capabilities = capabilities,
+    cmd = {
+      "clangd",
+      "--clang-tidy",
+      "--background-index",
+      "--cross-file-rename",
+      "--all-scopes-completion",
+      "--header-insertion=iwyu",
+      "--fallback-style=webkit",
+      "--suggest-missing-includes",
+      "--completion-style=detailed",
+    },
   })
 end
 
