@@ -40,7 +40,7 @@ function M.on_init(client)
 end
 
 function M.on_attach(client, buf)
-  if client.name ~= "null-ls" then
+  if client.supports_method("textDocument/documentSymbolProvider") then
     navic.attach(client, buf)
   end
 

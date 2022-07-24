@@ -1,6 +1,7 @@
 {
   // General
-  "workbench.colorTheme": "Atom One Dark",
+  "extensions.ignoreRecommendations": true,
+  "workbench.colorTheme": "Horizon",
   "workbench.iconTheme": "gruvbox-material-icon-theme",
   "window.menuBarVisibility": "toggle",
   "window.titleBarStyle": "custom",
@@ -228,7 +229,7 @@
       "after": ["<C-w>", "l"]
     },
     {
-      "before": ["<C-lef>"],
+      "before": ["<C-left>"],
       "after": ["<C-w>", "<"]
     },
     {
