@@ -18,6 +18,7 @@ git                       # git vcs
 git-delta                 # diff viewer
 gnome-keyring             # stores passwords and keys
 go                        # golang
+gopls                     # go language server
 grim                      # screenshot utility for wayland
 jq                        # command-line json processor
 lazygit                   # git tui
@@ -37,6 +38,7 @@ noto-fonts-cjk            # chinese, japanese, korean
 noto-fonts-emoji          # emoji
 noto-fonts-extra          # extra
 npm                       # node package manager
+p7zip                     # command-line file archiver with high compression ratio
 pipewire                  # audio server
 pipewire-alsa             # alsa
 pipewire-jack             # jack
@@ -62,6 +64,7 @@ swaylock                  # lock manager for sway
 tlp                       # power management
 tmux                      # terminal multiplexer
 ttf-cascadia-code         # cascadia font
+unzip                     # for extracting and viewing files in .zip archives
 waybar                    # bar for wayland
 wl-clipboard              # clipboard manager for wayland
 zathura                   # document viewer
