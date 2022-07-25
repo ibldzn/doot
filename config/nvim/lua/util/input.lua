@@ -75,7 +75,7 @@ function M.input(text, insert, callback)
   )
 
   -- automatically resize
-  local group = vim.api.nvim_create_augroup("UtilInputWindow", {})
+  local group = vim.api.nvim_create_augroup("UtilInputWindow", { clear = true })
   vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI", "TextChangedP" }, {
     group = group,
     buffer = M.buf,
