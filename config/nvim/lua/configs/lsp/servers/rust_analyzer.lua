@@ -51,7 +51,7 @@ function M.setup(lspconfig, on_init, on_attach, capabilities)
       end
     end
 
-    local group = vim.api.nvim_create_augroup("LspInlayHints", {})
+    local group = vim.api.nvim_create_augroup("LspInlayHints", { clear = true })
     vim.api.nvim_create_autocmd({
       "TextChanged",
       "TextChangedI",

@@ -46,7 +46,7 @@ function M.on_attach(client, buf)
 
   -- Occurences
   if client.supports_method("textDocument/documentHighlight") then
-    local group = vim.api.nvim_create_augroup("ConfigLspOccurences", {})
+    local group = vim.api.nvim_create_augroup("ConfigLspOccurences", { clear = true })
     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
       group = group,
       buffer = buf,
@@ -59,7 +59,7 @@ function M.on_attach(client, buf)
   end
 
   if client.supports_method("textDocument/formatting") then
-    local group = vim.api.nvim_create_augroup("LspFormatting", {})
+    local group = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = group,
       buffer = buf,

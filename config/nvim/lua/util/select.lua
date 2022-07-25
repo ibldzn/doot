@@ -132,7 +132,7 @@ function M.select(items, opts, on_choice)
   )
 
   -- highlight current line
-  local group = vim.api.nvim_create_augroup("UtilSelectWindow", {})
+  local group = vim.api.nvim_create_augroup("UtilSelectWindow", { clear = true })
   vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
     group = group,
     buffer = M.buf,

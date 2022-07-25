@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
   vim.api.nvim_create_autocmd("FileType", {
-    group = vim.api.nvim_create_augroup("Emmet", {}),
+    group = vim.api.nvim_create_augroup("Emmet", { clear = true }),
     pattern = {
       "html",
       "css",

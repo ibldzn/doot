@@ -78,7 +78,7 @@ function M.setup()
     "BufWritePost",
     "TabClosed",
   }, {
-    group = vim.api.nvim_create_augroup("Navic", {}),
+    group = vim.api.nvim_create_augroup("Navic", { clear = true }),
     callback = function()
       if vim.tbl_contains(excluded_filetypes, vim.bo.filetype) then
         vim.wo.winbar = nil

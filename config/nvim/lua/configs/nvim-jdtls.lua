@@ -70,7 +70,7 @@ function M.setup()
   local augroup = vim.api.nvim_create_augroup
   local autocmd = vim.api.nvim_create_autocmd
   autocmd("FileType", {
-    group = augroup("jdtls", {}),
+    group = augroup("jdtls", { clear = true }),
     pattern = "java",
     callback = autocmd_callback,
   })

@@ -2,7 +2,7 @@ local M = {}
 
 local function setup_autocmd()
   vim.api.nvim_create_autocmd("BufWritePre", {
-    group = vim.api.nvim_create_augroup("GoOrganizeImports", {}),
+    group = vim.api.nvim_create_augroup("GoOrganizeImports", { clear = true }),
     pattern = "*.go",
     callback = function()
       local params = vim.lsp.util.make_range_params()
