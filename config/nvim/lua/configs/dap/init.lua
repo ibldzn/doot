@@ -102,6 +102,7 @@ function M.setup()
 
     ["<leader>d"] = {
       name = "Debug",
+      ["X"] = { dap.clear_breakpoints, "Clear breakpoints" },
       ["C"] = { dap.continue, "Continue" },
       ["o"] = { dap.step_over, "Step over" },
       ["i"] = { dap.step_into, "Step into" },
