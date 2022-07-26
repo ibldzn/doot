@@ -37,6 +37,14 @@ function M.setup()
     group = augroup("TermOptions", { clear = true }),
     command = "setlocal listchars= nonumber norelativenumber nocursorline signcolumn=no | startinsert",
   })
+
+  autocmd("FileType", {
+    group = augroup("GitCommitSpellCheck", { clear = true }),
+    pattern = "gitcommit",
+    callback = function()
+      vim.opt_local.spell = true
+    end,
+  })
 end
 
 return M
