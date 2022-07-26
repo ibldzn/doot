@@ -8,12 +8,12 @@ function M.setup()
     show_trailing_blankline_indent = false,
     use_treesitter = true,
     filetype_exclude = {
-      "man",
-      "help",
       "NvimTree",
-      "lsp-installer",
-      "packer",
       "Trouble",
+      "help",
+      "man",
+      "mason.nvim",
+      "packer",
     },
   })
 end

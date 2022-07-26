@@ -1,6 +1,5 @@
 local M = {}
 
-local lsp_installer = require("nvim-lsp-installer")
 local wk = require("which-key")
 local shared = require("shared")
 local util = require("util")
@@ -187,7 +186,7 @@ function M.setup()
       ["r"] = { ":LspRestart<cr>", "Restart" },
       ["t"] = { ":LspStop<cr>", "Stop" },
       ["i"] = { ":LspInfo<cr>", "Info" },
-      ["I"] = { lsp_installer.info_window.open, "Install Info" },
+      ["I"] = { ":Mason<cr>", "Install Info" },
       ["l"] = { ":LspInstallLog<cr>", "Install Log" },
     },
   })
