@@ -101,7 +101,7 @@ function M.setup()
       ["u"] = { gitsigns.undo_stage_hunk, "Undo stage hunk" },
       ["R"] = { gitsigns.reset_buffer, "Reset buffer" },
       ["p"] = { gitsigns.preview_hunk, "Preview hunk" },
-      ["d"] = { gitsigns.diffthis, "Diff this hunk" },
+      ["d"] = { gitsigns.diffthis, "Diff this" },
       ["b"] = { util.wrap(gitsigns.blame_line, { full = true }), "Blame line" },
       ["B"] = { gitsigns.toggle_current_line_blame, "Toggle inline blame" },
     },
