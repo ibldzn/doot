@@ -3,7 +3,7 @@ local M = {}
 local dap = require("dap")
 
 function M.setup()
-  dap.configurations.go = function(callback, config)
+  dap.adapters.go = function(callback, config)
     local stdout = vim.loop.new_pipe(false)
     local handle
     local pid_or_err

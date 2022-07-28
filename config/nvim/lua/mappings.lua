@@ -74,7 +74,6 @@ function M.setup()
   })
 
   wk.register({
-    ["jk"] = { "<ESC>", "Enter normal mode" },
     ["<C-s>"] = { "<ESC>:w<CR>a", "Save file" },
 
     ["<C-v>"] = { "<C-r>+", "Paste system clipboard" },

@@ -285,6 +285,13 @@ local plugins = {
       require("configs.nvim-jdtls").setup()
     end,
   },
+
+  ["Krafi2/jeskape.nvim"] = {
+    event = "InsertCharPre",
+    config = function()
+      require("configs.jeskape").setup()
+    end,
+  },
 }
 
 function M.setup()
