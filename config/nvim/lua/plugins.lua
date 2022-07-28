@@ -65,14 +65,19 @@ local plugins = {
     end,
   },
 
+  ["williamboman/mason-lspconfig.nvim"] = {
+    event = "BufRead",
+  },
+
   ["williamboman/mason.nvim"] = {
+    after = "mason-lspconfig.nvim",
     config = function()
       require("configs.mason").setup()
     end,
   },
 
   ["neovim/nvim-lspconfig"] = {
-    event = "BufRead",
+    after = "mason-lspconfig.nvim",
     module = "lspconfig",
     config = function()
       require("configs.lsp").setup()

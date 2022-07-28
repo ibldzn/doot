@@ -1,6 +1,7 @@
 local M = {}
 
 local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
 local shared = require("shared")
 
 function M.setup()
@@ -25,6 +26,7 @@ function M.setup()
       },
     },
   })
+  mason_lspconfig.setup({ automatic_installation = true })
 end
 
 return M
