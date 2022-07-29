@@ -45,7 +45,7 @@ function M.setup()
   })
 
   wk.register({
-    ["<leader>o"] = {
+    ["s"] = {
       name = "Hop",
       ["c"] = { hop.hint_char1, "Char" },
       ["C"] = { hop.hint_char2, "2 Chars" },

@@ -22,7 +22,7 @@ function M.setup()
   end, { noremap = true, expr = true, desc = "Smart dd" })
 
   wk.register({
-    ["s"] = {
+    ["S"] = {
       name = "Split",
       ["H"] = { "<C-w>t<C-w>K", "Vertical to horizontal" },
       ["V"] = { "<C-w>t<C-w>H", "Horizontal to vertical" },
