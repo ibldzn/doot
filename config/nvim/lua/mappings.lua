@@ -19,7 +19,7 @@ function M.setup()
   map("n", "gk", "k", { noremap = true })
   map("n", "dd", function()
     return vim.api.nvim_get_current_line():match("^%s*$") and '"_dd' or "dd"
-  end, { noremap = true, expr = true })
+  end, { noremap = true, expr = true, desc = "Smart dd" })
 
   wk.register({
     ["s"] = {

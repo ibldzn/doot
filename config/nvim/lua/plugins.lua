@@ -286,6 +286,13 @@ local plugins = {
     end,
   },
 
+  ["phaazon/hop.nvim"] = {
+    event = "BufRead",
+    config = function()
+      require("configs.hop").setup()
+    end,
+  },
+
   ["Krafi2/jeskape.nvim"] = {
     event = "InsertCharPre",
     config = function()
