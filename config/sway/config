@@ -1,6 +1,6 @@
 default_border pixel 3
-gaps inner 3
-gaps outer 3
+gaps inner 2
+gaps outer 2
 # smart_borders on
 # smart_gaps on
 
