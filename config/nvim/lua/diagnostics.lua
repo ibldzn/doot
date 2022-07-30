@@ -21,10 +21,13 @@ function M.setup()
   })
 
   wk.register({
-    ["g"] = {
-      name = "Go",
-      ["["] = { vim.diagnostic.goto_prev, "Previous diagnostic" },
-      ["]"] = { vim.diagnostic.goto_next, "Next diagnostic" },
+    ["]"] = {
+      name = "Next",
+      ["d"] = { vim.diagnostic.goto_next, "Next diagnostic" },
+    },
+    ["["] = {
+      name = "Previous",
+      ["d"] = { vim.diagnostic.goto_prev, "Previous diagnostic" },
     },
   })
 end

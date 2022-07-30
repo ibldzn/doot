@@ -86,11 +86,16 @@ function M.setup()
     },
   })
   -- stylua: ignore end
+
   wk.register({
-    ["g"] = {
-      name = "Go",
-      ["}"] = { util.wrap(vim.schedule, gitsigns.next_hunk), "Next hunk" },
-      ["{"] = { util.wrap(vim.schedule, gitsigns.prev_hunk), "Previous hunk" },
+    ["]"] = {
+      name = "Next",
+      ["c"] = { util.wrap(vim.schedule, gitsigns.next_hunk), "Next Hunk" },
+    },
+
+    ["["] = {
+      name = "Previous",
+      ["c"] = { util.wrap(vim.schedule, gitsigns.prev_hunk), "Previous Hunk" },
     },
 
     ["<leader>g"] = {
