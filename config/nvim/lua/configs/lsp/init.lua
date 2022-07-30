@@ -187,7 +187,7 @@ function M.setup()
       ["t"] = { ":LspStop<cr>", "Stop" },
       ["i"] = { ":LspInfo<cr>", "Info" },
       ["I"] = { ":Mason<cr>", "Install Info" },
-      ["l"] = { ":LspInstallLog<cr>", "Install Log" },
+      ["l"] = { ":MasonLog<cr>", "Install Log" },
     },
   })
 end
