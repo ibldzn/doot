@@ -87,6 +87,12 @@ function M.setup()
   })
   -- stylua: ignore end
 
+  vim.api.nvim_create_autocmd("BufEnter", {
+    group = vim.api.nvim_create_augroup("RefreshGitSigns", { clear = true }),
+    buffer = vim.api.nvim_get_current_buf(),
+    command = "Gitsigns refresh",
+  })
+
   wk.register({
     ["]"] = {
       name = "Next",
