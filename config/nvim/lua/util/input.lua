@@ -36,6 +36,7 @@ function M.input(text, insert, callback)
     border = "none",
   }
   M.win = vim.api.nvim_open_win(M.buf, false, opts)
+  vim.api.nvim_win_set_option(M.win, "sidescrolloff", 0)
 
   -- key mappings
   vim.api.nvim_buf_set_keymap(
@@ -75,11 +76,17 @@ function M.input(text, insert, callback)
   )
 
   -- automatically resize
-  local group = vim.api.nvim_create_augroup("UtilInputWindow", { clear = true })
   vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI", "TextChangedP" }, {
-    group = group,
+    group = vim.api.nvim_create_augroup("UtilInputWindow", { clear = true }),
     buffer = M.buf,
     callback = M.resize,
+  })
+
+  -- cancel upon leaving insert mode
+  vim.api.nvim_create_autocmd("InsertLeave", {
+    group = vim.api.nvim_create_augroup("UtilInputWindowInsertLeave", { clear = true }),
+    buffer = M.buf,
+    callback = M.hide,
   })
 
   -- focus and enter insert mode
