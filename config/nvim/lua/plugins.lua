@@ -232,6 +232,13 @@ local plugins = {
     end,
   },
 
+  ["ahmedkhalf/project.nvim"] = {
+    after = "telescope.nvim",
+    config = function()
+      require("configs.telescope.project").setup()
+    end,
+  },
+
   ["mrjones2014/smart-splits.nvim"] = {
     event = "WinEnter",
     config = function()

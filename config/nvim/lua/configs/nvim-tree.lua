@@ -19,6 +19,7 @@ function M.setup()
       },
     },
 
+    respect_buf_cwd = true,
     disable_netrw = true,
     hijack_netrw = true,
     ignore_ft_on_setup = { "alpha" },
@@ -28,7 +29,7 @@ function M.setup()
     update_cwd = true,
     update_focused_file = {
       enable = true,
-      update_cwd = false,
+      update_cwd = true,
     },
 
     diagnostics = {

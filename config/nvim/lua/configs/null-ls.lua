@@ -5,12 +5,15 @@ local lspconfig = require("configs.lsp")
 
 local fm = ns.builtins.formatting
 local dg = ns.builtins.diagnostics
+local ca = ns.builtins.code_actions
 
 function M.setup()
   ns.setup({
     on_attach = lspconfig.on_attach,
     debug = false,
     sources = {
+      ca.shellcheck,
+
       dg.eslint,
       dg.shellcheck,
 
