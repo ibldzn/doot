@@ -50,8 +50,12 @@ local plugins = {
     event = { "BufRead", "BufNewFile" },
   },
 
-  ["nvim-treesitter/nvim-treesitter"] = {
+  ["nvim-treesitter/playground"] = {
     after = "nvim-treesitter-context",
+  },
+
+  ["nvim-treesitter/nvim-treesitter"] = {
+    after = "playground",
     run = ":TSUpdate",
     config = function()
       require("configs.treesitter").setup()
@@ -260,6 +264,7 @@ local plugins = {
   },
 
   ["goolord/alpha-nvim"] = {
+    disable = true,
     event = "VimEnter",
     config = function()
       require("configs.alpha").setup()

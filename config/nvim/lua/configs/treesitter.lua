@@ -1,5 +1,6 @@
 local M = {}
 
+local wk = require("which-key")
 local ts_config = require("nvim-treesitter.configs")
 local ts_context = require("treesitter-context")
 local CATEGORY = ts_context.CATEGORY or {}
@@ -65,6 +66,13 @@ function M.setup()
         CATEGORY.METHOD,
         CATEGORY.SECTION,
       },
+    },
+  })
+
+  wk.register({
+    ["<leader>t"] = {
+      name = "Toggle",
+      ["t"] = { ":TSPlaygroundToggle<cr>", "Treesitter playground" },
     },
   })
 end

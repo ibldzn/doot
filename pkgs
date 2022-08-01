@@ -67,6 +67,8 @@ ttf-cascadia-code         # cascadia font
 unzip                     # for extracting and viewing files in .zip archives
 waybar                    # bar for wayland
 wl-clipboard              # clipboard manager for wayland
+xdg-desktop-portal        # desktop integration portals for sandboxed apps
+xdg-desktop-portal-wlr    # xdg-desktop-portal backend for wlroots
 zathura                   # document viewer
 zathura-pdf-mupdf         # pdf support for zathura
 zsh                       # shell
