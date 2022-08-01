@@ -23,6 +23,7 @@
 
 [alias]
 	adog = log --all --decorate --oneline --graph
+	cane = commit --ammend --no-edit
 
 [gpg]
 	program = gpg
