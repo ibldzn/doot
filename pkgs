@@ -51,8 +51,8 @@ python                    # next generation of the python high-level scripting l
 python-black              # uncompromising python code formatter
 python-debugpy            # an implementation of the debug adapter protocol for python
 qbittorrent               # an advanced bittorrent client programmed in c++, based on qt toolkit and libtorrent-rasterbar
-qt5ct                     # qt5 configuration utility
 qt5-wayland               # provides apis for wayland
+qt5ct                     # qt5 configuration utility
 ripgrep                   # a search tool that combines the usability of ag with the raw speed of grep
 rust-analyzer             # rust compiler front-end for ides
 rustup                    # the rust toolchain installer
