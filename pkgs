@@ -1,85 +1,86 @@
 # awk '/^[^#]/ {print $1}' pkgs | yay -S --needed -
 
-alacritty                 # terminal emulator
-bat                       # better cat
-breeze-gtk                # breeze theme for gtk apps
-clang                     # c/c++ compiler
-cmake                     # cmake build system
-delve                     # debugger for golang
-dunst                     # notification daemon
-exa                       # better ls
+alacritty                 # a cross-platform, gpu-accelerated terminal emulator
+bat                       # cat clone with syntax highlighting and git integration
+breeze-gtk                # breeze widget theme for gtk 2 and 3
+clang                     # c language family frontend for llvm
+cmake                     # a cross-platform open-source make system
+delve                     # a debugger for the go programming language.
+dunst                     # customizable and lightweight notification-daemon
+exa                       # ls replacement
 fcitx5-im                 # fcitx5 input method
-fcitx5-mozc               # japanese ime for fcitx5
-fd                        # better find
-feh                       # image viewer
-firefox                   # browser
-fzf                       # fuzzy finder
-git                       # git vcs
-git-delta                 # diff viewer
-gnome-keyring             # stores passwords and keys
-go                        # golang
-gopls                     # go language server
+fcitx5-mozc               # fcitx5 module of a japanese input method for chromium os, windows, mac and linux (the open source edition of google japanese input)
+fd                        # simple, fast and user-friendly alternative to find
+feh                       # fast and light imlib2-based image viewer
+firefox                   # standalone web browser from mozilla.org
+fzf                       # command-line fuzzy finder
+git                       # the fast distributed version control system
+git-delta                 # syntax-highlighting pager for git and diff output
+gnome-keyring             # stores passwords and encryption keys
+go                        # core compiler tools for the go programming language
+gopls                     # language server for go programming language
 grim                      # screenshot utility for wayland
 jq                        # command-line json processor
-lazygit                   # git tui
-libnotify                 # notify-send
+lazygit                   # simple terminal ui for git commands
+libnotify                 # library for sending desktop notifications
 libqalculate              # multi-purpose desktop calculator
-lldb                      # llvm debugger
-lua                       # lua
-lua-language-server       # lua language server
-luajit                    # lua jit
-lxappearance              # gtk themes
-man-db                    # man
-man-pages                 # man pages
-mpv                       # media player
-nodejs                    # javascript runtime
-noto-fonts                # noto fonts
-noto-fonts-cjk            # chinese, japanese, korean
-noto-fonts-emoji          # emoji
-noto-fonts-extra          # extra
-npm                       # node package manager
+lldb                      # next generation, high-performance debugger
+lua                       # powerful lightweight programming language designed for extending applications
+lua-language-server       # lua language server coded by lua
+luajit                    # just-in-time compiler and drop-in replacement for lua 5.1
+lxappearance              # feature-rich gtk+ theme switcher of the lxde desktop
+man-db                    # a utility for reading man pages
+man-pages                 # linux man pages
+mpv                       # a free, open source, and cross-platform media player
+nodejs                    # evented i/o for v8 javascript
+noto-fonts                # google noto ttf fonts
+noto-fonts-cjk            # google noto cjk fonts
+noto-fonts-emoji          # google noto emoji fonts
+noto-fonts-extra          # google noto ttf fonts - additional variants
+npm                       # a package manager for javascript
 p7zip                     # command-line file archiver with high compression ratio
-pipewire                  # audio server
-pipewire-alsa             # alsa
-pipewire-jack             # jack
-pipewire-pulse            # pulse
-polkit                    # system privileges stuff
-polkit-gnome              # gui for system privileges
-prettier                  # code formatter
-pyright                   # python lsp
-python                    # python
-python-black              # python formatter
-python-debugpy            # debugger for python
-qbittorrent               # p2p torrent client
-qt5ct                     # qt themes
-ripgrep                   # better grep
-rust-analyzer             # rust lsp
-rustup                    # rust toolchain installer
+pipewire                  # low-latency audio/video router and processor
+pipewire-alsa             # low-latency audio/video router and processor - alsa configuration
+pipewire-jack             # low-latency audio/video router and processor - jack support
+pipewire-pulse            # low-latency audio/video router and processor - pulseaudio replacement
+polkit                    # application development toolkit for controlling system-wide privileges
+polkit-gnome              # legacy polkit authentication agent for gnome
+prettier                  # an opinionated code formatter for js, json, css, yaml and much more
+pyright                   # type checker for the python language
+python                    # next generation of the python high-level scripting language
+python-black              # uncompromising python code formatter
+python-debugpy            # an implementation of the debug adapter protocol for python
+qbittorrent               # an advanced bittorrent client programmed in c++, based on qt toolkit and libtorrent-rasterbar
+qt5ct                     # qt5 configuration utility
+qt5-wayland               # provides apis for wayland
+ripgrep                   # a search tool that combines the usability of ag with the raw speed of grep
+rust-analyzer             # rust compiler front-end for ides
+rustup                    # the rust toolchain installer
 slurp                     # select a region in a wayland compositor
-starship                  # shell prompt
-stylua                    # lua formatter
-sway                      # window manager
-swaybg                    # set background for sway
-swaylock                  # lock manager for sway
-tlp                       # power management
-tmux                      # terminal multiplexer
-ttf-cascadia-code         # cascadia font
+starship                  # the cross-shell prompt for astronauts
+stylua                    # code formatter for lua
+sway                      # tiling wayland compositor and replacement for the i3 window manager
+swaybg                    # wallpaper tool for wayland compositors
+swaylock                  # screen locker for wayland
+tlp                       # linux advanced power management
+tmux                      # a terminal multiplexer
+ttf-cascadia-code         # a monospaced font by microsoft that includes programming ligatures
 unzip                     # for extracting and viewing files in .zip archives
-waybar                    # bar for wayland
-wl-clipboard              # clipboard manager for wayland
+waybar                    # highly customizable wayland bar for sway and wlroots based compositors
+wl-clipboard              # command-line copy/paste utilities for wayland
 xdg-desktop-portal        # desktop integration portals for sandboxed apps
 xdg-desktop-portal-wlr    # xdg-desktop-portal backend for wlroots
-zathura                   # document viewer
-zathura-pdf-mupdf         # pdf support for zathura
-zsh                       # shell
-zsh-autosuggestions       # auto suggestions from history
-zsh-syntax-highlighting   # syntax highlighting
+zathura                   # minimalistic document viewer
+zathura-pdf-mupdf         # pdf support for zathura (mupdf backend) (supports pdf, epub, and openxps)
+zsh                       # a very advanced and programmable command interpreter (shell) for unix
+zsh-autosuggestions       # fish-like autosuggestions for zsh
+zsh-syntax-highlighting   # fish shell like syntax highlighting for zsh
 
 # AUR
-autotiling                # bspwm like tiling for i3/sway
-neovim-git                # text editor
-nerd-fonts-jetbrains-mono # patched jetbrains mono font
-nerd-fonts-noto-sans-mono # patched noto sans mono font
-shellcheck-bin            # shell check
-visual-studio-code-bin    # vscode
-zsh-completions-git       # more completions for zsh
+autotiling                # script for sway and i3 to automatically switch the horizontal / vertical window split orientation
+neovim-git                # fork of vim aiming to improve user experience, plugins, and guis.
+nerd-fonts-jetbrains-mono # a nerd font patched version of jetbrains mono
+nerd-fonts-noto-sans-mono # standard variants of noto sans mono patched with nerd fonts.
+shellcheck-bin            # shell script analysis tool (binary release, static)
+visual-studio-code-bin    # visual studio code (vscode): editor for building and debugging modern web and cloud applications (official binary version)
+zsh-completions-git       # additional completion definitions for zsh
