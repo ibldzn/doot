@@ -48,7 +48,6 @@ function M.on_attach(client, buf)
     local group = vim.api.nvim_create_augroup("ConfigLspOccurences", { clear = true })
     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
       group = group,
-      buffer = buf,
       callback = function()
         if not vim.lsp.client_is_stopped(client.id) then
           vim.lsp.buf.document_highlight()
@@ -61,7 +60,6 @@ function M.on_attach(client, buf)
     local group = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = group,
-      buffer = buf,
       callback = util.format_buffer,
     })
   end

@@ -62,7 +62,6 @@ function M.setup(lspconfig, on_init, on_attach, capabilities)
       "BufWritePost",
     }, {
       group = group,
-      buffer = buf,
       callback = M.inlay_hints,
     })
 
