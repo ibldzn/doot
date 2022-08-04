@@ -36,7 +36,7 @@ function M.inlay_hints()
   vim.lsp.buf_request(0, "rust-analyzer/inlayHints", params, inlay_hints_handler)
 end
 
-function M.setup(lspconfig, on_init, on_attach, capabilities)
+function M.setup(server, on_init, on_attach, capabilities)
   local function m_on_attach(client, buf)
     on_attach(client, buf)
 
@@ -68,7 +68,7 @@ function M.setup(lspconfig, on_init, on_attach, capabilities)
     M.inlay_hints()
   end
 
-  lspconfig.rust_analyzer.setup({
+  server.setup({
     on_init = on_init,
     on_attach = m_on_attach,
     capabilities = capabilities,

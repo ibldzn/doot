@@ -6,6 +6,7 @@ local util = require("util")
 local navic = require("nvim-navic")
 
 local DOCUMENT_HIGHLIGHT_HANDLER = vim.lsp.handlers["textDocument/documentHighlight"]
+local VIM_NOTIFY = vim.notify
 
 function M.get_capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -48,11 +49,7 @@ function M.on_attach(client, buf)
     local group = vim.api.nvim_create_augroup("ConfigLspOccurences", { clear = true })
     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
       group = group,
-      callback = function()
-        if not vim.lsp.client_is_stopped(client.id) then
-          vim.lsp.buf.document_highlight()
-        end
-      end,
+      callback = vim.lsp.buf.document_highlight,
     })
   end
 
@@ -123,6 +120,11 @@ function M.show_documentation()
 end
 
 function M.setup()
+  vim.notify = function(msg, ...)
+    if not msg:find("method textDocument/documentHighlight is not supported") then
+      VIM_NOTIFY(msg, ...)
+    end
+  end
   local lspconfig = require("lspconfig")
   -- Client capabilities
   local capabilities = M.get_capabilities()
@@ -144,7 +146,7 @@ function M.setup()
   for _, server in ipairs(servers) do
     local ok, sv = pcall(require, "configs.lsp.servers." .. server)
     if ok then
-      sv.setup(lspconfig, M.on_init, M.on_attach, capabilities)
+      sv.setup(lspconfig[server], M.on_init, M.on_attach, capabilities)
     else
       lspconfig[server].setup({
         on_init = M.on_init,

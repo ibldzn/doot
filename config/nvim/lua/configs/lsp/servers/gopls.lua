@@ -21,9 +21,9 @@ local function setup_autocmd()
   })
 end
 
-function M.setup(lspconfig, on_init, on_attach, capabilities)
+function M.setup(server, on_init, on_attach, capabilities)
   setup_autocmd()
-  lspconfig.gopls.setup({
+  server.setup({
     on_init = on_init,
     on_attach = on_attach,
     capabilities = capabilities,
