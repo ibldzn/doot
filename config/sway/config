@@ -48,6 +48,7 @@ bindsym $mod+Shift+r reload
 
 bindsym Print       exec ~/.config/sway/scripts/grimshot --notify save screen
 bindsym Ctrl+Print  exec ~/.config/sway/scripts/grimshot --notify save area
+bindsym Alt+Print   exec ~/.config/sway/scripts/grimshot --notify save window
 bindsym Shift+Print exec ~/.config/sway/scripts/grimshot --notify save active
 
 # Drag floating windows by holding down $mod and left mouse button.
