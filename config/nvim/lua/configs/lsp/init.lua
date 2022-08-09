@@ -114,6 +114,8 @@ function M.show_documentation()
     vim.cmd("Man " .. vim.fn.expand("<cword>"))
   elseif vim.fn.expand("%:t") == "Cargo.toml" then
     require("crates").show_popup()
+  elseif vim.tbl_contains({ "rust" }, filetype) then
+    require("rust-tools").hover_actions.hover_actions()
   else
     vim.lsp.buf.hover()
   end
