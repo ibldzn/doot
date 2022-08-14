@@ -1,13 +1,11 @@
 local M = {}
 
 function M.setup(server, on_init, on_attach, capabilities)
+  local new_capabilities = vim.tbl_deep_extend("force", capabilities, { offsetEncoding = "utf-8" })
   server.setup({
     on_init = on_init,
-    on_attach = function(client, bufnr)
-      on_attach(client, bufnr)
-      client.offset_encoding = "utf-16"
-    end,
-    capabilities = capabilities,
+    on_attach = on_attach,
+    capabilities = new_capabilities,
     cmd = {
       "clangd",
       "--clang-tidy",
