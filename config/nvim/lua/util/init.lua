@@ -41,7 +41,7 @@ end
 
 function M.append_at_eol(char)
   local pos = vim.api.nvim_win_get_cursor(0)
-  vim.cmd("normal A" .. char)
+  vim.cmd.normal("A" .. char)
   vim.api.nvim_win_set_cursor(0, pos)
 end
 

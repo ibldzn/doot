@@ -109,9 +109,9 @@ end
 function M.show_documentation()
   local filetype = vim.bo.filetype
   if vim.tbl_contains({ "vim", "help" }, filetype) then
-    vim.cmd("h " .. vim.fn.expand("<cword>"))
+    vim.cmd.h(vim.fn.expand("<cword>"))
   elseif vim.tbl_contains({ "man" }, filetype) then
-    vim.cmd("Man " .. vim.fn.expand("<cword>"))
+    vim.cmd.Man(vim.fn.expand("<cword>"))
   elseif vim.fn.expand("%:t") == "Cargo.toml" then
     require("crates").show_popup()
   elseif vim.tbl_contains({ "rust" }, filetype) then

@@ -99,7 +99,7 @@ function M.input(text, insert, callback)
   -- focus and enter insert mode
   vim.api.nvim_set_current_win(M.win)
   if insert then
-    vim.cmd("startinsert")
+    vim.cmd.startinsert()
   end
   vim.api.nvim_win_set_cursor(M.win, { 1, text_width })
 end
@@ -136,12 +136,12 @@ function M.hide()
   M.buf = nil
 
   if M.mode == "i" and vim.fn.mode() ~= "i" then
-    vim.cmd("startinsert")
+    vim.cmd.startinsert()
   elseif M.mode ~= "i" and vim.fn.mode() == "i" then
     local pos = vim.api.nvim_win_get_cursor(0)
     pos[2] = pos[2] + 1
     vim.api.nvim_win_set_cursor(0, pos)
-    vim.cmd("stopinsert")
+    vim.cmd.stopinsert()
   end
 end
 
