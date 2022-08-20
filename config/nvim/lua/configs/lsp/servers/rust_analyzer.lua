@@ -1,6 +1,6 @@
 local M = {}
 
-local namespace = vim.api.nvim_create_namespace("config.lsp.server.rust_analyzer")
+local namespace = vim.api.nvim_create_namespace("configs.lsp.server.rust_analyzer")
 
 local function inlay_hints_handler(err, result, ctx)
   if err then

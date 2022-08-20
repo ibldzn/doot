@@ -1,22 +1,17 @@
 {
   // General
   "extensions.ignoreRecommendations": true,
-  "workbench.colorTheme": "Horizon",
-  "workbench.iconTheme": "gruvbox-material-icon-theme",
-  "window.menuBarVisibility": "toggle",
-  "window.titleBarStyle": "custom",
-  "window.customMenuBarAltFocus": false,
-  "telemetry.telemetryLevel": "off",
-  "workbench.enableExperiments": false,
   "security.workspace.trust.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "window.customMenuBarAltFocus": false,
+  "window.menuBarVisibility": "compact",
+  "window.titleBarStyle": "custom",
+  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.enableExperiments": false,
+  "workbench.iconTheme": "gruvbox-material-icon-theme",
+  "workbench.layoutControl.enabled": false,
   // Settings Sync
   "settingsSync.keybindingsPerPlatform": false,
-  "settingsSync.ignoredSettings": [
-    "workbench.colorTheme",
-    "-clangd.path",
-    "C_Cpp.intelliSenseEngine"
-  ],
-  "settingsSync.ignoredExtensions": ["llvm-vs-code-extensions.vscode-clangd"],
   // Editor
   "editor.wordWrap": "on",
   "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'JetBrainsMono NF'",
@@ -30,6 +25,7 @@
   "editor.minimap.enabled": false,
   "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
+  "editor.experimental.stickyScroll.enabled": true,
   // Terminal
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "terminal.integrated.persistentSessionReviveProcess": "never",
@@ -37,10 +33,9 @@
   "cmake.buildDirectory": "${workspaceFolder}/_build",
   "cmake.generator": "Ninja",
   "cmake.configureOnEdit": false,
+  "C_Cpp.intelliSenseEngine": "Disabled",
   "C_Cpp.default.cppStandard": "c++20",
   "C_Cpp.formatting": "clangFormat",
-  "C_Cpp.intelliSenseEngine": "Disabled",
-  "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.rustfmt.extraArgs": ["+nightly"],
   "vim.leader": "<Space>",
@@ -92,6 +87,7 @@
     {
       "before": ["K"],
       "commands": [{ "command": "editor.action.showHover" }],
+      // "commands": [{ "command": "editor.action.showDefinitionPreviewHover" }],
       "silent": true
     },
     {
@@ -100,13 +96,23 @@
       "silent": true
     },
     {
-      "before": ["g", "]"],
+      "before": ["]", "d"],
       "commands": [{ "command": "editor.action.marker.next" }],
       "silent": true
     },
     {
-      "before": ["g", "["],
+      "before": ["[", "d"],
       "commands": [{ "command": "editor.action.marker.prev" }],
+      "silent": true
+    },
+    {
+      "before": ["]", "c"],
+      "commands": [{ "command": "workbench.action.editor.nextChange" }],
+      "silent": true
+    },
+    {
+      "before": ["[", "c"],
+      "commands": [{ "command": "workbench.action.editor.previousChange" }],
       "silent": true
     },
     {
@@ -122,6 +128,11 @@
     {
       "before": ["<leader>", "r"],
       "commands": [{ "command": "editor.action.rename" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "a"],
+      "commands": [{ "command": "editor.action.quickFix" }],
       "silent": true
     },
     {
@@ -147,6 +158,11 @@
     {
       "before": ["<leader>", "d", "b"],
       "commands": [{ "command": "editor.debug.action.toggleBreakpoint" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "d", "B"],
+      "commands": [{ "command": "editor.debug.action.conditionalBreakpoint" }],
       "silent": true
     },
     {
@@ -182,6 +198,16 @@
     {
       "before": ["<leader>", "d", "r"],
       "commands": [{ "command": "workbench.action.debug.restart" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "g", "r"],
+      "commands": [{ "command": "git.revertSelectedRanges" }],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "g", "s"],
+      "commands": [{ "command": "git.stageSelectedRanges" }],
       "silent": true
     },
     {
@@ -275,6 +301,5 @@
       "source.organizeImports": true
     }
   },
-  "workbench.statusBar.visible": false,
   "workbench.activityBar.visible": false
 }
