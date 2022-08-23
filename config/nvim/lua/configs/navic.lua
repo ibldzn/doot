@@ -29,7 +29,7 @@ function M.setup()
     "dapui_stacks",
     "help",
     "lspinfo",
-    "mason.nvim",
+    "mason",
     "packer",
   }
 
