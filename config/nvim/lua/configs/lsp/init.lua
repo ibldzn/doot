@@ -124,7 +124,7 @@ end
 function M.setup()
   vim.notify = function(msg, ...)
     if not msg:find("method textDocument/documentHighlight is not supported") then
-      VIM_NOTIFY(msg, ...)
+      return VIM_NOTIFY(msg, ...)
     end
   end
   local lspconfig = require("lspconfig")
