@@ -142,7 +142,7 @@ function M.setup()
     "cssls",
     "html",
     "jsonls",
-    "jdtls",
+    -- "jdtls",
   }
 
   for _, server in ipairs(servers) do

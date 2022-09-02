@@ -40,7 +40,7 @@ return {
     },
   },
   packer = {
-    snapshot_version = "v0.1.3",
+    snapshot_version = "v0.1.4",
     snapshot_path = util.join_paths(vim.fn.stdpath("config"), "snapshots"),
     compile_path = util.join_paths(vim.fn.stdpath("config"), "lua", "packer_compiled.lua"),
   },

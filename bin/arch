@@ -295,6 +295,7 @@ setup_rootpass () {
 setup_fstab () {
     inf "Setting up fstab.."
     genfstab -U /mnt >> /mnt/etc/fstab
+    echo "# efivarfs /sys/firmware/efi/efivars efivarfs ro,nosuid,nodev,noexec 0 0" >> /mnt/etc/fstab
 }
 
 setup_timezone () {

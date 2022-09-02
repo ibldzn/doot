@@ -12,7 +12,7 @@ function M.setup()
       "Trouble",
       "help",
       "man",
-      "mason.nvim",
+      "mason",
       "packer",
     },
   })
