@@ -18,9 +18,9 @@ set $left  h
 set $down  j
 set $up    k
 set $right l
-set $menu  wofi --insensitive --show drun | xargs swaymsg exec --
+set $menu  wofi --insensitive --show drun -I -G | xargs swaymsg exec --
 
-output * bg ~/dot/papes/flowers.png tile
+output * bg ~/dot/papes/hollow-knight.png fill
 
 input type:touchpad {
     dwt              enabled
@@ -46,10 +46,9 @@ bindsym $mod+Space   exec $menu
 bindsym $mod+Return  exec $term
 bindsym $mod+Shift+r reload
 
-bindsym Print       exec ~/.config/sway/scripts/grimshot --notify save screen
-bindsym Ctrl+Print  exec ~/.config/sway/scripts/grimshot --notify save area
-bindsym Alt+Print   exec ~/.config/sway/scripts/grimshot --notify save window
-bindsym Shift+Print exec ~/.config/sway/scripts/grimshot --notify save active
+bindsym $mod+x       exec ~/.config/sway/scripts/grimshot --notify save screen
+bindsym $mod+Alt+x   exec ~/.config/sway/scripts/grimshot --notify save window
+bindsym $mod+Shift+x exec ~/.config/sway/scripts/grimshot --notify save area
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -186,7 +185,6 @@ exec_always {
 exec --no-startup-id autotiling
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id fcitx5 -d
-exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec --no-startup-id dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 #include /etc/sway/config.d/*
