@@ -19,6 +19,12 @@ local plugins = {
     end,
   },
 
+  ["windwp/nvim-spectre"] = {
+    config = function()
+      require("configs.spectre").setup()
+    end,
+  },
+
   ["wbthomason/packer.nvim"] = {
     config = function()
       require("configs.packer").setup()
