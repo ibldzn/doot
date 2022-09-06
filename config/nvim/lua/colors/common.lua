@@ -154,44 +154,53 @@ function M.highlights(pal)
     DapBreakpoint = { fg=pal.lred    },
     DapLogPoint   = { fg=pal.lyellow },
     DapStopped    = { fg=pal.lgreen  },
+
+    -- indent-blankline
+    IndentBlanklineIndent1     = { fg=pal.lred,    style="nocombine" },
+    IndentBlanklineIndent2     = { fg=pal.lyellow, style="nocombine" },
+    IndentBlanklineIndent3     = { fg=pal.lblue,   style="nocombine" },
+    IndentBlanklineIndent4     = { fg=pal.lcyan,   style="nocombine" },
+    IndentBlanklineIndent5     = { fg=pal.lyellow, style="nocombine" },
+    IndentBlanklineIndent6     = { fg=pal.lgreen,  style="nocombine" },
+    IndentBlanklineContextChar = { fg=pal.todo,    style="nocombine" }
   }
   -- stylua: ignore end
 end
 
 function M.lualine(pal)
     -- stylua: ignore start
-    return {
-        normal = {
-            a = { bg=pal.surface1, fg=pal.lyellow, gui="bold" },
-            b = { bg=pal.surface2, fg=pal.text2,              },
-            c = { bg=pal.surface3, fg=pal.text3,              },
-        },
-        insert = {
-            a = { bg=pal.surface1, fg=pal.lgreen,  gui="bold" },
-            b = { bg=pal.surface2, fg=pal.text2,              },
-            c = { bg=pal.surface3, fg=pal.text3,              },
-        },
-        visual = {
-            a = { bg=pal.surface1, fg=pal.lpurple, gui="bold" },
-            b = { bg=pal.surface2, fg=pal.text2,              },
-            c = { bg=pal.surface3, fg=pal.text3,              },
-        },
-        replace = {
-            a = { bg=pal.surface1, fg=pal.lred,    gui="bold" },
-            b = { bg=pal.surface2, fg=pal.text2,              },
-            c = { bg=pal.surface3, fg=pal.text3,              },
-        },
-        command = {
-            a = { bg=pal.surface1, fg=pal.lblue,   gui="bold" },
-            b = { bg=pal.surface2, fg=pal.text2,              },
-            c = { bg=pal.surface3, fg=pal.text3,              },
-        },
-        inactive = {
-            a = { bg=pal.surface3, fg=pal.text3,              },
-            b = { bg=pal.surface3, fg=pal.text3,              },
-            c = { bg=pal.surface3, fg=pal.text3,              },
-        }
+  return {
+    normal = {
+      a = { bg=pal.surface1, fg=pal.lyellow, gui="bold" },
+      b = { bg=pal.surface2, fg=pal.text2,              },
+      c = { bg=pal.surface3, fg=pal.text3,              },
+    },
+    insert = {
+      a = { bg=pal.surface1, fg=pal.lgreen,  gui="bold" },
+      b = { bg=pal.surface2, fg=pal.text2,              },
+      c = { bg=pal.surface3, fg=pal.text3,              },
+    },
+    visual = {
+      a = { bg=pal.surface1, fg=pal.lpurple, gui="bold" },
+      b = { bg=pal.surface2, fg=pal.text2,              },
+      c = { bg=pal.surface3, fg=pal.text3,              },
+    },
+    replace = {
+      a = { bg=pal.surface1, fg=pal.lred,    gui="bold" },
+      b = { bg=pal.surface2, fg=pal.text2,              },
+      c = { bg=pal.surface3, fg=pal.text3,              },
+    },
+    command = {
+      a = { bg=pal.surface1, fg=pal.lblue,   gui="bold" },
+      b = { bg=pal.surface2, fg=pal.text2,              },
+      c = { bg=pal.surface3, fg=pal.text3,              },
+    },
+    inactive = {
+      a = { bg=pal.surface3, fg=pal.text3,              },
+      b = { bg=pal.surface3, fg=pal.text3,              },
+      c = { bg=pal.surface3, fg=pal.text3,              },
     }
+  }
   -- stylua: ignore end
 end
 
