@@ -138,7 +138,7 @@ function M.setup()
     "bashls",
     "cmake",
     "pyright",
-    "rust_analyzer",
+    -- "rust_analyzer",
     "cssls",
     "html",
     "jsonls",
