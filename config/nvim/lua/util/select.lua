@@ -139,16 +139,18 @@ function M.select(items, opts, on_choice)
     callback = highlight,
   })
 
+  vim.api.nvim_win_set_option(M.win, "number", true)
+  vim.api.nvim_win_set_option(M.win, "wrap", false)
+
+  if #formatted_items < 10 then
+    vim.api.nvim_win_set_option(M.win, "numberwidth", 2)
+  else
+    vim.api.nvim_win_set_option(M.win, "numberwidth", 3)
+  end
+
   -- focus window
   vim.api.nvim_set_current_win(M.win)
   highlight()
-
-  vim.opt_local.number = true
-  if #formatted_items < 10 then
-    vim.opt_local.numberwidth = 2
-  else
-    vim.opt_local.numberwidth = 3
-  end
 end
 
 function M.setup()
