@@ -15,15 +15,6 @@ function M.setup()
       "mason",
       "packer",
     },
-    char_highlight_list = {
-      "IndentBlanklineIndent1",
-      "IndentBlanklineIndent2",
-      "IndentBlanklineIndent3",
-      "IndentBlanklineIndent4",
-      "IndentBlanklineIndent5",
-      "IndentBlanklineIndent6",
-    },
-    show_current_context = true,
   })
 end
 
