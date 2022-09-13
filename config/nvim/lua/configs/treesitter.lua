@@ -1,6 +1,7 @@
 local M = {}
 
 local wk = require("which-key")
+local shared = require("shared")
 local ts_config = require("nvim-treesitter.configs")
 local ts_context = require("treesitter-context")
 local CATEGORY = ts_context.CATEGORY or {}
@@ -68,6 +69,14 @@ function M.setup()
           ["@parameter.outer"] = "v", -- charwise
           ["@function.outer"] = "V", -- linewise
           ["@class.outer"] = "<c-v>", -- blockwise
+        },
+      },
+      lsp_interop = {
+        enable = true,
+        border = shared.window.border,
+        peek_definition_code = {
+          ["<leader>k"] = "@function.outer",
+          ["<leader>K"] = "@class.outer",
         },
       },
     },
