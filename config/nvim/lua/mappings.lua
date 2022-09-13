@@ -50,6 +50,7 @@ function M.setup()
         },
         ["l"] = { ":set list!<cr>", "Listchars" },
         ["s"] = { ":set spell!<cr>", "Spelling" },
+        ["w"] = { ":set wrap!<cr>", "Wrapping" },
       },
     },
     ["gx"] = {
