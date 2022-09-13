@@ -55,10 +55,14 @@ function M.setup()
         enable = true,
         lookahead = true,
         keymaps = {
+          ["ac"] = "@call.outer",
+          ["ic"] = "@call.inner",
+          ["il"] = "@loop.inner",
+          ["al"] = "@loop.outer",
           ["af"] = "@function.outer",
           ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
+          ["aC"] = "@conditional.outer",
+          ["iC"] = "@conditional.inner",
         },
         selection_modes = {
           ["@parameter.outer"] = "v", -- charwise
