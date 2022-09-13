@@ -48,7 +48,7 @@ function M.setup()
   })
 
   wk.register({
-    ["<leader>k"] = { ":WhichKey<cr>", "Which key?" },
+    ["<leader>w"] = { ":WhichKey<cr>", "Which key?" },
   })
 end
 
