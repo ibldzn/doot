@@ -1,5 +1,6 @@
 {
   // General
+  "editor.inlayHints.enabled": "off",
   "extensions.ignoreRecommendations": true,
   "security.workspace.trust.enabled": false,
   "telemetry.telemetryLevel": "off",
@@ -13,7 +14,7 @@
   // Settings Sync
   "settingsSync.keybindingsPerPlatform": false,
   // Editor
-  "editor.wordWrap": "on",
+  "editor.wordWrap": "off",
   "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'JetBrainsMono NF'",
   "editor.fontSize": 15,
   "editor.fontWeight": "500",
@@ -24,8 +25,8 @@
   "editor.smoothScrolling": true,
   "editor.minimap.enabled": false,
   "editor.guides.bracketPairs": "active",
+  "editor.stickyScroll.enabled": true,
   "editor.inlineSuggest.enabled": true,
-  "editor.experimental.stickyScroll.enabled": true,
   // Terminal
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "terminal.integrated.persistentSessionReviveProcess": "never",
@@ -300,6 +301,5 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     }
-  },
-  "workbench.activityBar.visible": false
+  }
 }
