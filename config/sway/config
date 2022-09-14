@@ -178,8 +178,11 @@ bar {
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme "Breeze-Dark"
-    gsettings set $gnome-schema icon-theme "Adwaita"
+    gsettings set $gnome-schema gtk-theme          "Breeze-Dark"
+    gsettings set $gnome-schema icon-theme         "Adwaita"
+    gsettings set $gnome-schema font-hinting       "slight"
+    gsettings set $gnome-schema font-rgba-order    "rgb"
+    gsettings set $gnome-schema font-antialiasing  "grayscale"
 }
 
 exec --no-startup-id mpd
