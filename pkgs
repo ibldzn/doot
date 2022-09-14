@@ -20,7 +20,7 @@ gnome-keyring             # stores passwords and encryption keys
 go                        # core compiler tools for the go programming language
 gopls                     # language server for go programming language
 grim                      # screenshot utility for wayland
-hyperfine                 # A command-line benchmarking tool
+hyperfine                 # a command-line benchmarking tool
 jq                        # command-line json processor
 lazygit                   # simple terminal ui for git commands
 libnotify                 # library for sending desktop notifications
@@ -32,10 +32,10 @@ luajit                    # just-in-time compiler and drop-in replacement for lu
 lxappearance              # feature-rich gtk+ theme switcher of the lxde desktop
 man-db                    # a utility for reading man pages
 man-pages                 # linux man pages
-mpc                       # Minimalist command line interface to MPD
-mpd                       # Flexible, powerful, server-side application for playing music
+mpc                       # minimalist command line interface to mpd
+mpd                       # flexible, powerful, server-side application for playing music
 mpv                       # a free, open source, and cross-platform media player
-ncmpcpp                   # Almost exact clone of ncmpc with some new features
+ncmpcpp                   # almost exact clone of ncmpc with some new features
 nodejs                    # evented i/o for v8 javascript
 noto-fonts                # google noto ttf fonts
 noto-fonts-cjk            # google noto cjk fonts
