@@ -15,6 +15,7 @@ function M.setup()
     operators = {
       gc = "Comment",
       gb = "Block comment",
+      ys = "Surround",
     },
     icons = {
       breadcrumb = "»",
