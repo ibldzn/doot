@@ -1,0 +1,164 @@
+{
+  "Comment.nvim": {
+    "commit": "30d23aa"
+  },
+  "LuaSnip": {
+    "commit": "14b801f"
+  },
+  "cheat-sheet": {
+    "commit": "7fd015c"
+  },
+  "cmp-buffer": {
+    "commit": "3022dbc"
+  },
+  "cmp-nvim-lsp": {
+    "commit": "affe808"
+  },
+  "cmp-nvim-lua": {
+    "commit": "d276254"
+  },
+  "cmp-path": {
+    "commit": "447c87c"
+  },
+  "cmp_luasnip": {
+    "commit": "a9de941"
+  },
+  "compiler-explorer.nvim": {
+    "commit": "c236409"
+  },
+  "crates.nvim": {
+    "commit": "003442e"
+  },
+  "emmet-vim": {
+    "commit": "def5d57"
+  },
+  "fidget.nvim": {
+    "commit": "492492e"
+  },
+  "friendly-snippets": {
+    "commit": "22a9975"
+  },
+  "gitsigns.nvim": {
+    "commit": "facca89"
+  },
+  "hop.nvim": {
+    "commit": "2a1b686"
+  },
+  "hydra.nvim": {
+    "commit": "c70facc"
+  },
+  "impatient.nvim": {
+    "commit": "b842e16"
+  },
+  "indent-blankline.nvim": {
+    "commit": "db7cbcb"
+  },
+  "jeskape.nvim": {
+    "commit": "ef9b3f1"
+  },
+  "lsp_signature.nvim": {
+    "commit": "e65a638"
+  },
+  "lualine.nvim": {
+    "commit": "a52f078"
+  },
+  "markdown-preview.nvim": {
+    "commit": "02cc387"
+  },
+  "mason-lspconfig.nvim": {
+    "commit": "b70deda"
+  },
+  "mason.nvim": {
+    "commit": "07d949a"
+  },
+  "null-ls.nvim": {
+    "commit": "e755b1c"
+  },
+  "nvim-autopairs": {
+    "commit": "5fe2441"
+  },
+  "nvim-cmp": {
+    "commit": "913eb85"
+  },
+  "nvim-colorizer.lua": {
+    "commit": "36c610a"
+  },
+  "nvim-dap": {
+    "commit": "d9b315a"
+  },
+  "nvim-dap-ui": {
+    "commit": "ebebd42"
+  },
+  "nvim-lspconfig": {
+    "commit": "1fcd44e"
+  },
+  "nvim-navic": {
+    "commit": "202312e"
+  },
+  "nvim-notify": {
+    "commit": "7076ce8"
+  },
+  "nvim-spectre": {
+    "commit": "766e366"
+  },
+  "nvim-surround": {
+    "commit": "d91787d"
+  },
+  "nvim-tree.lua": {
+    "commit": "fb8735e"
+  },
+  "nvim-treesitter": {
+    "commit": "cd9dfc1"
+  },
+  "nvim-treesitter-context": {
+    "commit": "82631f6"
+  },
+  "nvim-treesitter-textobjects": {
+    "commit": "e63c2ff"
+  },
+  "nvim-web-devicons": {
+    "commit": "2d02a56"
+  },
+  "packer.nvim": {
+    "commit": "6afb674"
+  },
+  "playground": {
+    "commit": "bcfab84"
+  },
+  "plenary.nvim": {
+    "commit": "4b66054"
+  },
+  "project.nvim": {
+    "commit": "090bb11"
+  },
+  "rust-tools.nvim": {
+    "commit": "86a2b4e"
+  },
+  "smart-splits.nvim": {
+    "commit": "c8d80d9"
+  },
+  "telescope.nvim": {
+    "commit": "2584ff3"
+  },
+  "todo-comments.nvim": {
+    "commit": "39db371"
+  },
+  "trouble.nvim": {
+    "commit": "929315e"
+  },
+  "venn.nvim": {
+    "commit": "288329d"
+  },
+  "vim-fugitive": {
+    "commit": "dd8107c"
+  },
+  "vim-lastplace": {
+    "commit": "cef9d62"
+  },
+  "vim-matchup": {
+    "commit": "ab8575d"
+  },
+  "which-key.nvim": {
+    "commit": "66e69ba"
+  }
+}
