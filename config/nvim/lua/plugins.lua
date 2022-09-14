@@ -326,6 +326,15 @@ local plugins = {
       require("configs.jeskape").setup()
     end,
   },
+
+  ["krady21/compiler-explorer.nvim"] = {
+    cmd = {
+      "CECompile",
+      "CEFormat",
+      "CEAddLibrary",
+      "CEShowTooltip",
+    },
+  },
 }
 
 function M.setup()
