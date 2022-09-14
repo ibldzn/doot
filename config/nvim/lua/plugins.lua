@@ -19,6 +19,10 @@ local plugins = {
     end,
   },
 
+  ["anuvyklack/hydra.nvim"] = {
+    after = "which-key.nvim",
+  },
+
   ["windwp/nvim-spectre"] = {
     config = function()
       require("configs.spectre").setup()
@@ -240,6 +244,7 @@ local plugins = {
   },
 
   ["nvim-telescope/telescope-dap.nvim"] = {
+    disable = true,
     after = { "nvim-dap", "telescope.nvim" },
     config = function()
       require("configs.telescope.dap").setup()
