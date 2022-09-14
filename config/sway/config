@@ -50,6 +50,9 @@ bindsym $mod+x       exec ~/.config/sway/scripts/grimshot --notify save screen
 bindsym $mod+Alt+x   exec ~/.config/sway/scripts/grimshot --notify save window
 bindsym $mod+Shift+x exec ~/.config/sway/scripts/grimshot --notify save area
 
+# Color picker
+bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
