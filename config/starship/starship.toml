@@ -5,9 +5,9 @@ $git_branch\
 $git_state\
 $git_status\
 $fill\
+$python\
 $cmd_duration\
 $line_break\
-$python\
 $character"""
 
 add_newline = true
@@ -20,7 +20,7 @@ success_symbol = "[](#248ECB) "
 error_symbol = "[](#ff5555) "
 
 [python]
-format = "\\([$virtualenv]($style)\\) "
+format = "[$virtualenv]($style) "
 style = "bright-black"
 
 [cmd_duration]
