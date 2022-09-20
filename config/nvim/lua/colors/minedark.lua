@@ -52,12 +52,12 @@ M.palette = {
 
   diff_a_bg  = "#395039",
   diff_c_bg  = "#33415b",
-  diff_d_bg  = "#7a4242",
+  diff_d_bg  = "#9e3737",
   diff_cd_bg = "#553b6c",
 
   diff_a_fg  = "#5fa55e",
   diff_c_fg  = "#5a8abf",
-  diff_d_fg  = "#b45050",
+  diff_d_fg  = "#d47070",
   diff_cd_fg = "#a573c2",
 }
 -- stylua: ignore end
