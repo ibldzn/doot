@@ -191,6 +191,7 @@ exec_always {
     gsettings set $gnome-schema font-antialiasing  "grayscale"
 }
 
+exec --no-startup-id udiskie --automount --notify
 exec --no-startup-id mpd
 exec --no-startup-id autotiling
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
