@@ -302,7 +302,6 @@ local plugins = {
   },
 
   ["mfussenegger/nvim-jdtls"] = {
-    disable = true,
     ft = "java",
     config = function()
       require("configs.nvim-jdtls").setup()
