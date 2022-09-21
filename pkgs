@@ -67,8 +67,9 @@ sway                      # tiling wayland compositor and replacement for the i3
 swaybg                    # wallpaper tool for wayland compositors
 swaylock                  # screen locker for wayland
 tlp                       # linux advanced power management
-tmux                      # a terminal multiplexer
 ttf-cascadia-code         # a monospaced font by microsoft that includes programming ligatures
+udiskie                   # removable disk automounter using udisks
+udisks2                   # disk management service, version 2
 unzip                     # for extracting and viewing files in .zip archives
 waybar                    # highly customizable wayland bar for sway and wlroots based compositors
 wl-clipboard              # command-line copy/paste utilities for wayland
@@ -76,6 +77,7 @@ xdg-desktop-portal        # desktop integration portals for sandboxed apps
 xdg-desktop-portal-wlr    # xdg-desktop-portal backend for wlroots
 zathura                   # minimalistic document viewer
 zathura-pdf-mupdf         # pdf support for zathura (mupdf backend) (supports pdf, epub, and openxps)
+zellij                    # a terminal multiplexer
 zsh                       # a very advanced and programmable command interpreter (shell) for unix
 zsh-autosuggestions       # fish-like autosuggestions for zsh
 zsh-syntax-highlighting   # fish shell like syntax highlighting for zsh
