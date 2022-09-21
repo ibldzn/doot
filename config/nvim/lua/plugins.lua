@@ -19,10 +19,6 @@ local plugins = {
     end,
   },
 
-  ["anuvyklack/hydra.nvim"] = {
-    after = "which-key.nvim",
-  },
-
   ["windwp/nvim-spectre"] = {
     config = function()
       require("configs.spectre").setup()
