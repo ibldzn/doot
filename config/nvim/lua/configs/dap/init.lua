@@ -4,8 +4,8 @@ local dap = require("dap")
 local dap_ui = require("dapui")
 local wk = require("which-key")
 local util = require("util")
-local Hydra = require("hydra")
-local shared = require("shared")
+-- local Hydra = require("hydra")
+-- local shared = require("shared")
 
 local function run_dap(prompt)
   local ft = vim.bo.filetype
@@ -36,93 +36,93 @@ local function run_dap(prompt)
   end)
 end
 
-local function setup_bindings()
-  local hint = [[
-_d_: Launch
-_D_: Launch (with args)
-_r_: Rerun
-_t_: Toggle breakpoint
-_u_: Toggle UI
-_C_: Continue
-_i_: Step into
-_o_: Step over
-_O_: Step out
-_n_: Run to cursor
-_T_: Terminate
-_e_: Evaluate at cursor
-_E_: Evaluate expression
-_?_: Evaluate scope
-_X_: Clear breakpoints
-_J_: Callstack (down)
-_K_: Callstack (up)
-^
-_<Esc>_
-]]
-
-  Hydra({
-    name = "Debug",
-    hint = hint,
-    mode = "n",
-    body = "<leader>d",
-    heads = {
-      { "<Esc>", nil, { exit = true, nowait = true } },
-      { "d", util.wrap(M.debuggables, false), { desc = "Launch" } },
-      { "D", util.wrap(M.debuggables, true), { desc = "Launch (with args)" } },
-      { "r", dap.run_last, { desc = "Rerun" } },
-      { "t", dap.toggle_breakpoint, { desc = "Toggle breakpoint" } },
-      { "u", dap_ui.toggle, { desc = "Toggle UI" } },
-      { "C", dap.continue, { desc = "Continue" } },
-      { "i", dap.step_into, { desc = "Step into" } },
-      { "o", dap.step_over, { desc = "Step over" } },
-      { "O", dap.step_out, { desc = "Step out" } },
-      { "n", dap.run_to_cursor, { desc = "Run to cursor" } },
-      { "X", dap.clear_breakpoints, { desc = "Clear breakpoints" } },
-      { "T", dap.terminate, { exit = true, nowait = true, desc = "Terminate" } },
-      { "J", dap.down, { desc = "Callstack (down)" } },
-      { "K", dap.up, { desc = "Callstack (up)" } },
-      {
-        "e",
-        function()
-          dap_ui.eval(nil, { enter = true })
-        end,
-        { desc = "Evaluate at cursor" },
-      },
-      {
-        "E",
-        function()
-          dap_ui.eval(vim.fn.input("Expression: "), { enter = true })
-        end,
-        { desc = "Evaluate expression" },
-      },
-      {
-        "?",
-        function()
-          local widgets = require("dap.ui.widgets")
-          widgets.centered_float(widgets.scopes)
-        end,
-        { exit = true, nowait = true, desc = "exit" },
-      },
-    },
-    config = {
-      color = "pink",
-      invoke_on_body = true,
-      hint = {
-        border = shared.window.border,
-        position = "bottom-right",
-      },
-      on_enter = function()
-        vim.cmd.mkview()
-        vim.cmd("silent! %foldopen!")
-        vim.bo.modifiable = false
-      end,
-      on_exit = function()
-        local cursor_pos = vim.api.nvim_win_get_cursor(0)
-        vim.cmd.loadview()
-        vim.api.nvim_win_set_cursor(0, cursor_pos)
-        vim.cmd.normal("zv")
-      end,
-    },
-  })
+local function setup_hydra_bindings()
+  --   local hint = [[
+  -- _d_: Launch
+  -- _D_: Launch (with args)
+  -- _r_: Rerun
+  -- _t_: Toggle breakpoint
+  -- _u_: Toggle UI
+  -- _C_: Continue
+  -- _i_: Step into
+  -- _o_: Step over
+  -- _O_: Step out
+  -- _n_: Run to cursor
+  -- _T_: Terminate
+  -- _e_: Evaluate at cursor
+  -- _E_: Evaluate expression
+  -- _?_: Evaluate scope
+  -- _X_: Clear breakpoints
+  -- _J_: Callstack (down)
+  -- _K_: Callstack (up)
+  -- ^
+  -- _<esc>_
+  -- ]]
+  --
+  --   Hydra({
+  --     name = "Debug",
+  --     hint = hint,
+  --     mode = "n",
+  --     body = "<leader>d",
+  --     heads = {
+  --       { "<esc>", nil, { exit = true, nowait = true } },
+  --       { "d", util.wrap(M.debuggables, false), { desc = "Launch" } },
+  --       { "D", util.wrap(M.debuggables, true), { desc = "Launch (with args)" } },
+  --       { "r", dap.run_last, { desc = "Rerun" } },
+  --       { "t", dap.toggle_breakpoint, { desc = "Toggle breakpoint" } },
+  --       { "u", dap_ui.toggle, { desc = "Toggle UI" } },
+  --       { "C", dap.continue, { desc = "Continue" } },
+  --       { "i", dap.step_into, { desc = "Step into" } },
+  --       { "o", dap.step_over, { desc = "Step over" } },
+  --       { "O", dap.step_out, { desc = "Step out" } },
+  --       { "n", dap.run_to_cursor, { desc = "Run to cursor" } },
+  --       { "X", dap.clear_breakpoints, { desc = "Clear breakpoints" } },
+  --       { "T", dap.terminate, { exit = true, nowait = true, desc = "Terminate" } },
+  --       { "J", dap.down, { desc = "Callstack (down)" } },
+  --       { "K", dap.up, { desc = "Callstack (up)" } },
+  --       {
+  --         "e",
+  --         function()
+  --           dap_ui.eval(nil, { enter = true })
+  --         end,
+  --         { desc = "Evaluate at cursor" },
+  --       },
+  --       {
+  --         "E",
+  --         function()
+  --           dap_ui.eval(vim.fn.input("Expression: "), { enter = true })
+  --         end,
+  --         { desc = "Evaluate expression" },
+  --       },
+  --       {
+  --         "?",
+  --         function()
+  --           local widgets = require("dap.ui.widgets")
+  --           widgets.centered_float(widgets.scopes)
+  --         end,
+  --         { exit = true, nowait = true, desc = "exit" },
+  --       },
+  --     },
+  --     config = {
+  --       color = "pink",
+  --       invoke_on_body = true,
+  --       hint = {
+  --         border = shared.window.border,
+  --         position = "bottom-right",
+  --       },
+  --       on_enter = function()
+  --         vim.cmd.mkview()
+  --         vim.cmd("silent! %foldopen!")
+  --         vim.bo.modifiable = false
+  --       end,
+  --       on_exit = function()
+  --         local cursor_pos = vim.api.nvim_win_get_cursor(0)
+  --         vim.cmd.loadview()
+  --         vim.api.nvim_win_set_cursor(0, cursor_pos)
+  --         vim.cmd.normal("zv")
+  --       end,
+  --     },
+  --   })
 end
 
 function M.debuggables(prompt)
@@ -154,7 +154,7 @@ function M.setup()
 
   dap_ui.setup({
     mappings = {
-      expand = { "<CR>", "<Tab>" },
+      expand = { "<cr>", "<tab>" },
     },
     icons = { expanded = "▾", collapsed = "▸" },
     layouts = {
@@ -172,13 +172,65 @@ function M.setup()
       max_height = nil,
       max_width = nil,
       mappings = {
-        close = { "q", "<Esc>" },
+        close = { "q", "<esc>" },
       },
     },
     windows = { indent = 1 },
   })
 
-  setup_bindings()
+  -- setup_hydra_bindings()
+
+  wk.register({
+    ["<leader>"] = {
+      ["t"] = {
+        name = "Toggle",
+        ["D"] = { dap_ui.toggle, "Debug UI" },
+      },
+    },
+
+    ["<leader>d"] = {
+      name = "Debug",
+      ["C"] = { dap.continue, "Continue" },
+      ["o"] = { dap.step_over, "Step over" },
+      ["i"] = { dap.step_into, "Step into" },
+      ["O"] = { dap.step_out, "Step out" },
+      ["d"] = { util.wrap(M.debuggables, false), "Debug", silent = false },
+      ["D"] = { util.wrap(M.debuggables, true), "Debug with args", silent = false },
+      ["n"] = { dap.run_to_cursor, "Run to cursor" },
+      ["R"] = { dap.run_last, "Rerun", silent = false },
+      ["r"] = { dap.restart, "Restart", silent = false },
+      ["q"] = { dap.close, "Close" },
+      ["t"] = { dap.terminate, "Terminate" },
+      ["b"] = { dap.toggle_breakpoint, "Breakpoint" },
+      ["k"] = { dap.up, "Navigate up the callstack" },
+      ["j"] = { dap.down, "Navigate down the callstack" },
+      ["B"] = {
+        function()
+          dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+        end,
+        "Conditional breakpoint",
+      },
+      ["e"] = {
+        function()
+          dap_ui.eval(nil, { enter = true })
+        end,
+        "Evaluate",
+      },
+      ["E"] = {
+        function()
+          dap_ui.eval(vim.fn.input("Expression: "), { enter = true })
+        end,
+        "Evaluate expression",
+      },
+      ["?"] = {
+        function()
+          local widgets = require("dap.ui.widgets")
+          widgets.centered_float(widgets.scopes)
+        end,
+        "Evaluate current scope",
+      },
+    },
+  })
 end
 
 return M
