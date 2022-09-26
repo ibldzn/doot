@@ -6,6 +6,21 @@ local shared = require("shared")
 
 function M.setup()
   ccc.setup({
+    highlighter = {
+      excludes = {
+        "NvimTree",
+        "alpha",
+        "dapui_breakpoints",
+        "dapui_hover",
+        "dapui_repl",
+        "dapui_scopes",
+        "dapui_stacks",
+        "help",
+        "lspinfo",
+        "mason",
+        "packer",
+      },
+    },
     win_opts = {
       border = shared.window.border,
     },
