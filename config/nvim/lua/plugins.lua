@@ -66,7 +66,7 @@ local plugins = {
 
   ["nvim-treesitter/nvim-treesitter"] = {
     after = "nvim-treesitter-textobjects",
-    run = ":TSUpdate",
+    run = vim.cmd.TSUpdate,
     config = function()
       require("configs.treesitter").setup()
     end,

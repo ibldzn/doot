@@ -60,7 +60,7 @@ function M.setup()
 
     ["<leader>t"] = {
       name = "Toggle",
-      ["r"] = { ":TroubleToggle<cr>", "Toggle list UI" },
+      ["r"] = { vim.cmd.TroubleToggle, "Toggle list UI" },
     },
     ["g"] = {
       name = "Go",

@@ -98,7 +98,7 @@ function M.on_attach(client, buf)
 
   wk.register({
     ["<leader>"] = {
-      ["a"] = { ":lua vim.lsp.buf.range_code_action()<cr>", "Range code action" },
+      ["a"] = { vim.lsp.buf.range_code_action, "Range code action" },
     },
   }, {
     mode = "x",
@@ -184,12 +184,12 @@ function M.setup()
     ["K"] = { M.show_documentation, "Show documentation" },
     ["<leader>i"] = {
       name = "Lsp",
-      ["s"] = { ":LspStart<cr>", "Start" },
-      ["r"] = { ":LspRestart<cr>", "Restart" },
-      ["t"] = { ":LspStop<cr>", "Stop" },
-      ["i"] = { ":LspInfo<cr>", "Info" },
-      ["I"] = { ":Mason<cr>", "Install Info" },
-      ["l"] = { ":MasonLog<cr>", "Install Log" },
+      ["s"] = { vim.cmd.LspStart, "Start" },
+      ["r"] = { vim.cmd.LspRestart, "Restart" },
+      ["t"] = { vim.cmd.LspStop, "Stop" },
+      ["i"] = { vim.cmd.LspInfo, "Info" },
+      ["I"] = { vim.cmd.Mason, "Install Info" },
+      ["l"] = { vim.cmd.MasonLog, "Install Log" },
     },
   })
 end

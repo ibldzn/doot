@@ -7,7 +7,7 @@ function M.setup()
     ["<leader>g"] = {
       name = "Git",
       ["g"] = { ":0G<CR>", "Menu" },
-      ["cd"] = { ":Gcd<CR>", "CD to git root" },
+      ["cd"] = { vim.cmd.Gcd, "CD to git root" },
     },
   })
 end

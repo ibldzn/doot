@@ -15,29 +15,29 @@ function M.setup()
   })
 
   wk.register({
-    ["<Tab>"] = { ":BufferNext<CR>", "Next buffer" },
-    ["<S-Tab>"] = { ":BufferPrevious<CR>", "Previous buffer" },
+    ["<Tab>"] = { vim.cmd.BufferNext, "Next buffer" },
+    ["<S-Tab>"] = { vim.cmd.BufferPrevious, "Previous buffer" },
   })
 
   wk.register({
     ["<leader>b"] = {
       name = "Buffer",
-      ["w"] = { ":BufferWipeout<CR>", "Wipeout" },
-      ["x"] = { ":BufferClose<CR>", "Close" },
-      ["X"] = { ":BufferCloseAllButCurrentOrPinned<CR>", "Close all but current/pinned" },
-      ["p"] = { ":BufferPick<CR>", "Pick" },
-      ["P"] = { ":BufferPin<CR>", "Pin" },
+      ["w"] = { vim.cmd.BufferWipeout, "Wipeout" },
+      ["x"] = { vim.cmd.BufferClose, "Close" },
+      ["X"] = { vim.cmd.BufferCloseAllButCurrentOrPinned, "Close all but current/pinned" },
+      ["p"] = { vim.cmd.BufferPick, "Pick" },
+      ["P"] = { vim.cmd.BufferPin, "Pin" },
 
       ["s"] = {
         name = "Sort",
-        ["d"] = { ":BufferOrderByDirectory<CR>", "By directory" },
-        ["l"] = { ":BufferOrderByLanguage<CR>", "By language" },
+        ["d"] = { vim.cmd.BufferOrderByDirectory, "By directory" },
+        ["l"] = { vim.cmd.BufferOrderByLanguage, "By language" },
       },
 
       ["m"] = {
         name = "Move",
-        ["h"] = { ":BufferMovePrevious<CR>", "Left" },
-        ["l"] = { ":BufferMoveNext<CR>", "Right" },
+        ["h"] = { vim.cmd.BufferMovePrevious, "Left" },
+        ["l"] = { vim.cmd.BufferMoveNext, "Right" },
       },
     },
   })

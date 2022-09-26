@@ -30,11 +30,11 @@ function M.setup()
   wk.register({
     ["<leader>p"] = {
       name = "Packer",
-      ["c"] = { ":PackerCompile<cr>", "Compile" },
-      ["i"] = { ":PackerInstall<cr>", "Install" },
-      ["s"] = { ":PackerSync<cr>", "Sync" },
-      ["S"] = { ":PackerStatus<cr>", "Status" },
-      ["u"] = { ":PackerUpdate<cr>", "Update" },
+      ["c"] = { vim.cmd.PackerCompile, "Compile" },
+      ["i"] = { vim.cmd.PackerInstall, "Install" },
+      ["s"] = { vim.cmd.PackerSync, "Sync" },
+      ["S"] = { vim.cmd.PackerStatus, "Status" },
+      ["u"] = { vim.cmd.PackerUpdate, "Update" },
       ["b"] = { snapshot, "Backup (snapshot)" },
     },
   })

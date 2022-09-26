@@ -102,7 +102,7 @@ function M.setup()
   wk.register({
     ["<leader>t"] = {
       name = "Toggle",
-      ["t"] = { ":TSPlaygroundToggle<cr>", "Treesitter playground" },
+      ["t"] = { vim.cmd.TSPlaygroundToggle, "Treesitter playground" },
     },
   })
 end

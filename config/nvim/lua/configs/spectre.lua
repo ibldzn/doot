@@ -1,5 +1,6 @@
 local spectre = require("spectre")
 local wk = require("which-key")
+local util = require("util")
 
 local M = {}
 
@@ -58,8 +59,8 @@ function M.setup()
     ["<leader>"] = {
       ["s"] = {
         name = "Search/Replace",
-        ["p"] = { ":lua require('spectre').open_visual()<cr>", "Project" },
-        ["f"] = { ":lua require('spectre').open_visual({ path = vim.fn.expand('%') })<cr>", "File" },
+        ["p"] = { spectre.open_visual, "Project" },
+        ["f"] = { util.wrap(spectre.open_visual, { path = vim.fn.expand("%") }), "File" },
       },
     },
   }, {

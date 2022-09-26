@@ -49,7 +49,7 @@ function M.setup()
   })
 
   wk.register({
-    ["<leader>w"] = { ":WhichKey<cr>", "Which key?" },
+    ["<leader>w"] = { vim.cmd.WhichKey, "Which key?" },
   })
 end
 
