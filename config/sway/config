@@ -51,6 +51,8 @@ bindsym $mod+Space   exec $menu
 bindsym $mod+Return  exec $term
 bindsym $mod+Shift+r reload
 
+bindsym $mod+w       exec ~/.config/sway/scripts/sway-list-windows.py
+
 bindsym $mod+x       exec ~/.config/sway/scripts/grimshot --notify save screen
 bindsym $mod+Alt+x   exec ~/.config/sway/scripts/grimshot --notify save window
 bindsym $mod+Shift+x exec ~/.config/sway/scripts/grimshot --notify save area
