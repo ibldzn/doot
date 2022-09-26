@@ -70,6 +70,7 @@ tlp                       # linux advanced power management
 ttf-cascadia-code         # a monospaced font by microsoft that includes programming ligatures
 udiskie                   # removable disk automounter using udisks
 udisks2                   # disk management service, version 2
+unrar                     # the rar uncompression program
 unzip                     # for extracting and viewing files in .zip archives
 waybar                    # highly customizable wayland bar for sway and wlroots based compositors
 wl-clipboard              # command-line copy/paste utilities for wayland
