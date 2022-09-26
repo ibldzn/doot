@@ -64,8 +64,12 @@ local plugins = {
     after = "playground",
   },
 
-  ["nvim-treesitter/nvim-treesitter"] = {
+  ["JoosepAlviste/nvim-ts-context-commentstring"] = {
     after = "nvim-treesitter-textobjects",
+  },
+
+  ["nvim-treesitter/nvim-treesitter"] = {
+    after = "nvim-ts-context-commentstring",
     run = vim.cmd.TSUpdate,
     config = function()
       require("configs.treesitter").setup()

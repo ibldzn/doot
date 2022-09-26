@@ -79,6 +79,10 @@ function M.setup()
           ["<leader>K"] = "@class.outer",
         },
       },
+      context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+      },
     },
   })
 
