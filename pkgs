@@ -1,4 +1,5 @@
 # awk '/^[^#]/ {print $1}' pkgs | yay -S --needed -
+# grep '^[^#]' pkgs | cut -d' ' -f1 | yay -S --needed -
 
 alacritty                 # a cross-platform, gpu-accelerated terminal emulator
 bat                       # cat clone with syntax highlighting and git integration
@@ -67,6 +68,7 @@ sway                      # tiling wayland compositor and replacement for the i3
 swaybg                    # wallpaper tool for wayland compositors
 swaylock                  # screen locker for wayland
 tlp                       # linux advanced power management
+tmux                      # a terminal multiplexer
 ttf-cascadia-code         # a monospaced font by microsoft that includes programming ligatures
 udiskie                   # removable disk automounter using udisks
 udisks2                   # disk management service, version 2
