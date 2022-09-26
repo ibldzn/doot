@@ -63,7 +63,7 @@ function M.setup()
 
   dap_ui.setup({
     mappings = {
-      expand = { "<cr>", "<tab>" },
+      expand = { "<CR>", "<Tab>" },
     },
     icons = { expanded = "▾", collapsed = "▸" },
     layouts = {
@@ -81,7 +81,7 @@ function M.setup()
       max_height = nil,
       max_width = nil,
       mappings = {
-        close = { "q", "<esc>" },
+        close = { "q", "<Esc>" },
       },
     },
     windows = { indent = 1 },

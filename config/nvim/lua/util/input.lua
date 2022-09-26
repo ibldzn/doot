@@ -42,35 +42,35 @@ function M.input(text, insert, callback)
   vim.api.nvim_buf_set_keymap(
     M.buf,
     "n",
-    "<cr>",
+    "<CR>",
     "",
     { callback = M.submit, noremap = true, silent = true }
   )
   vim.api.nvim_buf_set_keymap(
     M.buf,
     "v",
-    "<cr>",
+    "<CR>",
     "",
     { callback = M.submit, noremap = true, silent = true }
   )
   vim.api.nvim_buf_set_keymap(
     M.buf,
     "i",
-    "<cr>",
+    "<CR>",
     "",
     { callback = M.submit, noremap = true, silent = true }
   )
   vim.api.nvim_buf_set_keymap(
     M.buf,
     "i",
-    "<esc>",
+    "<Esc>",
     "",
     { callback = M.hide, noremap = true, silent = true }
   )
   vim.api.nvim_buf_set_keymap(
     M.buf,
     "n",
-    "<esc>",
+    "<Esc>",
     "",
     { callback = M.hide, noremap = true, silent = true }
   )

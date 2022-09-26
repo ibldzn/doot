@@ -104,7 +104,7 @@ function M.select(items, opts, on_choice)
   M.win = vim.api.nvim_open_win(M.buf, false, win_opts)
 
   -- key mappings
-  vim.api.nvim_buf_set_keymap(M.buf, "n", "<cr>", "", {
+  vim.api.nvim_buf_set_keymap(M.buf, "n", "<CR>", "", {
     callback = util.wrap(M.confirm),
     noremap = true,
     silent = true,
@@ -119,7 +119,7 @@ function M.select(items, opts, on_choice)
   vim.api.nvim_buf_set_keymap(
     M.buf,
     "n",
-    "<esc>",
+    "<Esc>",
     "",
     { callback = M.cancel, noremap = true, silent = true }
   )

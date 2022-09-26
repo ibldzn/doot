@@ -34,7 +34,7 @@ function M.setup()
     ["<C-s>"] = { vim.cmd.w, "Save file" },
     ["<C-q>"] = { "<C-w>q<CR>", "Close window" },
     ["<C-t>"] = { vim.cmd.te, "Open terminal" },
-    ["<ESC>"] = { vim.cmd.nohl, "Clear search highlights" },
+    ["<Esc>"] = { vim.cmd.nohl, "Clear search highlights" },
     ["<leader>"] = {
       ["x"] = { ":bd!<CR>", "Delete current buffer" },
       ["X"] = { ":%bd|e#|bd#<CR>", "Delete all buffer except current one" },
@@ -48,9 +48,9 @@ function M.setup()
           end,
           "Formatting",
         },
-        ["l"] = { ":set list!<cr>", "Listchars" },
-        ["s"] = { ":set spell!<cr>", "Spelling" },
-        ["w"] = { ":set wrap!<cr>", "Wrapping" },
+        ["l"] = { ":set list!<CR>", "Listchars" },
+        ["s"] = { ":set spell!<CR>", "Spelling" },
+        ["w"] = { ":set wrap!<CR>", "Wrapping" },
       },
     },
     ["gx"] = {
@@ -75,11 +75,11 @@ function M.setup()
   })
 
   wk.register({
-    ["<C-s>"] = { "<ESC>:w<CR>a", "Save file" },
+    ["<C-s>"] = { "<Esc>:w<CR>a", "Save file" },
 
     ["<C-v>"] = { "<C-r>+", "Paste system clipboard" },
 
-    ["<C-a>"] = { "<ESC>^i", "Move to the beginning of the line" },
+    ["<C-a>"] = { "<Esc>^i", "Move to the beginning of the line" },
     ["<C-e>"] = { "<End>", "Move to the end of the line" },
 
     ["<C-h>"] = { "<Left>", "Move left" },
@@ -89,8 +89,8 @@ function M.setup()
   }, { mode = "i" })
 
   wk.register({
-    ["<A-u>"] = { "<ESC>:m .-2<CR>==gi", "Move current line up" },
-    ["<A-d>"] = { "<ESC>:m .+1<CR>==gi", "Move current line down" },
+    ["<A-u>"] = { "<Esc>:m .-2<CR>==gi", "Move current line up" },
+    ["<A-d>"] = { "<Esc>:m .+1<CR>==gi", "Move current line down" },
   }, { mode = "i" })
 
   wk.register({

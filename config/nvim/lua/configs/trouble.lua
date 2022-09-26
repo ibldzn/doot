@@ -56,7 +56,7 @@ function M.setup()
   })
 
   wk.register({
-    ["<A-LeftMouse>"] = { "<LeftMouse>:Trouble lsp_type_definitions<cr>", "LSP type definition" },
+    ["<A-LeftMouse>"] = { "<LeftMouse>:Trouble lsp_type_definitions<CR>", "LSP type definition" },
 
     ["<leader>t"] = {
       name = "Toggle",
