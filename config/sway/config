@@ -18,7 +18,12 @@ set $left  h
 set $down  j
 set $up    k
 set $right l
-set $menu  wofi --insensitive --show drun -I -G | xargs swaymsg exec --
+set $menu  \
+    wofi \
+    --insensitive \
+    --allow-images \
+    --gtk-dark \
+    --show drun | xargs swaymsg exec --
 
 output * bg ~/dot/papes/hollow-knight.png fill
 
