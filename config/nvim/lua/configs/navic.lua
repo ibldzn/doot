@@ -22,6 +22,7 @@ function M.setup()
     "NvimTree",
     "TelescopePrompt",
     "alpha",
+    "ccc-ui",
     "dapui_breakpoints",
     "dapui_hover",
     "dapui_repl",

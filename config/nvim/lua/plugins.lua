@@ -45,7 +45,7 @@ local plugins = {
     end,
   },
 
-  ["norcalli/nvim-colorizer.lua"] = {
+  ["uga-rosa/ccc.nvim"] = {
     event = "BufRead",
     config = function()
       require("configs.colorizer").setup()

@@ -1,14 +1,24 @@
 local M = {}
 
-local colorizer = require("colorizer")
+local ccc = require("ccc")
 local wk = require("which-key")
+local shared = require("shared")
 
 function M.setup()
-  colorizer.setup({})
+  ccc.setup({
+    win_opts = {
+      border = shared.window.border,
+    },
+  })
+
+  vim.cmd.CccHighlighterEnable()
+
   wk.register({
-    ["<leader>t"] = {
-      name = "Toggle",
-      ["C"] = { ":ColorizerToggle<cr>", "Colorizer" },
+    ["<leader>c"] = {
+      name = "Colorizer",
+      ["t"] = { vim.cmd.CccHighlighterToggle, "Toggle" },
+      ["p"] = { vim.cmd.CccPick, "Pick" },
+      ["c"] = { vim.cmd.CccConvert, "Convert" },
     },
   }, { mode = "n" })
 end

@@ -22,7 +22,7 @@ function M.setup()
   wk.register({
     ["<leader>t"] = {
       name = "Toggle",
-      ["c"] = { ":CheatSH<CR>", "Cheat sheet" },
+      ["C"] = { ":CheatSH<CR>", "Cheat sheet" },
     },
   })
 end
