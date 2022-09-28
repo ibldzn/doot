@@ -22,7 +22,7 @@ function M.setup()
   wk.register({
     ["<leader>t"] = {
       name = "Toggle",
-      ["C"] = { vim.cmd.CheatSH, "Cheat sheet" },
+      ["c"] = { vim.cmd.CheatSH, "Cheat sheet" },
     },
   })
 end
