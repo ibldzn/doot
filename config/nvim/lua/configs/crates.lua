@@ -16,7 +16,7 @@ function M.setup()
   })
 
   wk.register({
-    ["<leader>c"] = {
+    ["<leader>C"] = {
       name = "Crates",
       ["t"] = { crates.toggle, "Toggle" },
       ["r"] = { crates.reload, "Reload" },
@@ -36,8 +36,9 @@ function M.setup()
       ["C"] = { crates.open_crates_io, "Open crates.io" },
     },
   })
+
   wk.register({
-    ["<leader>c"] = {
+    ["<leader>C"] = {
       name = "Crates",
       ["u"] = { crates.update_crates, "Update selected crates" },
       ["U"] = { crates.upgrade_crates, "Upgrade selected crates" },

@@ -30,7 +30,7 @@ function M.setup()
 
   wk.register({
     ["<leader>c"] = {
-      name = "Colorizer",
+      name = "Ccc",
       ["t"] = { vim.cmd.CccHighlighterToggle, "Toggle" },
       ["p"] = { vim.cmd.CccPick, "Pick" },
       ["c"] = { vim.cmd.CccConvert, "Convert" },
