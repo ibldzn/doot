@@ -8,7 +8,6 @@ breeze-gtk                # breeze widget theme for gtk 2 and 3
 brightnessctl             # lightweight brightness control tool
 clang                     # c language family frontend for llvm
 cmake                     # a cross-platform open-source make system
-cmake-language-server     # python based cmake language server
 delve                     # a debugger for the go programming language.
 dunst                     # customizable and lightweight notification-daemon
 exa                       # ls replacement
@@ -98,6 +97,7 @@ zsh-syntax-highlighting   # fish shell like syntax highlighting for zsh
 
 # AUR
 autotiling                # script for sway and i3 to automatically switch the horizontal / vertical window split orientation
+cmake-language-server     # python based cmake language server
 neovim-git                # fork of vim aiming to improve user experience, plugins, and guis.
 nerd-fonts-jetbrains-mono # a nerd font patched version of jetbrains mono
 nerd-fonts-noto-sans-mono # standard variants of noto sans mono patched with nerd fonts.
