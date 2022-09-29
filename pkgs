@@ -1,4 +1,3 @@
-# vim: set ft=conf:
 # awk '/^[^#]/ {print $1}' pkgs | yay -S --needed -
 
 alacritty                 # a cross-platform, gpu-accelerated terminal emulator
