@@ -1,18 +1,24 @@
+# vim: set ft=conf:
 # awk '/^[^#]/ {print $1}' pkgs | yay -S --needed -
-# grep '^[^#]' pkgs | cut -d' ' -f1 | yay -S --needed -
 
 alacritty                 # a cross-platform, gpu-accelerated terminal emulator
 bat                       # cat clone with syntax highlighting and git integration
+bluez                     # daemons for the bluetooth protocol stack
+bluez-utils               # development and debugging utilities for the bluetooth protocol stack
 breeze-gtk                # breeze widget theme for gtk 2 and 3
+brightnessctl             # lightweight brightness control tool
 clang                     # c language family frontend for llvm
 cmake                     # a cross-platform open-source make system
+cmake-language-server     # python based cmake language server
 delve                     # a debugger for the go programming language.
 dunst                     # customizable and lightweight notification-daemon
 exa                       # ls replacement
+extra-cmake-modules       # extra modules and scripts for cmake
 fcitx5-im                 # fcitx5 input method
 fcitx5-mozc               # fcitx5 module of a japanese input method for chromium os, windows, mac and linux (the open source edition of google japanese input)
 fd                        # simple, fast and user-friendly alternative to find
 feh                       # fast and light imlib2-based image viewer
+ffmpegthumbnailer         # lightweight video thumbnailer that can be used by file managers
 firefox                   # standalone web browser from mozilla.org
 fzf                       # command-line fuzzy finder
 git                       # the fast distributed version control system
@@ -44,6 +50,8 @@ noto-fonts-emoji          # google noto emoji fonts
 noto-fonts-extra          # google noto ttf fonts - additional variants
 npm                       # a package manager for javascript
 p7zip                     # command-line file archiver with high compression ratio
+pavucontrol               # pulseaudio volume control
+pcmanfm                   # extremely fast and lightweight file manager
 pipewire                  # low-latency audio/video router and processor
 pipewire-alsa             # low-latency audio/video router and processor - alsa configuration
 pipewire-jack             # low-latency audio/video router and processor - jack support
@@ -67,6 +75,7 @@ stylua                    # code formatter for lua
 sway                      # tiling wayland compositor and replacement for the i3 window manager
 swaybg                    # wallpaper tool for wayland compositors
 swaylock                  # screen locker for wayland
+syncthing                 # open source continuous replication / cluster synchronization thing
 tlp                       # linux advanced power management
 tmux                      # a terminal multiplexer
 ttf-cascadia-code         # a monospaced font by microsoft that includes programming ligatures
@@ -75,9 +84,12 @@ udisks2                   # disk management service, version 2
 unrar                     # the rar uncompression program
 unzip                     # for extracting and viewing files in .zip archives
 waybar                    # highly customizable wayland bar for sway and wlroots based compositors
+wine                      # a compatibility layer for running windows programs
+wine-mono                 # wine's built-in replacement for microsoft's .net framework
 wl-clipboard              # command-line copy/paste utilities for wayland
 xdg-desktop-portal        # desktop integration portals for sandboxed apps
 xdg-desktop-portal-wlr    # xdg-desktop-portal backend for wlroots
+xdg-user-dirs             # manage user directories like ~/desktop and ~/music
 zathura                   # minimalistic document viewer
 zathura-pdf-mupdf         # pdf support for zathura (mupdf backend) (supports pdf, epub, and openxps)
 zellij                    # a terminal multiplexer
