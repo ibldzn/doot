@@ -309,6 +309,20 @@ go-init () {
 ch () {
     curl -fsSL "https://cheat.sh/$1"
 }
+
+wf () {
+    local file="${1:?File name is required}"
+    shift
+    [ -f "$file" ] || {
+        echo "$file is not a valid file!" >&2 
+        return 1
+    }
+    tail -f "$file" | bat --paging=never "$@"
+}
+
+help() {
+    "$@" --help 2>&1 | bat --plain --language=help
+}
 # End Functions
 
 # Begin Aliases
