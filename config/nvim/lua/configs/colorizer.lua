@@ -26,7 +26,7 @@ function M.setup()
     },
   })
 
-  vim.cmd.CccHighlighterEnable()
+  vim.defer_fn(vim.cmd.CccHighlighterEnable, 0)
 
   wk.register({
     ["<leader>c"] = {
