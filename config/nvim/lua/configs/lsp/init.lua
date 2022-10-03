@@ -65,6 +65,10 @@ function M.on_attach(client, buf)
     })
   end
 
+  if client.supports_method("textDocument/colorProvider") then
+    vim.cmd.CccHighlighterEnable()
+  end
+
   wk.register({
     ["<S-A-f>"] = { util.wrap(util.format_buffer, { force = true }), "Format current buffer" },
     ["<S-A-k>"] = { vim.lsp.buf.signature_help, "Signature help" },
