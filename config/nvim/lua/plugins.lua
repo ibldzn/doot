@@ -131,6 +131,7 @@ function M.setup()
 
       use({
         "williamboman/mason.nvim",
+        after = "mason-lspconfig.nvim",
         requires = "williamboman/mason-lspconfig.nvim",
         config = function()
           require("configs.mason").setup()
@@ -139,6 +140,7 @@ function M.setup()
 
       use({
         "neovim/nvim-lspconfig",
+        after = "mason.nvim",
         config = function()
           require("configs.lsp").setup()
         end,
