@@ -99,6 +99,10 @@ local function lsp_indicator()
   return spinners[frame + 1]
 end
 
+local function get_matchup()
+  return vim.fn.MatchupStatusOffscreen()
+end
+
 function M.setup()
   local colors = require("colors.mineauto")
   local theme = colors.lualine
@@ -127,6 +131,7 @@ function M.setup()
           path = 1,
           symbols = filename_symbols,
         },
+        { get_matchup },
       },
       lualine_x = { lsp_indicator, "filetype", fileformat, "encoding" },
       lualine_y = {

@@ -51,6 +51,13 @@ function M.setup()
       enable = true,
       additional_vim_regex_highlighting = false,
     },
+    matchup = {
+      enable = true,
+    },
+    context_commentstring = {
+      enable = true,
+      enable_autocmd = false,
+    },
     textobjects = {
       select = {
         enable = true,
@@ -78,10 +85,6 @@ function M.setup()
           ["<leader>k"] = "@function.outer",
           ["<leader>K"] = "@class.outer",
         },
-      },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
       },
     },
   })

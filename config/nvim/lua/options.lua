@@ -7,10 +7,11 @@ function M.setup()
   vim.g.python3_host_prog = "/bin/python3"
   vim.g.neovide_refresh_rate = 144
 
+  vim.g.mapleader = " "
   vim.g.format_on_save = true
   vim.g.user_emmet_leader_key = ","
   vim.g.user_emmet_install_global = 0
-  vim.g.mapleader = " "
+  vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
 
   -----------------------------------------------------------
   -- General
