@@ -53,6 +53,7 @@ function M.setup()
         ["w"] = { ":set wrap!<CR>", "Wrapping" },
       },
     },
+    ["_"] = { '"_', "Black hole" },
     ["gx"] = {
       function()
         -- Basic URL opener
@@ -104,6 +105,7 @@ function M.setup()
     ["<A-d>"] = { ":m'>+1<CR>gv=gv", "Move current line down" },
     ["<"] = { "<gv", "Un-indent line(s)" },
     [">"] = { ">gv", "Indent line(s)" },
+    ["_"] = { '"_', "Black hole" },
   }, { mode = "v" })
 
   wk.register({
