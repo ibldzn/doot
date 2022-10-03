@@ -129,31 +129,33 @@ function M.show_documentation()
   end
 end
 
+M.servers = {
+  "bashls",
+  "clangd",
+  "cmake",
+  "cssls",
+  "gopls",
+  "html",
+  "jdtls",
+  "jsonls",
+  "pyright",
+  "rust_analyzer",
+  "sumneko_lua",
+  "tailwindcss",
+  "tsserver",
+}
+
 function M.setup()
   vim.notify = function(msg, ...)
     if not msg:find("method textDocument/documentHighlight is not supported") then
       return VIM_NOTIFY(msg, ...)
     end
   end
-  local lspconfig = require("lspconfig")
-  -- Client capabilities
-  local capabilities = M.get_capabilities()
-  local servers = {
-    "clangd",
-    "sumneko_lua",
-    "gopls",
-    "tsserver",
-    "bashls",
-    "cmake",
-    "pyright",
-    -- "rust_analyzer",
-    "cssls",
-    "html",
-    "jsonls",
-    -- "jdtls",
-  }
 
-  for _, server in ipairs(servers) do
+  local lspconfig = require("lspconfig")
+  local capabilities = M.get_capabilities()
+
+  for _, server in ipairs(M.servers) do
     local ok, sv = pcall(require, "configs.lsp.servers." .. server)
     if ok then
       sv.setup(lspconfig[server], M.on_init, M.on_attach, capabilities)
