@@ -147,7 +147,7 @@ M.servers = {
 
 function M.setup()
   vim.notify = function(msg, ...)
-    if not msg:find("method textDocument/documentHighlight is not supported") then
+    if not msg:find("No information available") then
       return VIM_NOTIFY(msg, ...)
     end
   end
