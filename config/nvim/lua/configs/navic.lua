@@ -31,6 +31,7 @@ function M.setup()
     "help",
     "lspinfo",
     "mason",
+    "notify",
     "packer",
   }
 
