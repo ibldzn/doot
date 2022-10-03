@@ -1,5 +1,7 @@
 local M = {}
 
+local util = require("util")
+
 function M.setup()
   -- vim.g.loaded_python3_provider = 0
   vim.g.python3_host_prog = "/bin/python3"
@@ -11,23 +13,19 @@ function M.setup()
   vim.g.mapleader = " "
 
   -----------------------------------------------------------
-  -- Encodings
-  -----------------------------------------------------------
-  vim.opt.encoding = "utf-8"
-  vim.opt.fileencoding = "utf-8"
-  vim.opt.fileencodings = "utf-8"
-
-  -----------------------------------------------------------
   -- General
   -----------------------------------------------------------
   vim.opt.guifont = "monospace:h11"
   vim.opt.mouse = "a"
   vim.opt.swapfile = false
+  vim.opt.undolevels = 1000
+  vim.opt.undodir = util.join_paths(vim.fn.stdpath("data"), "undo")
+  vim.opt.undofile = true
   vim.opt.clipboard = "unnamedplus"
   vim.opt.backspace = "indent,eol,start"
   vim.opt.signcolumn = "yes:2"
   vim.opt.compatible = false
-  vim.opt.completeopt = "menuone,noinsert,noselect"
+  vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
   vim.opt.confirm = true
   vim.opt.title = true
   vim.opt.showbreak = "⮡   "
@@ -78,7 +76,6 @@ function M.setup()
   -----------------------------------------------------------
   vim.opt.hidden = true
   vim.opt.history = 100
-  vim.opt.lazyredraw = true
   vim.opt.synmaxcol = 240
   vim.opt.updatetime = 700 -- ms to wait for trigger an event
   vim.opt.shortmess:append("sI")
