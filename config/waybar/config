@@ -1,3 +1,4 @@
+// vim: set ft=jsonc:
 {
     "layer": "top",
     "position": "top",
@@ -5,68 +6,31 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["clock"],
-    "modules-right": ["network", "pulseaudio", "cpu", "memory", "backlight", "battery"],
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
-    "sway/mode": {
-        "format": "{}"
-    },
-    "idle_inhibitor": {
+    "modules-left": ["wlr/workspaces", "sway/workspaces"],
+    "modules-center": [],
+    "modules-right": ["network", "pulseaudio", "backlight", "battery", "clock", "clock#hour"],
+    "wlr/workspaces": {
         "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+        "format-active": "{icon}",
+        "on-click": "activate",
+        "all-outputs": true
     },
-    "clock": {
-        "locale": "ja_JP.UTF-8",
-        "format": "{:%a|%m月%d日|%R}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "cpu": {
-        "format": "{usage}% "
-        // "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+    "sway/workspaces": {
+        "all-outputs": true
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", ""]
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "clock": {
+        "locale": "ja_JP.UTF-8",
+        "format": "{:%x}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "clock#hour": {
+        "locale": "ja_JP.UTF-8",
+        "format": "{:%p %R}"
     },
     "battery": {
         "states": {
@@ -74,26 +38,21 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "{icon} {capacity}%",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
+        "format-icons": ["", "", "", "", ""]
     },
     "network": {
         // "interface": "*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-wifi": "  {essid}",
+        "format-ethernet": "  {ipaddr}/{cidr}",
         // "tooltip-format": "{ifname} via {gwaddr} ",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
+        "format-linked": "  {ifname} (No IP)",
+        "format-disconnected": "⚠  Disconnected",
+        "format-alt": "{bandwidthUpBytes}   {bandwidthDownBytes}  ",
         "interval": 1
     },
     "pulseaudio": {
