@@ -12,11 +12,7 @@
     "wlr/workspaces": {
         "format": "{icon}",
         "format-active": "{icon}",
-        "on-click": "activate",
-        "all-outputs": true
-    },
-    "sway/workspaces": {
-        "all-outputs": true
+        "on-click": "activate"
     },
     "backlight": {
         // "device": "acpi_video1",
