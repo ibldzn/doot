@@ -35,7 +35,19 @@ function M.setup()
 
   autocmd("TermOpen", {
     group = augroup("TermOptions", { clear = true }),
-    command = "setlocal listchars= nonumber norelativenumber nocursorline signcolumn=no | startinsert",
+    callback = function()
+      local opts = {
+        listchars = nil,
+        number = false,
+        relativenumber = false,
+        cursorline = false,
+        signcolumn = "no",
+      }
+      for opt, val in pairs(opts) do
+        vim.opt_local[opt] = val
+      end
+      vim.cmd.startinsert({ bang = true })
+    end,
   })
 end
 
