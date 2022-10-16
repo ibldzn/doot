@@ -53,7 +53,6 @@ function M.setup()
         ["w"] = { ":set wrap!<CR>", "Wrapping" },
       },
     },
-    ["_"] = { '"_', "Black hole" },
     ["gx"] = {
       function()
         -- Basic URL opener
