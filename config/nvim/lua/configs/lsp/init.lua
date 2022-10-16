@@ -106,7 +106,7 @@ function M.on_attach(client, buf)
 
   wk.register({
     ["<leader>"] = {
-      ["a"] = { vim.lsp.buf.range_code_action, "Range code action" },
+      ["a"] = { vim.lsp.buf.code_action, "Range code action" },
     },
   }, {
     mode = "x",
