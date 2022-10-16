@@ -104,8 +104,12 @@ function M.setup()
     ["<A-d>"] = { ":m'>+1<CR>gv=gv", "Move current line down" },
     ["<"] = { "<gv", "Un-indent line(s)" },
     [">"] = { ">gv", "Indent line(s)" },
-    ["_"] = { '"_', "Black hole" },
   }, { mode = "v" })
+
+  wk.register({
+    -- Do not override register after (p)asting in visual mode, see `:h v_P`
+    ["p"] = { "P", "Paste" },
+  }, { mode = "x" })
 
   wk.register({
     ["<C-x>"] = { termcodes("<C-\\><C-N>"), "Escape terminal mode" },
