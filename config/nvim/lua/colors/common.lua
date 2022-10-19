@@ -38,9 +38,11 @@ function M.highlights(pal)
     Folded          = { fg=pal.folded,   bg=pal.folded_bg,  style="none" },
 
     -- treesitter
-    TSProperty      = { fg=pal.lcyan,                       style="bold" },
-    TSInclude       = { fg=pal.lyellow,                                  },
-    TSNamespace     = { fg=pal.preproc,                                  },
+    ["@property"]      = { fg=pal.lcyan,                       style="bold" },
+    ["@include"]       = { fg=pal.lyellow,                                  },
+    ["@preproc"]       = { fg=pal.lyellow,                                  },
+    ["@define"]        = { fg=pal.lyellow,                                  },
+    ["@namespace"]     = { fg=pal.preproc,                                  },
 
     -- cmp
     CmpItemMenuDefault      = { fg=pal.text3,   style="italic" },
