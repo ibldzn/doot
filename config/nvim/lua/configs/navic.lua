@@ -83,7 +83,7 @@ function M.setup()
   }, {
     group = vim.api.nvim_create_augroup("Navic", { clear = true }),
     callback = function()
-      if vim.tbl_contains(excluded_filetypes, vim.bo.filetype) then
+      if vim.fn.expand("%:t") == "" or vim.tbl_contains(excluded_filetypes, vim.bo.filetype) then
         vim.wo.winbar = nil
         return
       end
