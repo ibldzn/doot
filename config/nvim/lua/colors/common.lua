@@ -38,14 +38,14 @@ function M.highlights(pal)
     Folded          = { fg=pal.folded,   bg=pal.folded_bg,  style="none" },
 
     -- treesitter
-    ["@property"]      = { fg=pal.lcyan,                       style="bold" },
-    ["@include"]       = { fg=pal.lyellow,                                  },
-    ["@preproc"]       = { fg=pal.lyellow,                                  },
-    ["@define"]        = { fg=pal.lyellow,                                  },
-    ["@namespace"]     = { fg=pal.preproc,                                  },
-    ["@tag"]           = { fg=pal.lyellow,                     style="bold" },
-    ["@tag.attribute"] = { link="Identifier",                               },
-    ["@tag.delimiter"] = { link="Delimiter"                                 },
+    ["@property"]      = { fg=pal.lcyan,                        },
+    ["@include"]       = { fg=pal.lyellow,                      },
+    ["@preproc"]       = { fg=pal.lyellow,                      },
+    ["@define"]        = { fg=pal.lyellow,                      },
+    ["@namespace"]     = { fg=pal.preproc,                      },
+    ["@tag"]           = { fg=pal.lyellow,                      },
+    ["@tag.attribute"] = { link="Identifier",                   },
+    ["@tag.delimiter"] = { link="Delimiter"                     },
 
     -- cmp
     CmpItemMenuDefault      = { fg=pal.text3,   style="italic" },
