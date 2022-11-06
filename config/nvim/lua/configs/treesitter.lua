@@ -58,6 +58,9 @@ function M.setup()
       enable = true,
       enable_autocmd = false,
     },
+    playground = {
+      enable = true,
+    },
     textobjects = {
       select = {
         enable = true,
