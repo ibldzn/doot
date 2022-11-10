@@ -66,14 +66,14 @@ function M.setup()
         enable = true,
         lookahead = true,
         keymaps = {
-          ["ac"] = "@call.outer",
-          ["ic"] = "@call.inner",
-          ["il"] = "@loop.inner",
-          ["al"] = "@loop.outer",
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["aC"] = "@conditional.outer",
-          ["iC"] = "@conditional.inner",
+          ["ac"] = { query = "@call.outer", desc = "around function call" },
+          ["ic"] = { query = "@call.inner", desc = "inner function call" },
+          ["al"] = { query = "@loop.outer", desc = "around loop" },
+          ["il"] = { query = "@loop.inner", desc = "inner loop" },
+          ["af"] = { query = "@function.outer", desc = "around function" },
+          ["if"] = { query = "@function.inner", desc = "inner function" },
+          ["aC"] = { query = "@conditional.outer", desc = "around conditional" },
+          ["iC"] = { query = "@conditional.inner", desc = "inner conditional" },
         },
         selection_modes = {
           ["@parameter.outer"] = "v", -- charwise
