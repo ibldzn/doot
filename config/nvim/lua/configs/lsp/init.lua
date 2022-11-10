@@ -136,7 +136,6 @@ M.servers = {
   "cssls",
   "gopls",
   "html",
-  "jdtls",
   "jsonls",
   "pyright",
   "rust_analyzer",
