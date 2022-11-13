@@ -68,7 +68,6 @@ qt5ct                     # qt5 configuration utility
 ripgrep                   # a search tool that combines the usability of ag with the raw speed of grep
 rust-analyzer             # rust compiler front-end for ides
 rustup                    # the rust toolchain installer
-shellharden               # bash linter and syntax highlighter
 shfmt                     # format shell programs
 slurp                     # select a region in a wayland compositor
 starship                  # the cross-shell prompt for astronauts

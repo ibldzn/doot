@@ -21,7 +21,6 @@ function M.setup()
       fm.gofmt,
       fm.stylua,
       fm.prettier,
-      fm.shellharden,
       fm.clang_format.with({
         extra_args = { "--fallback-style=webkit" },
       }),
