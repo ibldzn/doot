@@ -13,6 +13,10 @@ autoload -Uz compinit
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 zmodload zsh/complist
 
+autoload -Uz run-help
+(( ${+aliases[run-help]} )) && unalias run-help
+autoload -Uz run-help-git run-help-ip run-help-openssl run-help-p4 run-help-sudo run-help-svk run-help-svn
+
 # stolen from omz
 __sudo-replace-buffer() {
   local old=$1 new=$2 space=${2:+ }
