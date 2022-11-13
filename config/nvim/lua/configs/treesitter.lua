@@ -61,6 +61,9 @@ function M.setup()
     playground = {
       enable = true,
     },
+    autotag = {
+      enable = true,
+    },
     textobjects = {
       select = {
         enable = true,

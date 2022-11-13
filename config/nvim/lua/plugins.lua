@@ -111,6 +111,7 @@ function M.setup()
       use({
         "nvim-treesitter/nvim-treesitter",
         requires = {
+          "windwp/nvim-ts-autotag",
           "nvim-treesitter/playground",
           "nvim-treesitter/nvim-treesitter-context",
           "JoosepAlviste/nvim-ts-context-commentstring",
