@@ -15,7 +15,7 @@ function M.highlights(pal)
     PmenuSBar       = {                  bg=pal.scrollbg,                },
     PmenuThumb      = {                  bg=pal.scrollfg,                },
     Visual          = {                  bg=pal.texthl1,                 },
-    WinSeparator    = { fg=pal.text3,    bg="none",                      },
+    WinSeparator    = { fg=pal.surface1, bg="none",                      },
     StatusLineNC    = { fg="none",       bg="none",                      },
 
     -- syntax
@@ -93,12 +93,14 @@ function M.highlights(pal)
     GitSignsChgDelNr  = { bg=pal.diff_cd_bg },
 
     -- nvim-tree
-    NvimTreeGitDirty   = { fg=pal.dblue   },
-    NvimTreeGitDeleted = { fg=pal.dblue   },
-    NvimTreeGitStaged  = { fg=pal.dblue   },
-    NvimTreeGitMerge   = { fg=pal.dyellow },
-    NvimTreeGitRenamed = { fg=pal.dpurple },
-    NvimTreeGitNew     = { fg=pal.dgreen  },
+    NvimTreeGitDirty      = { fg=pal.dblue    },
+    NvimTreeGitDeleted    = { fg=pal.dblue    },
+    NvimTreeGitStaged     = { fg=pal.dblue    },
+    NvimTreeGitMerge      = { fg=pal.dyellow  },
+    NvimTreeGitRenamed    = { fg=pal.dpurple  },
+    NvimTreeGitNew        = { fg=pal.dgreen   },
+    NvimTreeWinSeparator  = { fg=pal.surface1 },
+    NvimTreeRootFolder    = { fg=pal.text2    },
 
     -- harpoon
     HarpoonWindow = { link = "Pmenu"       },
