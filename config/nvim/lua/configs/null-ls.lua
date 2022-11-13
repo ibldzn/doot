@@ -21,8 +21,12 @@ function M.setup()
       fm.gofmt,
       fm.stylua,
       fm.prettier,
+      fm.shellharden,
       fm.clang_format.with({
         extra_args = { "--fallback-style=webkit" },
+      }),
+      fm.shfmt.with({
+        extra_args = { "--indent=2", "--case-indent" },
       }),
       fm.rustfmt.with({
         args = {

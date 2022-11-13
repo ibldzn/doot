@@ -73,6 +73,8 @@ starship                  # the cross-shell prompt for astronauts
 stylua                    # code formatter for lua
 sway                      # tiling wayland compositor and replacement for the i3 window manager
 swaybg                    # wallpaper tool for wayland compositors
+shfmt                     # format shell programs
+shellharden               # bash linter and syntax highlighter
 swaylock                  # screen locker for wayland
 syncthing                 # open source continuous replication / cluster synchronization thing
 tlp                       # linux advanced power management
