@@ -111,6 +111,7 @@ function M.setup()
 
       use({
         "nvim-treesitter/nvim-treesitter",
+        commit = "58f61e563fadd1788052586f4d6869a99022df3c",
         requires = {
           "windwp/nvim-ts-autotag",
           "nvim-treesitter/playground",
