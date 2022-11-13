@@ -38,12 +38,13 @@ function M.highlights(pal)
     Folded          = { fg=pal.folded,   bg=pal.folded_bg,  style="none" },
 
     -- treesitter
-    ["@property"]      = { fg=pal.lcyan,                        },
+    ["@tag"]           = { fg=pal.lyellow,                      },
+    ["@define"]        = { fg=pal.lyellow,                      },
     ["@include"]       = { fg=pal.lyellow,                      },
     ["@preproc"]       = { fg=pal.lyellow,                      },
-    ["@define"]        = { fg=pal.lyellow,                      },
+    ["@property"]      = { fg=pal.lcyan,                        },
     ["@namespace"]     = { fg=pal.preproc,                      },
-    ["@tag"]           = { fg=pal.lyellow,                      },
+    ["@storageclass"]  = { fg=pal.lyellow,                      },
     ["@tag.attribute"] = { link="Identifier",                   },
     ["@tag.delimiter"] = { link="Delimiter"                     },
 
