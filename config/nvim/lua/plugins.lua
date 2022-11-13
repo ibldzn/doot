@@ -343,16 +343,6 @@ function M.setup()
       })
 
       use({
-        "krady21/compiler-explorer.nvim",
-        cmd = {
-          "CECompile",
-          "CEFormat",
-          "CEAddLibrary",
-          "CEShowTooltip",
-        },
-      })
-
-      use({
         "goolord/alpha-nvim",
         disable = true,
         config = function()
