@@ -77,7 +77,8 @@ function M.setup()
   wk.register({
     ["<C-s>"] = { "<Esc>:w<CR>a", "Save file" },
 
-    ["<C-v>"] = { "<C-r>+", "Paste system clipboard" },
+    ["<C-r>"] = { "<C-r><C-o>", 'Insert register "literally"' },
+    ["<C-v>"] = { "<C-r><C-o>+", "Paste system clipboard" },
 
     ["<C-a>"] = { "<Esc>^i", "Move to the beginning of the line" },
     ["<C-e>"] = { "<End>", "Move to the end of the line" },
