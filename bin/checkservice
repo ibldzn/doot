@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+ago() {
+  awk -v date="$1" -v now="$(date +%s)" '
+    BEGIN {  diff = now - date;
+       if (diff > (24*60*60)) printf "%.0f days ago", diff/(24*60*60);
+       else if (diff > (60*60)) printf "%.0f hours ago", diff/(60*60);
+       else if (diff > 60) printf "%.0f minutes ago", diff/60;
+       else printf "%s seconds ago", diff;
+    }'
+}
+
+# Find all relevant services
+services=$(
+  systemctl list-units |
+    grep '\.service' |
+    grep 'running' |
+    cut -d '.' -f 1
+)
+
+echo "$services" | while read -r service; do
+  # Find Pacman package associated with service
+  fragment_path=$(systemctl show $service | grep FragmentPath= | cut -d '=' -f 2)
+  package=$(pacman -Qo "$fragment_path" | cut -d ' ' -f 5)
+  if [[ "$package" == 'systemd' ]]; then
+    continue
+  fi
+
+  # Find when package was last updated
+  last_upgraded_epoch=$(
+    cat /var/log/pacman.log |
+      grep -e "installed $package" -e "upgraded $package" |
+      tail -n1 |
+      awk -F'[][]' '{print $2}' |
+      date +"%s" -f -
+  )
+  if [ -z "$last_upgraded_epoch" ]; then
+    echo "💡 $service isn't in pacman.log"
+    continue
+  fi
+
+  # Find when service was last started/restarted
+  last_start_epoch=$(
+    systemctl show $service |
+      grep "ExecMainStartTimestamp=" |
+      cut -d '=' -f 2 |
+      date +"%s" -f -
+  )
+
+  message="$service (package: $(ago $last_upgraded_epoch), service: $(ago $last_start_epoch))"
+
+  if [ "$last_upgraded_epoch" -gt "$last_start_epoch" ]; then
+    echo "🚨 $message"
+  else
+    echo "✅ $message"
+  fi
+done
