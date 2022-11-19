@@ -6,6 +6,7 @@ function M.highlights(pal)
     -- editor
     Normal          = { fg=pal.fg,       bg=pal.bg,                      },
     SignColumn      = {                  bg="none",                      },
+    FoldColumn      = {                  bg="none",                      },
     LineNr          = { fg=pal.text3,                                    },
     CursorLineNr    = { fg=pal.text2,                       style="bold" },
     CursorColumn    = {                  bg=pal.texthl2,                 },

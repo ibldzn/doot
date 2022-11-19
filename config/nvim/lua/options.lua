@@ -31,7 +31,16 @@ function M.setup()
   vim.opt.title = true
   vim.opt.showbreak = "⮡   "
   vim.opt.listchars = { space = "·", eol = "⮠" }
-  vim.opt.fillchars:append({ horiz = "─", vert = "│", eob = " ", fold = " ", diff = "╱" })
+  vim.opt.fillchars:append({
+    horiz = "─",
+    vert = "│",
+    eob = " ",
+    fold = " ",
+    diff = "╱",
+    foldopen = "▾",
+    foldsep = "│",
+    foldclose = "▸",
+  })
 
   -----------------------------------------------------------
   -- UI
@@ -45,7 +54,7 @@ function M.setup()
     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
   vim.opt.foldlevel = 99
   vim.opt.termguicolors = true
-  vim.opt.wrap = true
+  vim.opt.wrap = false
   vim.opt.scrolloff = 5
   vim.opt.sidescroll = 1
   vim.opt.sidescrolloff = 5
