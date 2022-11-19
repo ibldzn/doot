@@ -21,7 +21,6 @@ function M.setup()
     mappings = {
       basic = true,
       extra = true,
-      extended = false,
     },
     pre_hook = function(ctx)
       local U = require("Comment.utils")
