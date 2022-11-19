@@ -35,7 +35,7 @@ function M.setup()
       ["p"] = { vim.cmd.CccPick, "Pick" },
       ["c"] = { vim.cmd.CccConvert, "Convert" },
     },
-  }, { mode = "n" })
+  })
 end
 
 return M
