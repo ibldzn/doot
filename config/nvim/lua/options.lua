@@ -24,7 +24,7 @@ function M.setup()
   vim.opt.undofile = true
   vim.opt.clipboard = "unnamedplus"
   vim.opt.backspace = "indent,eol,start"
-  vim.opt.signcolumn = "yes:2"
+  vim.opt.signcolumn = "number"
   vim.opt.compatible = false
   vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
   vim.opt.confirm = true
