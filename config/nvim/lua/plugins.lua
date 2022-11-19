@@ -300,6 +300,13 @@ function M.setup()
       })
 
       use({
+        "sindrets/diffview.nvim",
+        config = function()
+          require("configs.diffview").setup()
+        end,
+      })
+
+      use({
         "ibldzn/cheat-sheet",
         config = function()
           require("configs.cheat-sheet").setup()
