@@ -85,7 +85,6 @@ function M.setup()
       col = 1,
     },
   })
-  -- stylua: ignore end
 
   wk.register({
     ["]"] = {

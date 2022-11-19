@@ -36,8 +36,8 @@ function M.setup()
     ["<C-t>"] = { vim.cmd.te, "Open terminal" },
     ["<Esc>"] = { vim.cmd.nohl, "Clear search highlights" },
     ["<leader>"] = {
-      ["x"] = { ":bd!<CR>", "Delete current buffer" },
-      ["X"] = { ":%bd|e#|bd#<CR>", "Delete all buffer except current one" },
+      ["q"] = { ":bd!<CR>", "Delete current buffer" },
+      ["Q"] = { ":%bd|e#|bd#<CR>", "Delete all buffer except current one" },
       ["<leader>"] = { "<C-^>", "Goto previous buffer" },
       ["t"] = {
         name = "Toggle",
