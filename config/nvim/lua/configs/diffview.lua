@@ -1,7 +1,16 @@
 local M = {}
 local wk = require("which-key")
+local diffview = require("diffview")
 
 function M.setup()
+  diffview.setup({
+    view = {
+      merge_tool = {
+        layout = "diff3_mixed",
+      },
+    },
+  })
+
   wk.register({
     ["<leader>v"] = {
       name = "Diffview",
