@@ -70,8 +70,8 @@ function M.highlights(pal)
     CmpItemKindOperator     = { fg=pal.lyellow, style="bold"   },
 
     -- git
-    diffAdded       = {                   bg=pal.diff_a_bg,               },
-    diffRemoved     = {                   bg=pal.diff_d_bg,               },
+    diffAdded       = { fg=pal.diff_a_fg, bg="none",                      },
+    diffRemoved     = { fg=pal.diff_d_fg, bg="none",                      },
 
     DiffAdd         = {                   bg=pal.diff_a_bg,               },
     DiffChange      = {                   bg=pal.diff_c_bg,               },
