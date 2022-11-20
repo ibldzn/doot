@@ -47,7 +47,7 @@ function M.highlights(pal)
     ["@namespace"]     = { fg=pal.preproc,                      },
     ["@storageclass"]  = { fg=pal.lyellow,                      },
     ["@tag.attribute"] = { link="Identifier",                   },
-    ["@tag.delimiter"] = { link="Delimiter"                     },
+    ["@tag.delimiter"] = { link="Delimiter",                    },
 
     -- cmp
     CmpItemMenuDefault      = { fg=pal.text3,   style="italic" },
