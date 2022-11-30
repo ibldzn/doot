@@ -23,6 +23,7 @@ function M.setup()
     "TelescopePrompt",
     "alpha",
     "ccc-ui",
+    "dap-float",
     "dapui_breakpoints",
     "dapui_hover",
     "dapui_repl",
