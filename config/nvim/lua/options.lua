@@ -13,6 +13,8 @@ function M.setup()
   vim.g.user_emmet_install_global = 0
   vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
 
+  vim.g.undotree_WindowLayout = 2
+
   -----------------------------------------------------------
   -- General
   -----------------------------------------------------------

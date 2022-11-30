@@ -75,6 +75,13 @@ function M.setup()
       })
 
       use({
+        "mbbill/undotree",
+        config = function()
+          require("configs.undotree").setup()
+        end,
+      })
+
+      use({
         "nvim-lualine/lualine.nvim",
         config = function()
           require("configs.lualine").setup()
