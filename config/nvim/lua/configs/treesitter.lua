@@ -19,6 +19,7 @@ function M.setup()
       "cpp",
       "css",
       "dockerfile",
+      "gitcommit",
       "go",
       "graphql",
       "html",
