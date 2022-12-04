@@ -155,7 +155,7 @@ function M.setup()
   local lspconfig = require("lspconfig")
   local capabilities = M.get_capabilities()
 
-  for _, server in ipairs(M.servers) do
+  for _, server in pairs(M.servers) do
     local ok, sv = pcall(require, "configs.lsp.servers." .. server.name)
     if ok then
       sv.setup(lspconfig[server.name], M.on_init, M.on_attach, capabilities)
