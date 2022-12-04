@@ -327,6 +327,16 @@ wf () {
 help() {
     "$@" --help 2>&1 | bat --plain --language=help
 }
+
+dockershellhere() {
+    dirname=${PWD##*/}
+    docker run --rm --interactive --tty --entrypoint=/bin/bash -v $(pwd):/${dirname} --workdir /${dirname} "$@"
+}
+
+dockershellshhere() {
+    dirname=${PWD##*/}
+    docker run --rm --interactive --tty --entrypoint=/bin/sh -v $(pwd):/${dirname} --workdir /${dirname} "$@"
+}
 # End Functions
 
 # Begin Aliases
@@ -378,6 +388,8 @@ alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias egrep='egrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias fgrep='fgrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias lg='lazygit'
+alias dockershell='docker run --rm --interactive --tty --entrypoint=/bin/bash'
+alias dockershellsh='docker run --rm --interactive --tty --entrypoint=/bin/sh'
 # End Aliases
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
