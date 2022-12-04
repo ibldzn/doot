@@ -33,6 +33,10 @@ function M.setup()
     ["<S-Tab>"] = { vim.cmd.bprev, "Previous buffer" },
     ["<C-s>"] = { vim.cmd.write, "Save file" },
     ["<C-q>"] = { "<C-w>q", "Close window" },
+    ["<C-d>"] = { "<C-d>zz", "Scroll down" },
+    ["<C-u>"] = { "<C-u>zz", "Scroll up" },
+    ["n"] = { "nzzzv", "Next search occurence" },
+    ["N"] = { "Nzzzv", "Next search occurence" },
     ["<C-t>"] = { vim.cmd.terminal, "Open terminal" },
     ["<Esc>"] = { vim.cmd.nohl, "Clear search highlights" },
     ["<leader>"] = {
