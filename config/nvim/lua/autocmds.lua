@@ -33,6 +33,13 @@ function M.setup()
     command = "set fo-=c fo-=r fo-=o",
   })
 
+  autocmd({ "InsertEnter", "InsertLeave" }, {
+    group = augroup("RelativeLineNumberToggler", { clear = true }),
+    callback = function(data)
+      vim.opt.relativenumber = data.event == "InsertLeave"
+    end,
+  })
+
   autocmd("TermOpen", {
     group = augroup("TermOptions", { clear = true }),
     callback = function()
