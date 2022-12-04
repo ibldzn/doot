@@ -130,18 +130,19 @@ function M.show_documentation()
 end
 
 M.servers = {
-  "bashls",
-  "clangd",
-  "cmake",
-  "cssls",
-  "gopls",
-  "html",
-  "jsonls",
-  "pyright",
-  "rust_analyzer",
-  "sumneko_lua",
-  "tailwindcss",
-  "tsserver",
+  { name = "bashls" },
+  { name = "clangd" },
+  { name = "cmake" },
+  { name = "cssls" },
+  { name = "dartls", use_mason = false },
+  { name = "gopls" },
+  { name = "html" },
+  { name = "jsonls" },
+  { name = "pyright" },
+  { name = "rust_analyzer" },
+  { name = "sumneko_lua" },
+  { name = "tailwindcss" },
+  { name = "tsserver" },
 }
 
 function M.setup()
@@ -155,11 +156,11 @@ function M.setup()
   local capabilities = M.get_capabilities()
 
   for _, server in ipairs(M.servers) do
-    local ok, sv = pcall(require, "configs.lsp.servers." .. server)
+    local ok, sv = pcall(require, "configs.lsp.servers." .. server.name)
     if ok then
-      sv.setup(lspconfig[server], M.on_init, M.on_attach, capabilities)
+      sv.setup(lspconfig[server.name], M.on_init, M.on_attach, capabilities)
     else
-      lspconfig[server].setup({
+      lspconfig[server.name].setup({
         on_init = M.on_init,
         on_attach = M.on_attach,
         capabilities = capabilities,
