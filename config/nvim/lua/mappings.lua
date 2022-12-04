@@ -32,7 +32,7 @@ function M.setup()
     ["<Tab>"] = { vim.cmd.bn, "Next buffer" },
     ["<S-Tab>"] = { vim.cmd.bp, "Previous buffer" },
     ["<C-s>"] = { vim.cmd.w, "Save file" },
-    ["<C-q>"] = { "<C-w>q<CR>", "Close window" },
+    ["<C-q>"] = { "<C-w>q", "Close window" },
     ["<C-t>"] = { vim.cmd.te, "Open terminal" },
     ["<Esc>"] = { vim.cmd.nohl, "Clear search highlights" },
     ["<leader>"] = {
