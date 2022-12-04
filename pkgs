@@ -9,6 +9,8 @@ brightnessctl             # lightweight brightness control tool
 clang                     # c language family frontend for llvm
 cmake                     # a cross-platform open-source make system
 delve                     # a debugger for the go programming language.
+docker                    # pack, ship and run any application as a lightweight container
+docker-compose            # fast, isolated development environments using docker
 dunst                     # customizable and lightweight notification-daemon
 exa                       # ls replacement
 extra-cmake-modules       # extra modules and scripts for cmake
