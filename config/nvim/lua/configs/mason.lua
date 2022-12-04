@@ -6,6 +6,15 @@ local lsp = require("configs.lsp")
 local shared = require("shared")
 
 function M.setup()
+  local servers = vim.tbl_map(
+    function(server)
+      return server.name
+    end,
+    vim.tbl_filter(function(server)
+      return server.use_mason == nil or server.use_mason
+    end, lsp.servers)
+  )
+
   mason.setup({
     ui = {
       border = shared.window.borders,
@@ -28,7 +37,7 @@ function M.setup()
     },
   })
   mason_lspconfig.setup({
-    ensure_installed = lsp.servers,
+    ensure_installed = servers,
     automatic_installation = true,
   })
 end
