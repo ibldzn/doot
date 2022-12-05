@@ -1,8 +1,8 @@
 # vim: set ft=swayconfig:
 
 default_border pixel 3
-gaps inner 2
-gaps outer 2
+gaps inner 3
+gaps outer 3
 # smart_borders on
 # smart_gaps on
 
@@ -59,6 +59,7 @@ bindsym $mod+q       kill
 bindsym $mod+Space   exec $menu
 bindsym $mod+Return  exec $term
 bindsym $mod+Shift+r reload
+bindsym $mod+n       exec pkill -SIGUSR1 '^waybar$'
 
 bindsym $mod+w       exec ~/.config/sway/scripts/sway-list-windows.py
 
