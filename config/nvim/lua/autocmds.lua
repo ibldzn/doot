@@ -36,7 +36,9 @@ function M.setup()
   autocmd({ "InsertEnter", "InsertLeave" }, {
     group = augroup("RelativeLineNumberToggler", { clear = true }),
     callback = function(data)
-      vim.opt.relativenumber = data.event == "InsertLeave"
+      if vim.wo.number or vim.wo.relativenumber then
+        vim.wo.relativenumber = data.event == "InsertLeave"
+      end
     end,
   })
 
