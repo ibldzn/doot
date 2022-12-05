@@ -69,12 +69,17 @@ function M.setup()
     layouts = {
       {
         elements = {
-          { id = "scopes", size = 0.4 },
+          { id = "scopes", size = 0.45 },
           { id = "breakpoints", size = 0.3 },
-          { id = "stacks", size = 0.3 },
+          { id = "stacks", size = 0.25 },
         },
-        size = 40,
+        size = 0.25,
         position = "left",
+      },
+      {
+        elements = { "repl" },
+        size = 0.25,
+        position = "bottom",
       },
     },
     floating = {
@@ -84,7 +89,25 @@ function M.setup()
         close = { "q", "<Esc>" },
       },
     },
+    controls = {
+      enabled = true,
+      element = "repl",
+      icons = {
+        pause = "",
+        play = "",
+        step_into = "",
+        step_over = "",
+        step_out = "",
+        step_back = "",
+        run_last = "",
+        terminate = "",
+      },
+    },
     windows = { indent = 1 },
+    render = {
+      max_type_length = nil,
+      max_value_lines = nil,
+    },
   })
 
   wk.register({

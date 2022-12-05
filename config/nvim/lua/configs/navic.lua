@@ -24,6 +24,7 @@ function M.setup()
     "alpha",
     "ccc-ui",
     "dap-float",
+    "dap-repl",
     "dapui_breakpoints",
     "dapui_hover",
     "dapui_repl",
