@@ -8,32 +8,6 @@ local navic = require("nvim-navic")
 local DOCUMENT_HIGHLIGHT_HANDLER = vim.lsp.handlers["textDocument/documentHighlight"]
 local VIM_NOTIFY = vim.notify
 
-function M.get_capabilities()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem = {
-    snippetSupport = true,
-    preselectSupport = true,
-    insertReplaceSupport = true,
-    labelDetailsSupport = true,
-    deprecatedSupport = true,
-    commitCharactersSupport = true,
-    tagSupport = {
-      valueSet = { 1 },
-    },
-    resolveSupport = {
-      properties = {
-        "documentation",
-        "detail",
-        "additionalTextEdits",
-      },
-    },
-  }
-  capabilities.window = {
-    workDoneProgress = true,
-  }
-  return capabilities
-end
-
 function M.on_init(client)
   client.config.flags = client.config.flags or {}
   client.config.flags.allow_incremental_sync = true
@@ -129,6 +103,29 @@ function M.show_documentation()
   end
 end
 
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.completion.completionItem = {
+  snippetSupport = true,
+  preselectSupport = true,
+  insertReplaceSupport = true,
+  labelDetailsSupport = true,
+  deprecatedSupport = true,
+  commitCharactersSupport = true,
+  tagSupport = {
+    valueSet = { 1 },
+  },
+  resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
+  },
+}
+M.capabilities.window = {
+  workDoneProgress = true,
+}
+
 M.servers = {
   { name = "bashls" },
   { name = "clangd" },
@@ -137,6 +134,7 @@ M.servers = {
   { name = "dartls", use_mason = false },
   { name = "gopls" },
   { name = "html" },
+  { name = "jdtls" },
   { name = "jsonls" },
   { name = "pyright" },
   { name = "rust_analyzer", skip_config = true },
@@ -153,18 +151,17 @@ function M.setup()
   end
 
   local lspconfig = require("lspconfig")
-  local capabilities = M.get_capabilities()
 
   for _, server in pairs(M.servers) do
     if not server.skip_config then
       local ok, sv = pcall(require, "configs.lsp.servers." .. server.name)
       if ok then
-        sv.setup(lspconfig[server.name], M.on_init, M.on_attach, capabilities)
+        sv.setup(lspconfig[server.name], M.on_init, M.on_attach, M.capabilities)
       else
         lspconfig[server.name].setup({
           on_init = M.on_init,
           on_attach = M.on_attach,
-          capabilities = capabilities,
+          capabilities = M.capabilities,
         })
       end
     end
