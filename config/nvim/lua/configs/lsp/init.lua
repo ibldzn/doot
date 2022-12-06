@@ -139,7 +139,7 @@ M.servers = {
   { name = "html" },
   { name = "jsonls" },
   { name = "pyright" },
-  { name = "rust_analyzer" },
+  { name = "rust_analyzer", skip_config = true },
   { name = "sumneko_lua" },
   { name = "tailwindcss" },
   { name = "tsserver" },
@@ -156,15 +156,17 @@ function M.setup()
   local capabilities = M.get_capabilities()
 
   for _, server in pairs(M.servers) do
-    local ok, sv = pcall(require, "configs.lsp.servers." .. server.name)
-    if ok then
-      sv.setup(lspconfig[server.name], M.on_init, M.on_attach, capabilities)
-    else
-      lspconfig[server.name].setup({
-        on_init = M.on_init,
-        on_attach = M.on_attach,
-        capabilities = capabilities,
-      })
+    if not server.skip_config then
+      local ok, sv = pcall(require, "configs.lsp.servers." .. server.name)
+      if ok then
+        sv.setup(lspconfig[server.name], M.on_init, M.on_attach, capabilities)
+      else
+        lspconfig[server.name].setup({
+          on_init = M.on_init,
+          on_attach = M.on_attach,
+          capabilities = capabilities,
+        })
+      end
     end
   end
 
