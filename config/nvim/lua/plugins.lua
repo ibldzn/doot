@@ -286,6 +286,13 @@ function M.setup()
       })
 
       use({
+        "sindrets/winshift.nvim",
+        config = function()
+          require("configs.winshift").setup()
+        end,
+      })
+
+      use({
         "mrjones2014/smart-splits.nvim",
         config = function()
           require("configs.smart-splits").setup()
