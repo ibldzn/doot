@@ -73,6 +73,8 @@ end
 function M.select(items, opts, on_choice)
   assert(items ~= nil and not vim.tbl_isempty(items), "No entries available.")
 
+  vim.cmd.stopinsert()
+
   M.items = items
   M.on_choice = on_choice
 
@@ -92,7 +94,7 @@ function M.select(items, opts, on_choice)
   local col = new_pos[2] - old_pos[2]
 
   -- create win
-  local win_opts = {
+  local win_config = {
     relative = "cursor",
     col = col,
     row = 0,
@@ -101,7 +103,7 @@ function M.select(items, opts, on_choice)
     style = "minimal",
     border = shared.window.border,
   }
-  M.win = vim.api.nvim_open_win(M.buf, false, win_opts)
+  M.win = vim.api.nvim_open_win(M.buf, false, win_config)
 
   -- key mappings
   vim.api.nvim_buf_set_keymap(M.buf, "n", "<CR>", "", {
