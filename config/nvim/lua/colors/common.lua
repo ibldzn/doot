@@ -171,7 +171,7 @@ function M.highlights(pal)
     IndentBlanklineIndent4     = { fg=pal.lcyan,   style="nocombine" },
     IndentBlanklineIndent5     = { fg=pal.lyellow, style="nocombine" },
     IndentBlanklineIndent6     = { fg=pal.lgreen,  style="nocombine" },
-    IndentBlanklineContextChar = { fg=pal.todo,    style="nocombine" }
+    IndentBlanklineContextChar = { fg=pal.todo,    style="nocombine" },
   }
   -- stylua: ignore end
 end
