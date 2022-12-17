@@ -17,9 +17,19 @@ function M.setup()
   map("n", "gj", "j", { noremap = true })
   map("n", "k", "gk", { noremap = true })
   map("n", "gk", "k", { noremap = true })
+
   map("n", "dd", function()
     return vim.api.nvim_get_current_line():match("^%s*$") and '"_dd' or "dd"
   end, { noremap = true, expr = true, desc = "Smart dd" })
+
+  map("c", "<CR>", function()
+    local cmdtype = vim.fn.getcmdtype()
+    if cmdtype == "/" or cmdtype == "?" then
+      return "<CR>zzzv"
+    else
+      return "<CR>"
+    end
+  end, { noremap = true, expr = true, desc = "Center first search result" })
 
   wk.register({
     ["S"] = {
