@@ -14,7 +14,11 @@ diffs="$(diff -u <(echo "$hosts") /etc/hosts)"
 
 [ -z "$diffs" ] && err "No update available" && exit 1
 
-echo "$diffs"
+if [ -x "$(command -v delta)" ]; then
+    delta /etc/hosts <(echo "$hosts")
+else
+    echo "$diffs"
+fi
 
 read -n1 -rp "Update is available, do you want to update? [Y/n] " upd
 [ -n "$upd" ] && echo && [ "${upd,,}" != "y" ] && err "Update cancelled" && exit 1
