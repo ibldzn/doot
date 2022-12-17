@@ -152,6 +152,7 @@
  "protected"
  "virtual"
  "final"
+ "volatile"
  (auto)
 ] @keyword
 
