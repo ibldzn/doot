@@ -62,7 +62,6 @@ function M.setup()
           end,
           "Formatting",
         },
-        ["l"] = { ":set list!<CR>", "Listchars" },
         ["s"] = { ":set spell!<CR>", "Spelling" },
         ["w"] = { ":set wrap!<CR>", "Wrapping" },
       },

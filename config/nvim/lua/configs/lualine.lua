@@ -2,6 +2,8 @@ local M = {}
 
 local lualine = require("lualine")
 local shared = require("shared")
+local wk = require("which-key")
+local lualine_enabled = true
 -- local lsp_status = require("lsp-status")
 
 -- stylua: ignore start
@@ -171,6 +173,19 @@ function M.setup()
       lualine_z = {},
     },
     extensions = {},
+  })
+
+  wk.register({
+    ["<leader>t"] = {
+      name = "Toggle",
+      ["l"] = {
+        function()
+          lualine.hide({ unhide = not lualine_enabled })
+          lualine_enabled = not lualine_enabled
+        end,
+        "Statusline",
+      },
+    },
   })
 end
 
