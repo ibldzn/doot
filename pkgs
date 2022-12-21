@@ -90,6 +90,7 @@ waybar                    # highly customizable wayland bar for sway and wlroots
 wine                      # a compatibility layer for running windows programs
 wine-mono                 # wine's built-in replacement for microsoft's .net framework
 wl-clipboard              # command-line copy/paste utilities for wayland
+wofi                      # launcher for wlroots-based wayland compositors
 xdg-desktop-portal        # desktop integration portals for sandboxed apps
 xdg-desktop-portal-wlr    # xdg-desktop-portal backend for wlroots
 xdg-user-dirs             # manage user directories like ~/desktop and ~/music
