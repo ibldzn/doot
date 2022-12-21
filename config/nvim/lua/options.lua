@@ -31,7 +31,7 @@ function M.setup()
   vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
   vim.opt.confirm = true
   vim.opt.title = true
-  vim.opt.showbreak = "⮡   "
+  vim.opt.showbreak = "⮡ "
   vim.opt.listchars = { space = "·", eol = "⮠" }
   vim.opt.fillchars:append({
     horiz = "─",
@@ -56,7 +56,7 @@ function M.setup()
     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
   vim.opt.foldlevel = 99
   vim.opt.termguicolors = true
-  vim.opt.wrap = false
+  vim.opt.wrap = true
   vim.opt.scrolloff = 5
   vim.opt.sidescroll = 1
   vim.opt.sidescrolloff = 5
