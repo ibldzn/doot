@@ -50,6 +50,10 @@ function M.setup()
     ["<C-t>"] = { vim.cmd.terminal, "Open terminal" },
     ["<Esc>"] = { vim.cmd.nohl, "Clear search highlights" },
     ["<leader>"] = {
+      ["S"] = {
+        [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+        "Replace word under cursor in current buffer",
+      },
       ["q"] = { ":bd!<CR>", "Delete current buffer" },
       ["Q"] = { ":%bd|e#|bd#<CR>", "Delete all buffer except current one" },
       ["<leader>"] = { "<C-^>", "Goto previous buffer" },
