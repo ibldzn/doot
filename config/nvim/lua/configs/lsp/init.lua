@@ -4,6 +4,7 @@ local wk = require("which-key")
 local shared = require("shared")
 local util = require("util")
 local navic = require("nvim-navic")
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local DOCUMENT_HIGHLIGHT_HANDLER = vim.lsp.handlers["textDocument/documentHighlight"]
 local VIM_NOTIFY = vim.notify
@@ -104,27 +105,11 @@ function M.show_documentation()
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.completion.completionItem = {
-  snippetSupport = true,
-  preselectSupport = true,
-  insertReplaceSupport = true,
-  labelDetailsSupport = true,
-  deprecatedSupport = true,
-  commitCharactersSupport = true,
-  tagSupport = {
-    valueSet = { 1 },
-  },
-  resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  },
+local cmp_capabilities = cmp_nvim_lsp.default_capabilities()
+local fidget_capabilities = {
+  capabilities = { window = { workDoneProgress = true } },
 }
-M.capabilities.window = {
-  workDoneProgress = true,
-}
+M.capabilities = vim.tbl_deep_extend("force", M.capabilities, cmp_capabilities, fidget_capabilities)
 
 M.servers = {
   { name = "bashls" },
