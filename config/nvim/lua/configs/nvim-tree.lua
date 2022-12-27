@@ -80,7 +80,7 @@ function M.setup()
   })
 
   wk.register({
-    ["<C-n>"] = { nvim_tree.toggle, "Filetree toggle" },
+    ["<A-n>"] = { nvim_tree.toggle, "Filetree toggle" },
   })
 end
 

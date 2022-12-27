@@ -52,6 +52,7 @@ function M.setup()
       use("lewis6991/impatient.nvim")
       use("kyazdani42/nvim-web-devicons")
       use("krady21/compiler-explorer.nvim")
+      use("mg979/vim-visual-multi")
 
       use({
         "wbthomason/packer.nvim",
