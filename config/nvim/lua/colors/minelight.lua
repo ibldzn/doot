@@ -22,7 +22,9 @@ M.palette = {
   lcyan      = "#427b58",
 
   texthl1    = "#d4d4d4",
-  texthl2    = "#f2eaff",
+  ref_text   = "#f2eaff",
+  ref_write  = "#e2fff0",
+  ref_read   = "#ffeae4",
 
   invtext    = "#dedede",
   text2      = "#585858",

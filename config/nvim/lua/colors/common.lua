@@ -9,7 +9,7 @@ function M.highlights(pal)
     FoldColumn      = {                  bg="none",                      },
     LineNr          = { fg=pal.text3,                                    },
     CursorLineNr    = { fg=pal.text2,                       style="bold" },
-    CursorColumn    = {                  bg=pal.texthl2,                 },
+    CursorColumn    = {                  bg=pal.ref_text,                },
     FloatBorder     = { fg=pal.surface3, bg=pal.bg,                      },
     Pmenu           = { fg=pal.text2,    bg=pal.surface3,                },
     PmenuSel        = {                  bg=pal.surface2,   style="bold" },
@@ -33,7 +33,7 @@ function M.highlights(pal)
     Todo            = { fg=pal.todo,     bg="none",         style="bold" },
     Directory       = { fg=pal.lgreen,                                   },
     Search          = { fg=pal.invtext,  bg=pal.lyellow,                 },
-    MatchParen      = {                  bg=pal.texthl2,                 },
+    MatchParen      = {                  bg=pal.ref_text,                },
     NonText         = { fg=pal.nontext,                     style="none" },
     Whitespace      = { fg=pal.whitespace,                  style="none" },
     Folded          = { fg=pal.folded,   bg=pal.folded_bg,  style="none" },
@@ -155,9 +155,9 @@ function M.highlights(pal)
     DiagnosticUnderlineInfo    = { sp=pal.lblue,   style="undercurl" },
 
     -- lsp ocurrences
-    LspReferenceText  = { bg=pal.texthl2 },
-    LspReferenceRead  = { bg=pal.texthl2 },
-    LspReferenceWrite = { bg=pal.texthl2 },
+    LspReferenceText  = { bg=pal.ref_text  },
+    LspReferenceRead  = { bg=pal.ref_read  },
+    LspReferenceWrite = { bg=pal.ref_write },
 
     -- dap
     DapBreakpoint = { fg=pal.lred    },
