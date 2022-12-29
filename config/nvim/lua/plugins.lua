@@ -176,6 +176,7 @@ function M.setup()
 
     {
       "lewis6991/gitsigns.nvim",
+      keys = { "<leader>g", mode = "n" },
       event = "BufReadPre",
       config = function()
         require("configs.gitsigns").setup()
@@ -200,12 +201,6 @@ function M.setup()
           end,
         },
         {
-          "SmiteshP/nvim-navic",
-          config = function()
-            require("configs.navic").setup()
-          end,
-        },
-        {
           "j-hui/fidget.nvim",
           config = function()
             require("configs.fidget").setup()
@@ -220,6 +215,14 @@ function M.setup()
       },
       config = function()
         require("configs.lsp").setup()
+      end,
+    },
+
+    {
+      "SmiteshP/nvim-navic",
+      event = "VeryLazy",
+      config = function()
+        require("configs.navic").setup()
       end,
     },
 
@@ -367,6 +370,7 @@ function M.setup()
 
     {
       "tpope/vim-fugitive",
+      keys = { "<leader>g", mode = "n" },
       event = "BufReadPre",
       config = function()
         require("configs.fugitive").setup()
