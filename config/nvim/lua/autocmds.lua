@@ -58,6 +58,25 @@ function M.setup()
       vim.cmd.startinsert({ bang = true })
     end,
   })
+
+  autocmd("FileType", {
+    group = augroup("MapQToCloseWindow", { clear = true }),
+    pattern = {
+      "dap-float",
+      "help",
+      "lspinfo",
+      "man",
+      "notify",
+      "qf",
+      "spectre_panel",
+      "startuptime",
+      "tsplayground",
+    },
+    callback = function(event)
+      vim.bo[event.buf].buflisted = false
+      vim.keymap.set("n", "q", vim.cmd.close, { buffer = event.buf, silent = true })
+    end,
+  })
 end
 
 return M
