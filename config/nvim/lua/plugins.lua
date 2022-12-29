@@ -280,7 +280,14 @@ function M.setup()
 
     {
       "folke/trouble.nvim",
-      event = "VeryLazy",
+      keys = {
+        { "<A-LeftMouse>", mode = "n" },
+        { "<leader>tr", mode = "n" },
+        { "<leader>l", mode = "n" },
+        { "gr", mode = "n" },
+        { "gi", mode = "n" },
+        { "gy", mode = "n" },
+      },
       dependencies = "folke/todo-comments.nvim",
       config = function()
         require("configs.trouble").setup()
