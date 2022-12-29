@@ -14,7 +14,10 @@ function M.setup()
     highlight = { -- Highlight before inserting/changing surrounds
       duration = 0,
     },
+    move_cursor = false,
   })
+
+  vim.keymap.del("i", "ys")
 end
 
 return M
