@@ -56,6 +56,21 @@ function M.setup()
     "kyazdani42/nvim-web-devicons",
 
     {
+      "uga-rosa/ccc.nvim",
+      cmd = {
+        "CccConvert",
+        "CccHighlighterDisable",
+        "CccHighlighterEnable",
+        "CccHighlighterToggle",
+        "CccPick",
+      },
+      keys = { "<leader>c", mode = "n" },
+      config = function()
+        require("configs.colorizer").setup()
+      end,
+    },
+
+    {
       "farmergreg/vim-lastplace",
       event = "BufReadPost",
     },
@@ -202,12 +217,6 @@ function M.setup()
             require("configs.lsp-signature").setup()
           end,
         },
-        {
-          "uga-rosa/ccc.nvim",
-          config = function()
-            require("configs.colorizer").setup()
-          end,
-        },
       },
       config = function()
         require("configs.lsp").setup()
@@ -216,6 +225,7 @@ function M.setup()
 
     {
       "mfussenegger/nvim-dap",
+      keys = { "<leader>d", mode = "n" },
       dependencies = "rcarriga/nvim-dap-ui",
       config = function()
         require("configs.dap").setup()
