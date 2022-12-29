@@ -23,7 +23,6 @@ local function prequire(name, setup)
   return mod
 end
 
-prequire("impatient", false)
 prequire("options")
 prequire("plugins")
 prequire("mappings")
