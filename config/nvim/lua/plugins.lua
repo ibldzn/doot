@@ -119,6 +119,7 @@ function M.setup()
 
     {
       "rcarriga/nvim-notify",
+      event = "VeryLazy",
       config = function()
         require("configs.notify").setup()
       end,
