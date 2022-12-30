@@ -234,7 +234,7 @@ function M.setup()
 
     {
       "SmiteshP/nvim-navic",
-      event = "VeryLazy",
+      event = "UIEnter",
       config = function()
         require("configs.navic").setup()
       end,
