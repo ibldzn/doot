@@ -8,11 +8,11 @@ function M.highlights(pal)
     SignColumn      = {                  bg="none",                      },
     FoldColumn      = {                  bg="none",                      },
     LineNr          = { fg=pal.text3,                                    },
-    CursorLineNr    = { fg=pal.text2,                       style="bold" },
+    CursorLineNr    = { fg=pal.text2,                       bold = true  },
     CursorColumn    = {                  bg=pal.ref_text,                },
     FloatBorder     = { fg=pal.surface3, bg=pal.bg,                      },
     Pmenu           = { fg=pal.text2,    bg=pal.surface3,                },
-    PmenuSel        = {                  bg=pal.surface2,   style="bold" },
+    PmenuSel        = {                  bg=pal.surface2,   bold = true  },
     PmenuSBar       = {                  bg=pal.scrollbg,                },
     PmenuThumb      = {                  bg=pal.scrollfg,                },
     Visual          = {                  bg=pal.texthl1,                 },
@@ -20,23 +20,23 @@ function M.highlights(pal)
     StatusLineNC    = { fg="none",       bg="none",                      },
 
     -- syntax
-    Title           = { fg=pal.title,                       style="bold" },
+    Title           = { fg=pal.title,                       bold = true  },
     Comment         = { fg=pal.text3,                                    },
-    Constant        = { fg=pal.lpurple,                     style="none" },
-    Identifier      = { fg=pal.lblue,                       style="bold" },
-    Function        = { fg=pal.lcyan,                       style="bold" },
+    Constant        = { fg=pal.lpurple,                                  },
+    Identifier      = { fg=pal.lblue,                       bold = true  },
+    Function        = { fg=pal.lcyan,                       bold = true  },
     Statement       = { fg=pal.lyellow,                                  },
     PreProc         = { fg=pal.preproc,                                  },
     Type            = { fg=pal.type,                                     },
     Special         = { fg=pal.special,                                  },
     Error           = {                  bg=pal.lred,                    },
-    Todo            = { fg=pal.todo,     bg="none",         style="bold" },
+    Todo            = { fg=pal.todo,     bg="none",         bold = true  },
     Directory       = { fg=pal.lgreen,                                   },
     Search          = { fg=pal.invtext,  bg=pal.lyellow,                 },
     MatchParen      = {                  bg=pal.ref_text,                },
-    NonText         = { fg=pal.nontext,                     style="none" },
-    Whitespace      = { fg=pal.whitespace,                  style="none" },
-    Folded          = { fg=pal.folded,   bg=pal.folded_bg,  style="none" },
+    NonText         = { fg=pal.nontext,                                  },
+    Whitespace      = { fg=pal.whitespace,                               },
+    Folded          = { fg=pal.folded,   bg=pal.folded_bg,               },
 
     -- treesitter
     ["@tag"]           = { fg=pal.lyellow,                      },
@@ -50,24 +50,24 @@ function M.highlights(pal)
     ["@tag.delimiter"] = { link="Delimiter",                    },
 
     -- cmp
-    CmpItemMenuDefault      = { fg=pal.text3,   style="italic" },
-    CmpItemKindDefault      = { fg=pal.special, style="bold"   },
-    CmpItemKindModule       = { fg=pal.preproc, style="bold"   },
-    CmpItemKindClass        = { fg=pal.type,    style="bold"   },
-    CmpItemKindStruct       = { fg=pal.type,    style="bold"   },
-    CmpItemKindInterface    = { fg=pal.type,    style="bold"   },
-    CmpItemKindTypeParamter = { fg=pal.type,    style="bold"   },
-    CmpItemKindEnum         = { fg=pal.type,    style="bold"   },
-    CmpItemKindEnumMember   = { fg=pal.lpurple, style="bold"   },
-    CmpItemKindConstant     = { fg=pal.lpurple, style="bold"   },
-    CmpItemKindField        = { fg=pal.lblue,   style="bold"   },
-    CmpItemKindProperty     = { fg=pal.lblue,   style="bold"   },
-    CmpItemKindVariable     = { fg=pal.special, style="bold"   },
-    CmpItemKindFunction     = { fg=pal.lcyan,   style="bold"   },
-    CmpItemKindMethod       = { fg=pal.lcyan,   style="bold"   },
-    CmpItemKindConstructor  = { fg=pal.lcyan,   style="bold"   },
-    CmpItemKindKeyword      = { fg=pal.lyellow, style="bold"   },
-    CmpItemKindOperator     = { fg=pal.lyellow, style="bold"   },
+    CmpItemMenuDefault      = { fg=pal.text3,   italic = true  },
+    CmpItemKindDefault      = { fg=pal.special, bold = true    },
+    CmpItemKindModule       = { fg=pal.preproc, bold = true    },
+    CmpItemKindClass        = { fg=pal.type,    bold = true    },
+    CmpItemKindStruct       = { fg=pal.type,    bold = true    },
+    CmpItemKindInterface    = { fg=pal.type,    bold = true    },
+    CmpItemKindTypeParamter = { fg=pal.type,    bold = true    },
+    CmpItemKindEnum         = { fg=pal.type,    bold = true    },
+    CmpItemKindEnumMember   = { fg=pal.lpurple, bold = true    },
+    CmpItemKindConstant     = { fg=pal.lpurple, bold = true    },
+    CmpItemKindField        = { fg=pal.lblue,   bold = true    },
+    CmpItemKindProperty     = { fg=pal.lblue,   bold = true    },
+    CmpItemKindVariable     = { fg=pal.special, bold = true    },
+    CmpItemKindFunction     = { fg=pal.lcyan,   bold = true    },
+    CmpItemKindMethod       = { fg=pal.lcyan,   bold = true    },
+    CmpItemKindConstructor  = { fg=pal.lcyan,   bold = true    },
+    CmpItemKindKeyword      = { fg=pal.lyellow, bold = true    },
+    CmpItemKindOperator     = { fg=pal.lyellow, bold = true    },
 
     -- git
     diffAdded       = { fg=pal.diff_a_fg, bg="none",                      },
@@ -76,7 +76,7 @@ function M.highlights(pal)
     DiffAdd         = {                   bg=pal.diff_a_bg,               },
     DiffChange      = {                   bg=pal.diff_c_bg,               },
     DiffDelete      = { fg=pal.diff_d_fg, bg=pal.diff_d_bg,               },
-    DiffText        = { fg=pal.text2,     bg=pal.diff_cd_bg, style="bold" },
+    DiffText        = { fg=pal.text2,     bg=pal.diff_cd_bg, bold = true  },
 
     -- gitsigns
     GitSignsAdd       = { fg=pal.diff_a_fg  },
@@ -139,20 +139,20 @@ function M.highlights(pal)
     DiagnosticVirtualTextHint  = { fg=pal.lblue,                     },
     DiagnosticVirtualTextInfo  = { fg=pal.lblue,                     },
 
-    DiagnosticSignError        = { fg=pal.lred,    style="bold"      },
-    DiagnosticSignWarn         = { fg=pal.lyellow, style="bold"      },
-    DiagnosticSignHint         = { fg=pal.lblue,   style="bold"      },
-    DiagnosticSignInfo         = { fg=pal.lblue,   style="bold"      },
+    DiagnosticSignError        = { fg=pal.lred,    bold = true       },
+    DiagnosticSignWarn         = { fg=pal.lyellow, bold = true       },
+    DiagnosticSignHint         = { fg=pal.lblue,   bold = true       },
+    DiagnosticSignInfo         = { fg=pal.lblue,   bold = true       },
 
     DiagnosticFloatingError    = { fg=pal.lred,                      },
     DiagnosticFloatingWarn     = { fg=pal.lyellow,                   },
     DiagnosticFloatingHint     = { fg=pal.lblue,                     },
     DiagnosticFloatingInfo     = { fg=pal.lblue,                     },
 
-    DiagnosticUnderlineError   = { sp=pal.lred,    style="undercurl" },
-    DiagnosticUnderlineWarn    = { sp=pal.lyellow, style="undercurl" },
-    DiagnosticUnderlineHint    = { sp=pal.lblue,   style="undercurl" },
-    DiagnosticUnderlineInfo    = { sp=pal.lblue,   style="undercurl" },
+    DiagnosticUnderlineError   = { sp=pal.lred,    undercurl = true  },
+    DiagnosticUnderlineWarn    = { sp=pal.lyellow, undercurl = true  },
+    DiagnosticUnderlineHint    = { sp=pal.lblue,   undercurl = true  },
+    DiagnosticUnderlineInfo    = { sp=pal.lblue,   undercurl = true  },
 
     -- lsp ocurrences
     LspReferenceText  = { bg=pal.ref_text  },
@@ -165,13 +165,13 @@ function M.highlights(pal)
     DapStopped    = { fg=pal.lgreen  },
 
     -- indent-blankline
-    IndentBlanklineIndent1     = { fg=pal.lred,    style="nocombine" },
-    IndentBlanklineIndent2     = { fg=pal.lyellow, style="nocombine" },
-    IndentBlanklineIndent3     = { fg=pal.lblue,   style="nocombine" },
-    IndentBlanklineIndent4     = { fg=pal.lcyan,   style="nocombine" },
-    IndentBlanklineIndent5     = { fg=pal.lyellow, style="nocombine" },
-    IndentBlanklineIndent6     = { fg=pal.lgreen,  style="nocombine" },
-    IndentBlanklineContextChar = { fg=pal.todo,    style="nocombine" },
+    IndentBlanklineIndent1     = { fg=pal.lred,    nocombine = true  },
+    IndentBlanklineIndent2     = { fg=pal.lyellow, nocombine = true  },
+    IndentBlanklineIndent3     = { fg=pal.lblue,   nocombine = true  },
+    IndentBlanklineIndent4     = { fg=pal.lcyan,   nocombine = true  },
+    IndentBlanklineIndent5     = { fg=pal.lyellow, nocombine = true  },
+    IndentBlanklineIndent6     = { fg=pal.lgreen,  nocombine = true  },
+    IndentBlanklineContextChar = { fg=pal.todo,    nocombine = true  },
   }
   -- stylua: ignore end
 end
@@ -233,17 +233,7 @@ function M.apply_highlights(highlights)
   vim.o.termguicolors = true
 
   for group, colors in pairs(highlights) do
-    if colors.link then
-      vim.api.nvim_command(string.format("highlight link %s %s", group, colors.link))
-    else
-      -- stylua: ignore start
-      local style = colors.style and "gui="   .. colors.style or "gui=NONE"
-      local fg    = colors.fg    and "guifg=" .. colors.fg    or "guifg=NONE"
-      local bg    = colors.bg    and "guibg=" .. colors.bg    or "guibg=NONE"
-      local sp    = colors.sp    and "guisp=" .. colors.sp    or ""
-      -- stylua: ignore end
-      vim.api.nvim_command(string.format("highlight %s %s %s %s %s", group, style, fg, bg, sp))
-    end
+    vim.api.nvim_set_hl(0, group, colors)
   end
 end
 
