@@ -35,9 +35,9 @@ function M.setup()
 
   autocmd({ "InsertEnter", "InsertLeave" }, {
     group = augroup("RelativeLineNumberToggler", { clear = true }),
-    callback = function(data)
+    callback = function(event)
       if vim.wo.number or vim.wo.relativenumber then
-        vim.wo.relativenumber = data.event == "InsertLeave"
+        vim.wo.relativenumber = event.event == "InsertLeave"
       end
     end,
   })
@@ -75,6 +75,32 @@ function M.setup()
     callback = function(event)
       vim.bo[event.buf].buflisted = false
       vim.keymap.set("n", "q", vim.cmd.close, { buffer = event.buf, silent = true })
+    end,
+  })
+
+  autocmd("FileType", {
+    group = augroup("IndentTwoSpaces", { clear = true }),
+    pattern = {
+      "cmake",
+      "css",
+      "graphql",
+      "html",
+      "javascript",
+      "javascriptreact",
+      "json",
+      "lua",
+      "nix",
+      "scss",
+      "tex",
+      "typescript",
+      "typescriptreact",
+      "xhtml",
+      "xml",
+      "yaml",
+    },
+    callback = function()
+      vim.opt_local.shiftwidth = 2
+      vim.opt_local.tabstop = 2
     end,
   })
 end
