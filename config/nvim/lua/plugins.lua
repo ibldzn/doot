@@ -69,6 +69,14 @@ function M.setup()
     "kyazdani42/nvim-web-devicons",
 
     {
+      "ThePrimeagen/harpoon",
+      keys = { "<leader>h", mode = "n" },
+      config = function()
+        require("configs.harpoon").setup()
+      end,
+    },
+
+    {
       "uga-rosa/ccc.nvim",
       cmd = {
         "CccConvert",

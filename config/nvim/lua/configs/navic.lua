@@ -30,6 +30,7 @@ function M.setup()
     "dapui_repl",
     "dapui_scopes",
     "dapui_stacks",
+    "harpoon",
     "help",
     "lspinfo",
     "mason",
