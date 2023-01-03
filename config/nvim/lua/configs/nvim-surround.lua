@@ -18,6 +18,7 @@ function M.setup()
   })
 
   vim.keymap.del("i", "ys")
+  vim.keymap.del("i", "yss")
 end
 
 return M
