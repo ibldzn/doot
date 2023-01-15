@@ -85,7 +85,7 @@ function M.setup()
         "CccHighlighterToggle",
         "CccPick",
       },
-      keys = { "<leader>c", mode = "n" },
+      keys = { "<leader>c", mode = "n", desc = "Ccc" },
       config = function()
         require("configs.colorizer").setup()
       end,
@@ -98,6 +98,10 @@ function M.setup()
         "DirbufSync",
         "DirbufQuit",
       },
+      keys = { "<A-f>", mode = "n", desc = "Dirbuf" },
+      config = function()
+        require("configs.dirbuf").setup()
+      end,
     },
 
     {
@@ -175,7 +179,7 @@ function M.setup()
 
     {
       "windwp/nvim-spectre",
-      keys = { "<leader>s", mode = { "n", "v" } },
+      keys = { "<leader>s", mode = { "n", "v" }, desc = "Search/Replace" },
       config = function()
         require("configs.spectre").setup()
       end,
@@ -183,7 +187,7 @@ function M.setup()
 
     {
       "phaazon/hop.nvim",
-      keys = { "s", mode = "n" },
+      keys = { "s", mode = "n", desc = "Hop" },
       config = function()
         require("configs.hop").setup()
       end,
@@ -259,7 +263,7 @@ function M.setup()
 
     {
       "mfussenegger/nvim-dap",
-      keys = { "<leader>d", mode = "n" },
+      keys = { "<leader>d", mode = "n", desc = "Debug" },
       dependencies = "rcarriga/nvim-dap-ui",
       config = function()
         require("configs.dap").setup()
@@ -354,7 +358,7 @@ function M.setup()
 
     {
       "kyazdani42/nvim-tree.lua",
-      keys = { "<A-n>", mode = "n" },
+      keys = { "<A-n>", mode = "n", desc = "Filetree toggle" },
       config = function()
         require("configs.nvim-tree").setup()
       end,
@@ -362,7 +366,7 @@ function M.setup()
 
     {
       "nvim-telescope/telescope.nvim",
-      keys = { "<leader>f", mode = "n" },
+      keys = { "<leader>f", mode = "n", desc = "Find" },
       dependencies = {
         {
           "nvim-telescope/telescope-dap.nvim",
@@ -417,7 +421,7 @@ function M.setup()
 
     {
       "sindrets/diffview.nvim",
-      keys = { "<leader>v", mode = { "n", "x" } },
+      keys = { "<leader>v", mode = { "n", "x" }, desc = "Diffview" },
       config = function()
         require("configs.diffview").setup()
       end,
