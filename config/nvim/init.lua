@@ -1,23 +1,22 @@
-local function prequire(name, setup)
-  local function error_handler(err)
+local function error_handler(name)
+  return function(err)
+    local text = "Failed to load module '" .. name .. "':\n" .. (err or "")
+    vim.notify(text, vim.log.levels.ERROR)
     return err
   end
+end
 
+local function prequire(name, setup)
   local mod_ok, mod = xpcall(function()
     return require(name)
-  end, error_handler)
+  end, error_handler(name))
 
   if not mod_ok then
-    vim.notify("Failed to load config module " .. name, vim.log.levels.ERROR .. "\n" .. (mod or ""))
     return
   end
 
   if setup ~= false then
-    local setup_ok, res = xpcall(mod.setup, error_handler)
-
-    if not setup_ok then
-      vim.notify("Failed to setup config module " .. name, vim.log.levels.ERROR .. "\n" .. res)
-    end
+    xpcall(mod.setup, error_handler(name))
   end
 
   return mod
