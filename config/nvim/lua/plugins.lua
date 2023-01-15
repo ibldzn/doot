@@ -92,6 +92,15 @@ function M.setup()
     },
 
     {
+      "elihunter173/dirbuf.nvim",
+      cmd = {
+        "Dirbuf",
+        "DirbufSync",
+        "DirbufQuit",
+      },
+    },
+
+    {
       "farmergreg/vim-lastplace",
       event = "BufReadPost",
     },
