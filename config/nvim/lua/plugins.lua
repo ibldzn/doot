@@ -221,6 +221,12 @@ function M.setup()
     {
       "neovim/nvim-lspconfig",
       event = "BufReadPre",
+      cmd = {
+        "LspStart",
+        "LspRestart",
+        "LspStop",
+        "LspLog",
+      },
       dependencies = {
         {
           "williamboman/mason.nvim",
