@@ -60,7 +60,7 @@ function M.on_attach(client, buf)
       ["a"] = { vim.lsp.buf.code_action, "Code action" },
       ["r"] = {
         function()
-          require("util.input").input(nil, true, function(new_name)
+          require("util.input").input({ insert = true }, function(new_name)
             vim.lsp.buf.rename(new_name)
           end)
         end,
@@ -68,7 +68,7 @@ function M.on_attach(client, buf)
       },
       ["R"] = {
         function()
-          require("util.input").input("", true, function(new_name)
+          require("util.input").input({ text = "", insert = true }, function(new_name)
             vim.lsp.buf.rename(new_name)
           end)
         end,
