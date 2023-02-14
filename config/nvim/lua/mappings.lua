@@ -47,7 +47,12 @@ function M.setup()
     ["<C-u>"] = { "<C-u>zz", "Scroll up" },
     ["n"] = { "nzzzv", "Next search occurence" },
     ["N"] = { "Nzzzv", "Next search occurence" },
-    ["<C-t>"] = { vim.cmd.terminal, "Open terminal" },
+    ["<C-t>"] = {
+      function()
+        vim.cmd("split | terminal")
+      end,
+      "Open terminal",
+    },
     ["<Esc>"] = { vim.cmd.nohl, "Clear search highlights" },
     ["<leader>"] = {
       ["S"] = {
@@ -132,6 +137,17 @@ function M.setup()
   wk.register({
     ["<C-x>"] = { termcodes("<C-\\><C-N>"), "Escape terminal mode" },
   }, { mode = "t" })
+
+  wk.register({
+    ["<F10>"] = {
+      ":w | sp | term clang++ -fsanitize=address -std=c++20 -Wall -Wextra -Wpedantic -Wshadow -lfmt -O3 -o %< % && ./%<<CR>",
+      "Compile and run C++",
+    },
+    ["<F11>"] = {
+      ":w | sp | term clang++ -fsanitize=address -std=c++20 -Wall -Wextra -Wpedantic -Wshadow -lfmt -O0 -g -o %< %<CR>",
+      "Compile debug build C++",
+    },
+  }, { mode = { "n", "i" } })
 end
 
 return M
