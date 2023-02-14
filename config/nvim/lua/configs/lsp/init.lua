@@ -90,18 +90,29 @@ function M.on_attach(client, buf)
 end
 
 function M.show_documentation()
-  local filetype = vim.bo.filetype
-  if vim.tbl_contains({ "vim", "help" }, filetype) then
-    vim.cmd.h(vim.fn.expand("<cword>"))
-  elseif vim.tbl_contains({ "man" }, filetype) then
-    vim.cmd.Man(vim.fn.expand("<cword>"))
-  elseif vim.fn.expand("%:t") == "Cargo.toml" then
-    require("crates").show_popup()
-  elseif vim.tbl_contains({ "rust" }, filetype) then
-    require("rust-tools").hover_actions.hover_actions()
-  else
-    vim.lsp.buf.hover()
+  if vim.fn.expand("%:t") == "Cargo.toml" then
+    return require("crates").show_popup()
   end
+
+  local maps = {
+    [{ "vim", "help" }] = function()
+      vim.cmd.h(vim.fn.expand("<cword>"))
+    end,
+    [{ "man" }] = function()
+      vim.cmd.Man(vim.fn.expand("<cword>"))
+    end,
+    [{ "rust" }] = function()
+      require("rust-tools").hover_actions.hover_actions()
+    end,
+  }
+
+  for filetypes, callback in pairs(maps) do
+    if vim.tbl_contains(filetypes, vim.bo.filetype) then
+      return callback()
+    end
+  end
+
+  return vim.lsp.buf.hover()
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
