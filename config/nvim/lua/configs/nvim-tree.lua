@@ -18,11 +18,15 @@ function M.setup()
         resize_window = true,
       },
     },
+    modified = {
+      enable = true,
+      show_on_dirs = true,
+      show_on_open_dirs = true,
+    },
 
     respect_buf_cwd = true,
     disable_netrw = true,
     hijack_netrw = true,
-    ignore_ft_on_setup = { "alpha" },
     open_on_tab = false,
     hijack_cursor = true,
     hijack_unnamed_buffer_when_opening = false,
