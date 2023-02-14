@@ -288,12 +288,13 @@ delete-paste () {
 }
 
 mknote () {
+    local notes_dir="${NOTES_DIR:-$HOME/notes}"
     if [[ "$1" == "-l" ]]; then
-        local note_file="$(fd . --type=file "$HOME/notes" | fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}')"
+        local note_file="$(fd . --type=file "$notes_dir" | fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}')"
         [[ -f "$note_file" ]] && ${EDITOR:-nvim} "$note_file"
     else
         local name="$(date +%Y-%m-%d)$([[ -n "$1" ]] && echo "-$1")"
-        local note_file="$HOME/notes/$name.md"
+        local note_file="$notes_dir/$name.md"
         mkdir -p "$(dirname "$note_file")"
         [[ -f "$note_file" ]] || echo "# $name" > "$note_file"
         ${EDITOR:-nvim} "$note_file"
