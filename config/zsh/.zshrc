@@ -391,6 +391,7 @@ alias fgrep='fgrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox
 alias lg='lazygit'
 alias dockershell='docker run --rm --interactive --tty --entrypoint=/bin/bash'
 alias dockershellsh='docker run --rm --interactive --tty --entrypoint=/bin/sh'
+alias pcp='rsync -ah --progress'
 # End Aliases
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
