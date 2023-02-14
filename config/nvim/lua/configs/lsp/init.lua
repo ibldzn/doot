@@ -137,6 +137,7 @@ M.servers = {
   { name = "lua_ls" },
   { name = "tailwindcss" },
   { name = "tsserver" },
+  { name = "intelephense" },
 }
 
 function M.setup()

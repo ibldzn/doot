@@ -37,6 +37,7 @@ function M.setup()
 
   add("go")
   add("lua")
+  add("php")
   add("cmake")
   add("markdown")
 end

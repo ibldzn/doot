@@ -34,7 +34,7 @@ function M.format_buffer(opts)
 
   vim.lsp.buf.format({
     filter = function(client)
-      return client.name == "null-ls"
+      return client.name == "null-ls" or client.name == "intelephense"
     end,
   })
 end
