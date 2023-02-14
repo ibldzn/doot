@@ -17,6 +17,7 @@ function M.setup(server, on_init, on_attach, capabilities)
           library = vim.api.nvim_get_runtime_file("", true),
           maxPreload = 100000,
           preloadFileSize = 10000,
+          checkThirdParty = false,
         },
         telemetry = {
           enable = false,

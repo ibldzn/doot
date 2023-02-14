@@ -123,7 +123,7 @@ M.servers = {
   { name = "jsonls" },
   { name = "pyright" },
   { name = "rust_analyzer", skip_config = true },
-  { name = "sumneko_lua" },
+  { name = "lua_ls" },
   { name = "tailwindcss" },
   { name = "tsserver" },
 }
