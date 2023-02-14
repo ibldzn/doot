@@ -119,7 +119,11 @@ function M.setup()
 
     {
       "mg979/vim-visual-multi",
-      keys = { "<C-n>", mode = { "n", "x" } },
+      keys = {
+        { "<C-n>", mode = { "n", "x" } },
+        { "<C-Up>", mode = "n" },
+        { "<C-Down>", mode = "n" },
+      },
       config = function()
         vim.g.VM_show_warnings = 0
       end,
@@ -395,6 +399,12 @@ function M.setup()
     {
       "mrjones2014/smart-splits.nvim",
       event = "WinNew",
+      keys = {
+        { "<C-h>", mode = "n" },
+        { "<C-j>", mode = "n" },
+        { "<C-k>", mode = "n" },
+        { "<C-l>", mode = "n" },
+      },
       dependencies = {
         {
           "sindrets/winshift.nvim",
