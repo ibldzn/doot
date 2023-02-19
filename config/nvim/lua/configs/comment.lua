@@ -14,8 +14,8 @@ function M.setup()
       block = "gb",
     },
     extra = {
-      above = "gcO",
-      below = "gco",
+      above = "gco",
+      below = "gcO",
       eol = "gcA",
     },
     mappings = {
