@@ -5,7 +5,7 @@ op=$(echo -e " Poweroff\n Reboot\n Suspend\n Lock\n Logout" | \
     awk '{print tolower($2)}')
 
 case $op in 
-    lock)     swaylock  -ti ~/dot/papes/hollow-knight.png ;;
+    lock)     swaylock  -i ~/dot/papes/hollow-knight.png ;;
     logout)   swaymsg   exit                              ;;
     reboot)   systemctl reboot                            ;;
     suspend)  systemctl suspend                           ;;
