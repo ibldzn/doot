@@ -63,11 +63,13 @@ M.palette = {
 M.highlights = common.highlights(M.palette)
 M.lualine = common.lualine(M.palette)
 
-function M.setup()
-  vim.g.colors_name = "minelight"
+local setup = function()
+	vim.g.colors_name = "minelight"
 
-  common.apply_term_colors(M.palette)
-  common.apply_highlights(M.highlights)
+	common.apply_term_colors(M.palette)
+	common.apply_highlights(M.highlights)
 end
+
+M.setup = setup
 
 return M

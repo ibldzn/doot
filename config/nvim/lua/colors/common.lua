@@ -1,6 +1,6 @@
 local M = {}
 
-function M.highlights(pal)
+local highlights = function(pal)
   -- stylua: ignore start
   return {
     -- editor
@@ -37,17 +37,21 @@ function M.highlights(pal)
     NonText         = { fg=pal.nontext,                                  },
     Whitespace      = { fg=pal.whitespace,                               },
     Folded          = { fg=pal.folded,   bg=pal.folded_bg,               },
+    Conceal         = {                  bg="none"                       },
 
     -- treesitter
     ["@tag"]           = { fg=pal.lyellow,                      },
     ["@define"]        = { fg=pal.lyellow,                      },
     ["@include"]       = { fg=pal.lyellow,                      },
     ["@preproc"]       = { fg=pal.lyellow,                      },
-    ["@property"]      = { fg=pal.lcyan,                        },
+    ["@property"]      = { fg=pal.lcyan,              bold=true },
     ["@namespace"]     = { fg=pal.preproc,                      },
     ["@storageclass"]  = { fg=pal.lyellow,                      },
     ["@tag.attribute"] = { link="Identifier",                   },
     ["@tag.delimiter"] = { link="Delimiter",                    },
+
+    -- treesitter context
+    TreesitterContextLineNumber = { link = "Pmenu" },
 
     -- cmp
     CmpItemMenuDefault      = { fg=pal.text3,   italic = true  },
@@ -173,10 +177,10 @@ function M.highlights(pal)
     IndentBlanklineIndent6     = { fg=pal.lgreen,  nocombine = true  },
     IndentBlanklineContextChar = { fg=pal.todo,    nocombine = true  },
   }
-  -- stylua: ignore end
+	-- stylua: ignore end
 end
 
-function M.lualine(pal)
+local lualine = function(pal)
     -- stylua: ignore start
   return {
     normal = {
@@ -210,31 +214,36 @@ function M.lualine(pal)
       c = { bg=pal.surface3, fg=pal.text3,              },
     }
   }
-  -- stylua: ignore end
+	-- stylua: ignore end
 end
 
-function M.apply_term_colors(pal)
-  vim.g.terminal_color_1 = pal.dred
-  vim.g.terminal_color_2 = pal.dgreen
-  vim.g.terminal_color_3 = pal.dyellow
-  vim.g.terminal_color_4 = pal.dblue
-  vim.g.terminal_color_5 = pal.dviolet
-  vim.g.terminal_color_6 = pal.dcyan
+local apply_term_colors = function(pal)
+	vim.g.terminal_color_1 = pal.dred
+	vim.g.terminal_color_2 = pal.dgreen
+	vim.g.terminal_color_3 = pal.dyellow
+	vim.g.terminal_color_4 = pal.dblue
+	vim.g.terminal_color_5 = pal.dviolet
+	vim.g.terminal_color_6 = pal.dcyan
 
-  vim.g.terminal_color_9 = pal.lred
-  vim.g.terminal_color_10 = pal.lgreen
-  vim.g.terminal_color_11 = pal.lyellow
-  vim.g.terminal_color_12 = pal.lblue
-  vim.g.terminal_color_13 = pal.lviolet
-  vim.g.terminal_color_14 = pal.lcyan
+	vim.g.terminal_color_9 = pal.lred
+	vim.g.terminal_color_10 = pal.lgreen
+	vim.g.terminal_color_11 = pal.lyellow
+	vim.g.terminal_color_12 = pal.lblue
+	vim.g.terminal_color_13 = pal.lviolet
+	vim.g.terminal_color_14 = pal.lcyan
 end
 
-function M.apply_highlights(highlights)
-  vim.o.termguicolors = true
+local apply_highlights = function(hl)
+	vim.o.termguicolors = true
 
-  for group, colors in pairs(highlights) do
-    vim.api.nvim_set_hl(0, group, colors)
-  end
+	for group, colors in pairs(hl) do
+		vim.api.nvim_set_hl(0, group, colors)
+	end
 end
+
+M.lualine = lualine
+M.highlights = highlights
+M.apply_highlights = apply_highlights
+M.apply_term_colors = apply_term_colors
 
 return M

@@ -1,16 +1,18 @@
 local M = {}
 
-function M.setup()
-  require("colors.mineauto").setup()
+local setup = function()
+	require("colors.minedark").setup()
 end
 
-function M.reload()
-  package.loaded["colors.common"] = nil
-  package.loaded["colors.mineauto"] = nil
-  package.loaded["colors.minedark"] = nil
-  package.loaded["colors.minelight"] = nil
-  require("colors.mineauto").setup()
-  require("config.lualine").setup()
+local reload = function()
+	package.loaded["colors.common"] = nil
+	package.loaded["colors.minedark"] = nil
+	package.loaded["colors.minelight"] = nil
+	require("colors.minedark").setup()
+	require("plugins.lualine").setup()
 end
+
+M.setup = setup
+M.reload = reload
 
 return M

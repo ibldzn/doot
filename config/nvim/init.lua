@@ -1,32 +1,32 @@
-local function error_handler(name)
-  return function(err)
-    local text = "Failed to load module '" .. name .. "':\n" .. (err or "")
-    vim.notify(text, vim.log.levels.ERROR)
-    return err
-  end
+local error_handler = function(name)
+	return function(err)
+		local text = "Failed to load module '" .. name .. "':\n" .. (err or "")
+		vim.notify(text, vim.log.levels.ERROR)
+		return err
+	end
 end
 
-local function prequire(name, setup)
-  local mod_ok, mod = xpcall(function()
-    return require(name)
-  end, error_handler(name))
+local prequire = function(name, setup)
+	local mod_ok, mod = xpcall(function()
+		return require(name)
+	end, error_handler(name))
 
-  if not mod_ok then
-    return
-  end
+	if not mod_ok then
+		return
+	end
 
-  if setup ~= false then
-    xpcall(mod.setup, error_handler(name))
-  end
+	if setup ~= false then
+		xpcall(mod.setup, error_handler(name))
+	end
 
-  return mod
+	return mod
 end
 
-prequire("options")
-prequire("plugins")
-prequire("mappings")
-prequire("colors")
-prequire("autocmds")
-prequire("custom_commands")
-prequire("diagnostics")
+prequire("config.options")
+prequire("config.autocmds")
 prequire("util.select")
+prequire("config.lazy")
+prequire("config.keymaps")
+prequire("config.diagnostics")
+prequire("config.custom_commands")
+prequire("colors")
