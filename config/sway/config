@@ -208,6 +208,11 @@ exec_always {
     gsettings set $gnome-schema font-antialiasing  "grayscale"
 }
 
+exec swayidle -w \
+    timeout 300 'swaylock -f -i ~/dot/papes/hollow-knight.png' \
+    timeout 305 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"'
+
 exec --no-startup-id udiskie --automount --notify
 exec --no-startup-id mpd
 exec --no-startup-id autotiling
