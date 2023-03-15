@@ -173,6 +173,7 @@ local on_attach = function(client, buf)
 			name = "Go",
 			["d"] = { vim.lsp.buf.definition, "LSP definition" },
 			["D"] = { vim.lsp.buf.declaration, "LSP declaration" },
+			["r"] = { vim.lsp.buf.references, "LSP references" },
 		},
 		["<leader>"] = {
 			["t"] = {

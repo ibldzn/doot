@@ -4,8 +4,8 @@ local M = {
 }
 
 local keys = {
-	{ "gc", mode = { "n", "x" } },
-	{ "gb", mode = { "n", "x" } },
+	{ "gc", mode = { "n", "x" }, desc = "Comment" },
+	{ "gb", mode = { "n", "x" }, desc = "Block comment" },
 }
 
 local config = function()
