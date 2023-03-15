@@ -3,22 +3,14 @@ return {
 	"nvim-tree/nvim-web-devicons",
 
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		lazy = false,
-		priority = 1000,
-		enabled = false,
-		config = function()
-			require("catppuccin").setup({
-				hop = true,
-				neotree = true,
-				notify = true,
-				dap = {
-					enabled = true,
-					enable_ui = true,
-				},
-			})
-			vim.cmd.colorscheme("catppuccin")
+		"AckslD/messages.nvim",
+		cmd = "Messages",
+		init = function()
+			pcall(function()
+				Msg = function(...)
+					require("messages.api").capture_thing(...)
+				end
+			end)
 		end,
 	},
 

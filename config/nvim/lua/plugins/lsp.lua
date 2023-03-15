@@ -142,11 +142,25 @@ local lsp_signature = {
 	end,
 }
 
+local lsp_lens = {
+	"VidocqH/lsp-lens.nvim",
+	opts = {
+		enable = true,
+		include_declaration = true,
+		sections = {
+			definition = true,
+			references = true,
+			implementation = true,
+		},
+	},
+}
+
 local dependencies = {
 	mason,
 	null_ls,
 	fidget,
 	lsp_signature,
+	lsp_lens,
 }
 
 local config = function()
@@ -180,13 +194,13 @@ local config = function()
 	end
 
 	-- Diagnostics
-	-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	-- 	underline = true,
-	-- 	virtual_text = {
-	-- 		spacing = 2,
-	-- 		severity_limit = "Warning",
-	-- 	},
-	-- })
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		underline = true,
+		virtual_text = {
+			spacing = 2,
+			severity_limit = "Warning",
+		},
+	})
 
 	-- Occurences
 	vim.lsp.handlers["textDocument/documentHighlight"] = function(...)
