@@ -12,38 +12,60 @@ local M = {
 	},
 }
 
+local kind_icons = {
+	["Class"] = "🅒 ",
+	["Interface"] = "🅘 ",
+	["TypeParameter"] = "🅣 ",
+	["Struct"] = "🅢",
+	["Enum"] = "🅔 ",
+	["Unit"] = "🅤 ",
+	["EnumMember"] = "🅔 ",
+	["Constant"] = "🅒 ",
+	["Field"] = "🅕 ",
+	["Property"] = " ",
+	["Variable"] = "🅥 ",
+	["Reference"] = "🅡 ",
+	["Function"] = "🅕 ",
+	["Method"] = "🅜 ",
+	["Constructor"] = "🅒 ",
+	["Module"] = "🅜 ",
+	["File"] = "🅕 ",
+	["Folder"] = "🅕 ",
+	["Keyword"] = "🅚 ",
+	["Operator"] = "🅞 ",
+	["Snippet"] = "🅢 ",
+	["Value"] = "🅥 ",
+	["Color"] = "🅒 ",
+	["Event"] = "🅔 ",
+	["Text"] = "🅣 ",
+}
+
+local ELLIPSIS_CHAR = "…"
+local MAX_LABEL_WIDTH = 25
+
+local get_ws = function(max, len)
+	return (" "):rep(max - len)
+end
+
+local format = function(_, item)
+	local content = item.abbr
+	local kind_symbol = kind_icons[item.kind] or "  "
+	item.menu = item.kind
+	item.kind = kind_symbol
+
+	if #content > MAX_LABEL_WIDTH then
+		item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
+	else
+		item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
+	end
+
+	return item
+end
+
 local config = function()
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
 	local shared = require("config.shared")
-
-	local kind_icons = {
-		["Class"] = "🅒 ",
-		["Interface"] = "🅘 ",
-		["TypeParameter"] = "🅣 ",
-		["Struct"] = "🅢",
-		["Enum"] = "🅔 ",
-		["Unit"] = "🅤 ",
-		["EnumMember"] = "🅔 ",
-		["Constant"] = "🅒 ",
-		["Field"] = "🅕 ",
-		["Property"] = " ",
-		["Variable"] = "🅥 ",
-		["Reference"] = "🅡 ",
-		["Function"] = "🅕 ",
-		["Method"] = "🅜 ",
-		["Constructor"] = "🅒 ",
-		["Module"] = "🅜 ",
-		["File"] = "🅕 ",
-		["Folder"] = "🅕 ",
-		["Keyword"] = "🅚 ",
-		["Operator"] = "🅞 ",
-		["Snippet"] = "🅢 ",
-		["Value"] = "🅥 ",
-		["Color"] = "🅒 ",
-		["Event"] = "🅔 ",
-		["Text"] = "🅣 ",
-	}
 
 	---@diagnostic disable-next-line: redundant-parameter
 	cmp.setup({
@@ -59,11 +81,7 @@ local config = function()
 		},
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
-			format = function(_, vim_item)
-				vim_item.menu = vim_item.kind
-				vim_item.kind = kind_icons[vim_item.kind] or "  "
-				return vim_item
-			end,
+			format = format,
 		},
 		snippet = {
 			expand = function(args)
