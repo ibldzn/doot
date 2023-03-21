@@ -142,17 +142,8 @@ local lsp_signature = {
 	end,
 }
 
-local lsp_lens = {
-	"VidocqH/lsp-lens.nvim",
-	opts = {
-		enable = true,
-		include_declaration = true,
-		sections = {
-			definition = true,
-			references = true,
-			implementation = true,
-		},
-	},
+local neodev = {
+	"folke/neodev.nvim",
 }
 
 local dependencies = {
@@ -160,7 +151,7 @@ local dependencies = {
 	null_ls,
 	fidget,
 	lsp_signature,
-	lsp_lens,
+	neodev,
 }
 
 local config = function()
