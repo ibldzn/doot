@@ -295,7 +295,7 @@ setup_rootpass () {
 setup_fstab () {
     inf "Setting up fstab.."
     genfstab -U /mnt >> /mnt/etc/fstab
-    cat << EOF > /mnt/etc/fstab
+    cat << EOF >> /mnt/etc/fstab
 # efivarfs /sys/firmware/efi/efivars efivarfs ro,nosuid,nodev,noexec 0 0
 
 tmpfs /tmp tmpfs defaults,nosuid,nodev 0 0
