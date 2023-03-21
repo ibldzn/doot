@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-ln -s $(realpath ./.zshenv) ~
+ln -s "$(realpath ./.zshenv)" ~
+
+. ./.zshenv
+
+mkdir -p "$(dirname "$HISTFILE")"
+touch "$HISTFILE"
