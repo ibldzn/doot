@@ -84,12 +84,6 @@ local setup = function()
 		["<C-u>"] = { "<C-u>zz", "Scroll up" },
 		["n"] = { "nzzzv", "Next search occurence" },
 		["N"] = { "Nzzzv", "Next search occurence" },
-		-- ["<C-t>"] = {
-		-- 	function()
-		-- 		vim.cmd("split | terminal")
-		-- 	end,
-		-- 	"Open terminal",
-		-- },
 		["<Esc>"] = { vim.cmd.nohl, "Clear search highlights" },
 		["<leader>"] = {
 			["S"] = {
