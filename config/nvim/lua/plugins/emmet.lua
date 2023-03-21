@@ -3,10 +3,12 @@ local M = {
 	ft = {
 		"css",
 		"html",
+		"javascript",
 		"javascriptreact",
 		"less",
 		"sass",
 		"scss",
+		"typescript",
 		"typescriptreact",
 	},
 }
@@ -19,15 +21,7 @@ end
 local config = function()
 	vim.api.nvim_create_autocmd("FileType", {
 		group = vim.api.nvim_create_augroup("Emmet", { clear = true }),
-		pattern = {
-			"css",
-			"html",
-			"javascriptreact",
-			"less",
-			"sass",
-			"scss",
-			"typescriptreact",
-		},
+		pattern = M.ft,
 		command = "EmmetInstall",
 	})
 end
