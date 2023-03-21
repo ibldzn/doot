@@ -136,7 +136,10 @@ local on_attach = function(client, buf)
 	local wk = require("which-key")
 	local navic = require("nvim-navic")
 
-	if client.supports_method("textDocument/documentSymbolProvider") then
+	if
+		client.supports_method("textDocument/documentSymbolProvider")
+		and client.supports_method("textDocument/documentSymbol")
+	then
 		navic.attach(client, buf)
 	end
 
