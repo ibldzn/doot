@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+sudo mkdir -p /etc/pacman.d/hooks
+sudo cp -r ./pacman.d /etc/pacman.d
+
+if grep -i pc /etc/hostname; then
+  sudo mkdir -p /etc/udev/rules.d
+  sudo cp ./udev/rules.d/30-amdgpu-pm.rules /etc/udev/rules.d
+fi

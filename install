@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+err() {
+  echo -e "🚨 \e[31m$1\e[0m" >&2
+}
+
+log() {
+  echo -e "🚀 \e[32m$1\e[0m"
+}
+
+for dir in */; do
+  [ -x "$dir/install" ] && log "Installing stuff inside '$dir'.." && /usr/bin/env bash "$dir/install"
+done
+
+if [ ! -x "$(command -v yay)" ]; then
+  err "'yay' is not installed"
+  log "Installing yay.."
+
+  cd /tmp
+  git clone --depth 1 https://aur.archlinux.org/yay.git
+  cd yay
+
+  makepkg -si --noconfirm
+fi
+
+log "Installing packages.."
+
+awk '/^[^#]/ {print $1}' pkgs | yay -S --needed -
+
+log "Linking local binaries to ~/.local/bin"
+mkdir -p ~/.local
+ln -s "$(realpath "./bin")" ~/.local

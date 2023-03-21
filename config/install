@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+mkdir -p ~/.config
+
+for dir in ./*; do
+    ln -s "$(realpath "$dir")" ~/.config
+    [[ -x "$dir/install" ]] && /usr/bin/env bash "$dir/install"
+done
