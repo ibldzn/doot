@@ -105,6 +105,7 @@ zsh-syntax-highlighting   # fish shell like syntax highlighting for zsh
 # AUR
 autotiling                # script for sway and i3 to automatically switch the horizontal / vertical window split orientation
 cmake-language-server     # python based cmake language server
+nwg-displays              # output management utility for sway wayland compositor
 shellcheck-bin            # shell script analysis tool (binary release, static)
 visual-studio-code-bin    # visual studio code (vscode): editor for building and debugging modern web and cloud applications (official binary version)
 zsh-completions-git       # additional completion definitions for zsh
