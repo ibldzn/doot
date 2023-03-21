@@ -17,7 +17,7 @@ err () {
 
 die () {
     err "$1"
-    umount -R /mnt &>/dev/null
+    umount -R /mnt
     exit 1
 }
 
@@ -72,8 +72,8 @@ setup_disk () {
 
 clean_partition () {
     inf "Wiping $DISK.."
-    wipefs -af "$DISK" &>/dev/null
-    sgdisk -Zo "$DISK" &>/dev/null
+    wipefs -af "$DISK"
+    sgdisk -Zo "$DISK"
 }
 
 setup_partition () {
@@ -91,10 +91,10 @@ setup_partition () {
     ROOT="/dev/disk/by-partlabel/ROOT"
 
     inf "Formatting ESP partition as FAT32.."
-    mkfs.fat -F32 -n ESP "$ESP" &>/dev/null
+    mkfs.fat -F32 -n ESP "$ESP"
 
     inf "Formatting ROOT partition as BTRFS.."
-    mkfs.btrfs -fL ROOT "$ROOT" &>/dev/null
+    mkfs.btrfs -fL ROOT "$ROOT"
 
     inf "Setting up btrfs subvolumes.."
     setup_btrfs_subvolume
@@ -106,7 +106,7 @@ setup_btrfs_subvolume () {
 
     inf "Creating btrfs subvolumes.."
     for vol in @ @home @snapshots @var_log @var_pkg; do
-        btrfs su cr "/mnt/$vol" &>/dev/null
+        btrfs su cr "/mnt/$vol"
     done
 
     inf "Unmounting root partition.."
@@ -200,11 +200,11 @@ setup_packages () {
     network_selector
 
     inf "Installing the base system (it might take a while).."
-    pacstrap /mnt "${QUEUED_PACKAGES[@]}" &>/dev/null
+    pacstrap /mnt "${QUEUED_PACKAGES[@]}"
 
     inf "Enabling queued services.."
     for sv in "${QUEUED_SERVICES[@]}"; do
-        systemctl enable --root=/mnt "$sv" &>/dev/null
+        systemctl enable --root=/mnt "$sv"
     done
 }
 
@@ -233,7 +233,7 @@ setup_kb_layout () {
 setup_bootloader () {
     inf "Setting up bootloader.."
 
-    bootctl --esp-path=/mnt/boot install &>/dev/null
+    bootctl --esp-path=/mnt/boot install
     cat << EOF > /mnt/boot/loader/loader.conf
 default 01-arch.conf
 timeout 5
@@ -355,17 +355,17 @@ EOF
 setup_in_chroot () {
     arch-chroot /mnt /bin/bash -e <<EOF
     echo "Setting up system clock.."
-    ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime &>/dev/null
+    ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
     hwclock --systohc
 
     echo "Generating locales.."
-    locale-gen &>/dev/null
+    locale-gen
 
     echo "Configuring Snapper.."
     umount /.snapshots
     rm -r /.snapshots
     snapper --no-dbus -c root create-config /
-    btrfs subvolume delete /.snapshots &>/dev/null
+    btrfs subvolume delete /.snapshots
     mkdir /.snapshots
     mount -a
     chmod 750 /.snapshots
@@ -380,7 +380,7 @@ finalize () {
     sed -i 's/#Color/Color\nILoveCandy/;s/^#ParallelDownloads.*$/ParallelDownloads = 10/;/\[multilib\]/,/Include/ s/^#//' \
         /mnt/etc/pacman.conf
 
-    arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm &>/dev/null"
+    arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm"
 
     read -n1 -rp "Installation completed successfully, do you want to do additional configuration [y/N]? " resp
     [ -n "$resp" ] && echo
