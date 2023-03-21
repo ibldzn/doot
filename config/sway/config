@@ -1,5 +1,7 @@
 # vim: set ft=swayconfig:
 
+for_window [class="^Steam$" title="^Friends List$"] floating enable
+
 default_border pixel 3
 gaps inner 3
 gaps outer 3
@@ -41,6 +43,10 @@ input type:touchpad {
     middle_emulation enabled
 }
 
+# input "1:1:AT_Translated_Set_2_keyboard" {
+#     events disabled
+# }
+
 input "1133:49271:Logitech_USB_Optical_Mouse" {
     accel_profile    flat
     pointer_accel    0.1
@@ -53,6 +59,8 @@ input "1356:2508:Sony_Interactive_Entertainment_Wireless_Controller_Touchpad" {
 input type:keyboard {
     xkb_options caps:ctrl_modifier
 }
+
+bindsym $mod+b       exec firefox
 
 bindsym $mod+p       exec ~/.local/bin/powermenu
 bindsym $mod+q       kill
@@ -136,9 +144,6 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+minus       move container to scratchpad
 bindsym $mod+Shift+minus scratchpad show
-
-bindsym $mod+b splith
-bindsym $mod+v splitv
 
 bindsym $mod+Shift+s layout stacking
 bindsym $mod+Shift+w layout tabbed
