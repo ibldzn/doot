@@ -93,6 +93,7 @@ local setup = function()
 			"nix",
 			"php",
 			"scss",
+			"sql",
 			"tex",
 			"typescript",
 			"typescriptreact",
