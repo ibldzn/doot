@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
+script_dir="$(printf "%q " "$(realpath -s "$0")")"
+cur_dir="${script_dir%/*}"
+
 sudo mkdir -p /etc/pacman.d/hooks
-sudo cp -r ./pacman.d /etc/pacman.d
+sudo cp -r "$cur_dir"/pacman.d /etc/pacman.d
 
 if grep -i pc /etc/hostname; then
   sudo mkdir -p /etc/udev/rules.d
-  sudo cp ./udev/rules.d/30-amdgpu-pm.rules /etc/udev/rules.d
+  sudo cp "$cur_dir"/udev/rules.d/30-amdgpu-pm.rules /etc/udev/rules.d
 fi

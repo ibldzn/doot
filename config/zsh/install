@@ -1,8 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-ln -s "$(realpath ./.zshenv)" ~
+script_dir="$(printf "%q " "$(realpath -s "$0")")"
+cur_dir="${script_dir%/*}"
 
-. ./.zshenv
+ln -s "$(realpath "$cur_dir"/.zshenv)" ~
+
+. "$cur_dir"/.zshenv
 
 mkdir -p "$(dirname "$HISTFILE")"
 touch "$HISTFILE"

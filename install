@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+script_dir="$(printf "%q " "$(realpath -s "$0")")"
+cur_dir="${script_dir%/*}"
+
 err() {
   echo -e "🚨 \e[31m$1\e[0m" >&2
 }
@@ -9,7 +12,7 @@ log() {
 }
 
 for dir in */; do
-  [ -x "$dir/install" ] && log "Installing stuff inside '$dir'.." && /usr/bin/env bash "$dir/install"
+  [[ -x "$dir"/install ]] && log "Installing stuff inside '$dir'.." && "$dir"/install
 done
 
 if [ ! -x "$(command -v yay)" ]; then
@@ -29,4 +32,4 @@ awk '/^[^#]/ {print $1}' pkgs | yay -S --needed -
 
 log "Linking local binaries to ~/.local/bin"
 mkdir -p ~/.local
-ln -s "$(realpath "./bin")" ~/.local
+ln -s "$(realpath "$cur_dir/bin")" ~/.local

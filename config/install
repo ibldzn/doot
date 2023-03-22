@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+script_dir="$(printf "%q " "$(realpath -s "$0")")"
+cur_dir="${script_dir%/*}"
+
 mkdir -p ~/.config
 
-for dir in ./*; do
-    ln -s "$(realpath "$dir")" ~/.config
-    [[ -x "$dir/install" ]] && /usr/bin/env bash "$dir/install"
+for dir in "$cur_dir"/*/; do
+  ln -s "$(realpath "$dir")" ~/.config
+  [[ -x "$dir"/install ]] && "$dir"/install
 done
