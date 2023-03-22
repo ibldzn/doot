@@ -19,11 +19,13 @@ if [ ! -x "$(command -v yay)" ]; then
   err "'yay' is not installed"
   log "Installing yay.."
 
-  cd /tmp
-  git clone --depth 1 https://aur.archlinux.org/yay.git
-  cd yay
+  (
+    cd /tmp
+    git clone --depth 1 https://aur.archlinux.org/yay.git
+    cd yay
 
-  makepkg -si --noconfirm
+    makepkg -si --noconfirm
+  )
 fi
 
 log "Installing packages.."
