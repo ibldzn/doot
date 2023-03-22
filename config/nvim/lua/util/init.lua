@@ -32,21 +32,6 @@ local append_at_eol = function(char)
 	vim.api.nvim_win_set_cursor(0, pos)
 end
 
--- TODO: move this to lsp configuration
-function M.format_buffer(opts)
-	opts = opts or {}
-
-	if not vim.g.format_on_save and not opts.force then
-		return
-	end
-
-	vim.lsp.buf.format({
-		filter = function(client)
-			return client.name == "null-ls" or client.name == "intelephense"
-		end,
-	})
-end
-
 M.wrap = wrap
 M.join_paths = join_paths
 M.is_windows = is_windows
