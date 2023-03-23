@@ -49,6 +49,7 @@ noto-fonts-cjk            # google noto cjk fonts
 noto-fonts-emoji          # google noto emoji fonts
 noto-fonts-extra          # google noto ttf fonts - additional variants
 npm                       # a package manager for javascript
+ntfs-3g                   # ntfs filesystem driver and utilities
 p7zip                     # command-line file archiver with high compression ratio
 pavucontrol               # pulseaudio volume control
 pcmanfm                   # extremely fast and lightweight file manager
