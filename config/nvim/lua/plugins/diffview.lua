@@ -1,12 +1,31 @@
 local M = {
 	"sindrets/diffview.nvim",
-	keys = { { "<leader>v", mode = { "n", "x" }, desc = "Diffview" } },
+}
+
+local cmd = {
+	"DiffviewOpen",
+	"DiffviewClose",
+	"DiffviewRefresh",
+	"DiffviewFileHistory",
+	"DiffviewFocusFiles",
+	"DiffviewToggleFiles",
+}
+
+local keys = {
+	{ "<leader>v", mode = { "n", "x" }, desc = "Diffview" },
+	{ "<leader>vo", "<cmd>DiffviewOpen<CR>", desc = "Open" },
+	{ "<leader>vq", "<cmd>DiffviewClose<CR>", desc = "Close" },
+	{ "<leader>vr", "<cmd>DiffviewRefresh<CR>", desc = "Refresh" },
+	{ "<leader>vh", "<cmd>DiffviewFileHistory<CR>", desc = "File history" },
+	{ "<leader>vf", "<cmd>DiffviewFocusFiles<CR>", desc = "Focus file panel" },
+	{ "<leader>vt", "<cmd>DiffviewToggleFiles<CR>", desc = "Toggle file panel" },
+	{ "<leader>vH", ":DiffviewFileHistory ", desc = "File history" },
+
+	{ "<leader>vH", "<cmd>'<,'>DiffviewFileHistory<CR>", mode = "x", desc = "File history" },
 }
 
 local config = function()
 	local diffview = require("diffview")
-	local wk = require("which-key")
-
 	diffview.setup({
 		view = {
 			merge_tool = {
@@ -15,27 +34,18 @@ local config = function()
 		},
 	})
 
-	wk.register({
-		["<leader>v"] = {
-			name = "Diffview",
-			["o"] = { vim.cmd.DiffviewOpen, "Open" },
-			["q"] = { vim.cmd.DiffviewClose, "Close" },
-			["r"] = { vim.cmd.DiffviewRefresh, "Refresh" },
-			["h"] = { vim.cmd.DiffviewFileHistory, "File history" },
-			["f"] = { vim.cmd.DiffviewFocusFiles, "Focus file panel" },
-			["t"] = { vim.cmd.DiffviewToggleFiles, "Toggle file panel" },
-			["H"] = { ":DiffviewFileHistory ", "File history" },
-		},
+	vim.api.nvim_create_autocmd("FileType", {
+		group = vim.api.nvim_create_augroup("DiffviewQuitShortcuts", { clear = true }),
+		pattern = "Diffview*",
+		callback = function()
+			vim.keymap.set("n", "q", vim.cmd.DiffviewClose, { silent = true })
+			vim.keymap.set("n", "<Esc>", vim.cmd.DiffviewClose, { silent = true })
+		end,
 	})
-
-	wk.register({
-		["<leader>v"] = {
-			name = "Diffview",
-			["H"] = { ":'<,'>DiffviewFileHistory<CR>", "File history" },
-		},
-	}, { mode = "x" })
 end
 
+M.cmd = cmd
+M.keys = keys
 M.config = config
 
 return M
