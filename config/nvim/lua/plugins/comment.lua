@@ -8,11 +8,8 @@ local keys = {
 	{ "gb", mode = { "n", "x" }, desc = "Block comment" },
 }
 
-local config = function()
-	local comment = require("Comment")
-	local wk = require("which-key")
-
-	comment.setup({
+local opts = {
+	{
 		toggler = {
 			line = "gcc",
 			block = "gbc",
@@ -49,27 +46,10 @@ local config = function()
 				location = location,
 			})
 		end,
-	})
-
-	wk.register({
-		["g"] = {
-			name = "Go",
-			["c"] = {
-				name = "Comment",
-				["c"] = { nil, "Toggle" },
-				["A"] = { nil, "Append" },
-				["O"] = { nil, "Insert Above" },
-				["o"] = { nil, "Insert Below" },
-			},
-			["b"] = {
-				name = "Block Comment",
-				["c"] = { nil, "Toggle" },
-			},
-		},
-	})
-end
+	},
+}
 
 M.keys = keys
-M.config = config
+M.opts = opts
 
 return M
