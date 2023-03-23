@@ -13,12 +13,12 @@ local cmd = {
 
 local keys = {
 	{ "<leader>v", mode = { "n", "x" }, desc = "Diffview" },
-	{ "<leader>vo", "<cmd>DiffviewOpen<CR>", desc = "Open" },
-	{ "<leader>vq", "<cmd>DiffviewClose<CR>", desc = "Close" },
-	{ "<leader>vr", "<cmd>DiffviewRefresh<CR>", desc = "Refresh" },
-	{ "<leader>vh", "<cmd>DiffviewFileHistory<CR>", desc = "File history" },
-	{ "<leader>vf", "<cmd>DiffviewFocusFiles<CR>", desc = "Focus file panel" },
-	{ "<leader>vt", "<cmd>DiffviewToggleFiles<CR>", desc = "Toggle file panel" },
+	{ "<leader>vo", vim.cmd.DiffviewOpen, desc = "Open" },
+	{ "<leader>vq", vim.cmd.DiffviewClose, desc = "Close" },
+	{ "<leader>vr", vim.cmd.DiffviewRefresh, desc = "Refresh" },
+	{ "<leader>vh", vim.cmd.DiffviewFileHistory, desc = "File history" },
+	{ "<leader>vf", vim.cmd.DiffviewFocusFiles, desc = "Focus file panel" },
+	{ "<leader>vt", vim.cmd.DiffviewToggleFiles, desc = "Toggle file panel" },
 	{ "<leader>vH", ":DiffviewFileHistory ", desc = "File history" },
 
 	{ "<leader>vH", "<cmd>'<,'>DiffviewFileHistory<CR>", mode = "x", desc = "File history" },
