@@ -10,6 +10,7 @@ local M = {
 		"dockerfile",
 		"gitcommit",
 		"go",
+		"gomod",
 		"graphql",
 		"html",
 		"java",
