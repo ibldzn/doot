@@ -95,6 +95,7 @@ wofi                      # launcher for wlroots-based wayland compositors
 xdg-desktop-portal        # desktop integration portals for sandboxed apps
 xdg-desktop-portal-wlr    # xdg-desktop-portal backend for wlroots
 xdg-user-dirs             # manage user directories like ~/desktop and ~/music
+xorg-xwayland             # run x clients under wayland
 zathura                   # minimalistic document viewer
 zathura-pdf-mupdf         # pdf support for zathura (mupdf backend) (supports pdf, epub, and openxps)
 zellij                    # a terminal multiplexer
