@@ -131,6 +131,10 @@ return {
 			},
 			suggestion = {
 				auto_trigger = true,
+				keymap = {
+					accept = "<Tab>",
+					dismiss = "<C-q>",
+				},
 			},
 		},
 	},
