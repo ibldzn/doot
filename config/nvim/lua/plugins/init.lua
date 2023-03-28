@@ -119,27 +119,6 @@ return {
 	},
 
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		opts = {
-			panel = {
-				layout = {
-					position = "right",
-					ratio = 0.4,
-				},
-			},
-			suggestion = {
-				auto_trigger = true,
-				keymap = {
-					accept = "<Tab>",
-					dismiss = "<C-q>",
-				},
-			},
-		},
-	},
-
-	{
 		"nvim-neorg/neorg",
 		ft = "norg",
 		cmd = "Neorg",
