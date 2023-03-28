@@ -167,17 +167,6 @@ local setup = function()
 	wk.register({
 		["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
 	}, { mode = "t" })
-
-	wk.register({
-		["<F10>"] = {
-			":w | sp | term clang++ -fsanitize=address -std=c++20 -Wall -Wextra -Wpedantic -Wshadow -lfmt -O3 -o %< % && ./%<<CR>",
-			"Compile and run C++",
-		},
-		["<F11>"] = {
-			":w | sp | term clang++ -fsanitize=address -std=c++20 -Wall -Wextra -Wpedantic -Wshadow -lfmt -O0 -g -o %< %<CR>",
-			"Compile debug build C++",
-		},
-	}, { mode = { "n", "i" } })
 end
 
 M.setup = setup
