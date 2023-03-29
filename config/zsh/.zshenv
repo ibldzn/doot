@@ -2,6 +2,9 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MOZ_ENABLE_WAYLAND=1
 export NEXT_TELEMETRY_DISABLED=1
 export _JAVA_AWT_WM_NONREPARENTING=1
+export JAVA_OPTS="-XX:+IgnoreUnrecognizedVMOptions"
+export JAVA_HOME='/usr/lib/jvm/java-19-openjdk'
+export ANDROID_SDK_ROOT='/opt/android-sdk'
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -21,6 +24,9 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export GOPATH="$XDG_DATA_HOME/go"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
+export ANDROID_HOME="$XDG_DATA_HOME/android"
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+export W3M_DIR="$XDG_DATA_HOME/w3m"
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
@@ -28,6 +34,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export KDEHOME="$XDG_CONFIG_HOME/kde"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
 export HISTFILE="$XDG_CACHE_HOME/zsh/history"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
