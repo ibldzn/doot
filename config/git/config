@@ -38,4 +38,4 @@
 
 [credential]
 	username = ibldzn
-	helper = libsecret
+	helper = /usr/lib/git-core/git-credential-libsecret
