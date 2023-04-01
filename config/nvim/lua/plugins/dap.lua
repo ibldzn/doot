@@ -22,7 +22,10 @@ local nvim_dap_ui = {
 				position = "left",
 			},
 			{
-				elements = { "repl" },
+				elements = {
+					{ id = "console", size = 0.5 },
+					{ id = "repl", size = 0.5 },
+				},
 				size = 0.25,
 				position = "bottom",
 			},
@@ -36,7 +39,7 @@ local nvim_dap_ui = {
 		},
 		controls = {
 			enabled = true,
-			element = "repl",
+			element = "console",
 			icons = {
 				pause = "",
 				play = "",
