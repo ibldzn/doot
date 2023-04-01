@@ -207,7 +207,8 @@ command_not_found_handler () {
             then
                 printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
             fi
-            printf '    /%s\n' "${fields[4]}"
+            # printf '    /%s:' "${fields[4]}"
+            printf '    %s\n' "$(pacman -Si "${fields[2]}" 2>/dev/null | sed -n 's/^Description *: //p')"
             pkg="${fields[2]}"
         done
     fi
