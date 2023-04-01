@@ -1,57 +1,99 @@
 local M = {
 	"mfussenegger/nvim-dap",
 	keys = { { "<leader>d", desc = "Debug" } },
-	dependencies = "rcarriga/nvim-dap-ui",
+}
+
+local nvim_dap_ui = {
+	"rcarriga/nvim-dap-ui",
+	opts = {
+		mappings = {
+			expand = { "<CR>", "<Tab>" },
+		},
+		icons = { expanded = "▾", collapsed = "▸" },
+		layouts = {
+			{
+				elements = {
+					{ id = "scopes", size = 0.45 },
+					{ id = "breakpoints", size = 0.3 },
+					{ id = "stacks", size = 0.25 },
+				},
+				size = 0.25,
+				position = "left",
+			},
+			{
+				elements = { "repl" },
+				size = 0.25,
+				position = "bottom",
+			},
+		},
+		floating = {
+			max_height = nil,
+			max_width = nil,
+			mappings = {
+				close = { "q", "<Esc>" },
+			},
+		},
+		controls = {
+			enabled = true,
+			element = "repl",
+			icons = {
+				pause = "",
+				play = "",
+				step_into = "",
+				step_over = "",
+				step_out = "",
+				step_back = "",
+				run_last = "",
+				terminate = "",
+			},
+		},
+		windows = { indent = 1 },
+		render = {
+			max_type_length = nil,
+			max_value_lines = nil,
+		},
+	},
+}
+
+local nvim_dap_virtual_text = {
+	"theHamsta/nvim-dap-virtual-text",
+	config = true,
+}
+
+local nvim_dap_go = {
+	"leoluz/nvim-dap-go",
+	name = "dap-go",
+	config = true,
+}
+
+local nvim_dap_python = {
+	"mfussenegger/nvim-dap-python",
+	name = "dap-python",
+	config = function()
+		require("dap-python").setup(nil, { include_configs = true })
+	end,
+}
+
+local dependencies = {
+	nvim_dap_ui,
+	nvim_dap_virtual_text,
+	nvim_dap_go,
+	nvim_dap_python,
 }
 
 local setup_adapters = function()
 	local dap = require("dap")
 
-	dap.adapters.go = function(callback, _)
-		local stdout = vim.loop.new_pipe(false)
-		local handle
-		local pid_or_err
-		local port = 38697
-		local opts = {
-			stdio = { nil, stdout },
-			args = { "dap", "-l", "127.0.0.1:" .. port },
-			detached = true,
-		}
-		handle, pid_or_err = vim.loop.spawn("dlv", opts, function(code)
-			stdout:close()
-			handle:close()
-			if code ~= 0 then
-				print("dlv exited with code", code)
-			end
-		end)
-		assert(handle, "Error running dlv: " .. tostring(pid_or_err))
-		stdout:read_start(function(err, chunk)
-			assert(not err, err)
-			if chunk then
-				vim.schedule(function()
-					require("dap.repl").append(chunk)
-				end)
-			end
-		end)
-		-- Wait for delve to start
-		vim.defer_fn(function()
-			callback({ type = "server", host = "127.0.0.1", port = port })
-		end, 100)
-	end
 	dap.adapters.lldb = {
 		type = "executable",
 		command = "lldb-vscode",
 		name = "lldb",
 	}
+
 	dap.adapters.node2 = {
 		type = "executable",
 		command = "node",
 		args = { os.getenv("XDG_DATA_HOME") .. "/vscode-node-debug2/out/src/nodeDebug.js" },
-	}
-	dap.adapters.python = {
-		type = "executable",
-		command = "/usr/bin/python",
-		args = { "-m", "debugpy.adapter" },
 	}
 end
 
@@ -80,30 +122,6 @@ local setup_configurations = function()
 	}
 	dap.configurations.c = dap.configurations.cpp
 
-	dap.configurations.go = {
-		{
-			type = "go",
-			name = "Debug",
-			request = "launch",
-			program = "${file}",
-		},
-		{
-			type = "go",
-			name = "Debug test", -- configuration for debugging test files
-			request = "launch",
-			mode = "test",
-			program = "${file}",
-		},
-		-- works with go.mod packages and sub packages
-		{
-			type = "go",
-			name = "Debug test (go.mod)",
-			request = "launch",
-			mode = "test",
-			program = "./${relativeFileDirname}",
-		},
-	}
-
 	dap.configurations.javascript = {
 		{
 			name = "Launch",
@@ -121,37 +139,6 @@ local setup_configurations = function()
 			type = "node2",
 			request = "attach",
 			processId = require("dap.utils").pick_process,
-		},
-	}
-
-	dap.configurations.python = {
-		{
-			-- The first three options are required by nvim-dap
-			type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
-			request = "launch",
-			name = "Launch file",
-
-			-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-
-			program = "${file}", -- This configuration will launch the current file if used.
-			pythonPath = function()
-				-- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-				-- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-				-- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-				local venv = os.getenv("VIRTUAL_ENV")
-				if venv ~= nil then
-					return string.format("%s/bin/python", venv)
-				end
-
-				local cwd = vim.fn.getcwd()
-				if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-					return cwd .. "/venv/bin/python"
-				elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-					return cwd .. "/.venv/bin/python"
-				else
-					return "/usr/bin/python"
-				end
-			end,
 		},
 	}
 end
@@ -210,65 +197,12 @@ local config = function()
 	dap.listeners.before.event_terminated["dapui_config"] = util.wrap(dap_ui.close, nil)
 	dap.listeners.before.event_exited["dapui_config"] = util.wrap(dap_ui.close, nil)
 
-	dap_ui.setup({
-		mappings = {
-			expand = { "<CR>", "<Tab>" },
-		},
-		icons = { expanded = "▾", collapsed = "▸" },
-		layouts = {
-			{
-				elements = {
-					{ id = "scopes", size = 0.45 },
-					{ id = "breakpoints", size = 0.3 },
-					{ id = "stacks", size = 0.25 },
-				},
-				size = 0.25,
-				position = "left",
-			},
-			{
-				elements = { "repl" },
-				size = 0.25,
-				position = "bottom",
-			},
-		},
-		floating = {
-			max_height = nil,
-			max_width = nil,
-			mappings = {
-				close = { "q", "<Esc>" },
-			},
-		},
-		controls = {
-			enabled = true,
-			element = "repl",
-			icons = {
-				pause = "",
-				play = "",
-				step_into = "",
-				step_over = "",
-				step_out = "",
-				step_back = "",
-				run_last = "",
-				terminate = "",
-			},
-		},
-		windows = { indent = 1 },
-		render = {
-			max_type_length = nil,
-			max_value_lines = nil,
-		},
-	})
+	dap_ui.setup()
 
 	wk.register({
-		["<leader>"] = {
-			["t"] = {
-				name = "Toggle",
-				["D"] = { dap_ui.toggle, "Debug UI" },
-			},
-		},
-
 		["<leader>d"] = {
 			name = "Debug",
+			["u"] = { dap_ui.toggle, "Debug UI" },
 			["C"] = { dap.continue, "Continue" },
 			["o"] = { dap.step_over, "Step over" },
 			["i"] = { dap.step_into, "Step into" },
@@ -313,5 +247,6 @@ local config = function()
 end
 
 M.config = config
+M.dependencies = dependencies
 
 return M
