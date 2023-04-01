@@ -5,6 +5,7 @@ local M = {
 
 local nvim_dap_ui = {
 	"rcarriga/nvim-dap-ui",
+	name = "dapui",
 	opts = {
 		mappings = {
 			expand = { "<CR>", "<Tab>" },
@@ -196,8 +197,6 @@ local config = function()
 	dap.listeners.after.event_initialized["dapui_config"] = util.wrap(dap_ui.open, nil)
 	dap.listeners.before.event_terminated["dapui_config"] = util.wrap(dap_ui.close, nil)
 	dap.listeners.before.event_exited["dapui_config"] = util.wrap(dap_ui.close, nil)
-
-	dap_ui.setup()
 
 	wk.register({
 		["<leader>d"] = {
