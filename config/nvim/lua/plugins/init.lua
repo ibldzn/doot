@@ -80,11 +80,13 @@ return {
 		},
 		init = function()
 			vim.g.undotree_WindowLayout = 2
+			vim.g.undotree_SetFocusWhenToggle = true
 		end,
 	},
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		dependencies = "nvim-treesitter/nvim-treesitter",
 		event = "BufReadPre",
 		opts = {
 			char = "⎸",

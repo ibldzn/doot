@@ -5,7 +5,9 @@ local M = {
 		"SmiteshP/nvim-navic",
 		"nvim-tree/nvim-web-devicons", -- optional dependency
 	},
-	config = true,
+	opts = {
+		show_modified = true,
+	},
 }
 
 return M
