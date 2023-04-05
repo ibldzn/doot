@@ -237,15 +237,14 @@ _disass () {
     local state
     _arguments \
         '1:filename:_files' \
-        '2: :->symbol' \
+        '2:symbols:->symbols'
 
     case $state in
-        symbol)
-            local file="$words[2]"
-            file="${file//\~/$HOME}"
-            local nm_symbols="$(nm -C "$file" 2>/dev/null)"
-            [ -z "$nm_symbols" ] && return 1
-            local symbols=("${(@f)$(echo "$nm_symbols" | awk 'tolower($2)=="t"' | cut -d' ' -f3-)}")
+        symbols)
+            local symbols
+            local file
+            file="${words[2]/#\~/$HOME}"
+            symbols=("${(@f)"$(nm --defined-only --demangle "$file" | cut -d' ' -f3-)"}")
             compadd "${symbols[@]}"
             ;;
     esac
@@ -280,13 +279,26 @@ paste () {
   echo "$url" | tee -a "$PASTE_HIST_FILE"
 }
 
+_paste () {
+  _files
+}
+
+compdef _paste paste
+
 delete-paste () {
-  local paste_id="$(fzf --preview 'curl -sL {} | bat --color=always --style=numbers' < "$PASTE_HIST_FILE")"
+  local paste_id="${1:-$(fzf --preview 'curl -sL {} | bat --color=always --style=numbers' < "$PASTE_HIST_FILE")}"
   [ -z "$paste_id" ] && return 1
   curl -X DELETE "$paste_id"
   local escaped_paste_id="$(echo "$paste_id" | sed 's/\//\\\//g')"
   sed -i "/^${escaped_paste_id}$/d" "$PASTE_HIST_FILE"
 }
+
+_delete-paste () {
+    local paste_ids=("${(@f)$(cat "$PASTE_HIST_FILE")}")
+    compadd "${paste_ids[@]}"
+}
+
+compdef _delete-paste delete-paste
 
 mknote () {
     local notes_dir="${NOTES_DIR:-$HOME/notes}"
