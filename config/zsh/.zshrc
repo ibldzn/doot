@@ -281,7 +281,7 @@ paste () {
 }
 
 delete-paste () {
-  local paste_id="$(fzf < "$PASTE_HIST_FILE")"
+  local paste_id="$(fzf --preview 'curl -sL {} | bat --color=always --style=numbers' < "$PASTE_HIST_FILE")"
   [ -z "$paste_id" ] && return 1
   curl -X DELETE "$paste_id"
   local escaped_paste_id="$(echo "$paste_id" | sed 's/\//\\\//g')"
