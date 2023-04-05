@@ -244,7 +244,8 @@ _disass () {
             local symbols
             local file
             file="${words[2]/#\~/$HOME}"
-            symbols=("${(@f)"$(nm --defined-only --demangle "$file" | cut -d' ' -f3-)"}")
+            symbols=("${(@f)"$(nm --defined-only --demangle "$file" 2>/dev/null | cut -d' ' -f3-)"}")
+            [[ -z "$symbols" ]] && return 1
             compadd "${symbols[@]}"
             ;;
     esac
@@ -293,7 +294,27 @@ delete-paste () {
   sed -i "/^${escaped_paste_id}$/d" "$PASTE_HIST_FILE"
 }
 
+# tab completion that will list all pastes in the paste history file for delete-paste
 _delete-paste () {
+    # (@f) splits the file into an array by newlines (the default)
+    # there are other tags each has their own purpose, for example:
+    #   @s splits by spaces
+    #   @m splits by newlines and removes empty lines
+    #   @n splits by newlines and keeps empty lines
+    #   @w splits by words
+    #   @c splits by characters
+    #   @C splits by characters and keeps empty lines
+    #   @F splits by fields
+    #   @M splits by matches
+    #   @O splits by offsets
+    #   @Q splits by quoted strings
+    #   @R splits by regex
+    #   @S splits by shwords
+    #   @T splits by tabs
+    #   @U splits by unquoted strings
+    #   @W splits by words
+    #   @X splits by extended glob
+    #   @Z splits by null bytes
     local paste_ids=("${(@f)$(cat "$PASTE_HIST_FILE")}")
     compadd "${paste_ids[@]}"
 }
