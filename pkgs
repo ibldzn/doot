@@ -29,6 +29,7 @@ gopls                     # language server for go programming language
 grim                      # screenshot utility for wayland
 hyperfine                 # a command-line benchmarking tool
 jq                        # command-line json processor
+just                      # a handy way to save and run project-specific commands
 lazygit                   # simple terminal ui for git commands
 libnotify                 # library for sending desktop notifications
 libqalculate              # multi-purpose desktop calculator
@@ -106,6 +107,7 @@ zsh-syntax-highlighting   # fish shell like syntax highlighting for zsh
 # AUR
 autotiling                # script for sway and i3 to automatically switch the horizontal / vertical window split orientation
 cmake-language-server     # python based cmake language server
+lazydocker                # a simple terminal ui for docker and docker-compose, written in go with the gocui library.
 neovim-git                # fork of vim aiming to improve user experience, plugins, and guis.
 nwg-displays              # output management utility for sway wayland compositor
 shellcheck-bin            # shell script analysis tool (binary release, static)
