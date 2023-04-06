@@ -161,6 +161,35 @@ bindkey '^L' clear-screen-and-scrollback
 # Begin exports
 export GPG_TTY=$(tty)
 gpgconf --launch gpg-agent
+
+export FZF_DEFAULT_OPTS="
+    --layout=reverse
+    --bind 'ctrl-e:preview-down'
+    --bind 'ctrl-y:preview-up'
+    --bind 'ctrl-d:preview-half-page-down'
+    --bind 'ctrl-u:preview-half-page-up'
+    --bind 'ctrl-f:preview-page-down'
+    --bind 'ctrl-b:preview-page-up'
+    --bind 'shift-up:preview-top'
+    --bind 'shift-down:preview-bottom'"
+
+export FZF_ALT_C_COMMAND="fd --threads $(nproc) --type directory --hidden --follow --exclude .git"
+
+export FZF_CTRL_T_COMMAND="fd --threads $(nproc) --type file --strip-cwd-prefix --hidden --follow --exclude .git"
+
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:toggle-preview'
+  --color header:italic
+  --header 'Press CTRL-/ to toggle preview'"
+
+export FZF_CTRL_R_OPTS="
+  --exact
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
 # End exports
 
 # Begin Functions
@@ -225,12 +254,30 @@ mkcd () {
 }
 
 disass () {
-  objdump -SCwj .text \
-      -Mintel \
-      --no-show-raw-insn \
-      --no-addresses \
-      --visualize-jumps=extended-color \
-      --disassemble=$2 $1 | sed 's| *#.*||'
+    local file
+    file="${1/#\~/$HOME}"
+    [[ ! -f "$file" ]] && echo "invalid file" >&2 && return 1
+
+    local symbol
+    symbol="${2:-$(fzf \
+        --prompt "symbol: " \
+        --preview \
+            "objdump -SCwj .text \
+            -Mintel \
+            --no-show-raw-insn \
+            --no-addresses \
+            --disassemble={} "$file" |
+            sed 's| *#.*||'" < \
+            <(nm --defined-only --demangle "$file" 2>/dev/null | cut -d' ' -f3-))}"
+    [[ -z "$symbol" ]] && return 1
+
+    objdump -SCwj .text \
+        -Mintel \
+        --no-show-raw-insn \
+        --no-addresses \
+        --visualize-jumps=extended-color \
+        --disassembler-color=extended-color \
+        --disassemble="$symbol" "$file" | sed 's| *#.*||'
 }
 
 _disass () {
@@ -370,6 +417,40 @@ dockershellshhere() {
     dirname=${PWD##*/}
     docker run --rm --interactive --tty --entrypoint=/bin/sh -v $(pwd):/${dirname} --workdir /${dirname} "$@"
 }
+
+findprojects () {
+    builtin cd -- \
+        "$(fd . --max-depth 1 --threads $(nproc) --type directory --hidden --follow --exclude .git ~/Projects ~/Playground | \
+        fzf --preview 'exa --tree --icons --git --group-directories-first --color=always --level=3 {}')"
+    zle reset-prompt
+}
+
+zle -N findprojects
+
+bindkey '^o' findprojects
+
+vf () {
+    if [[ $# -eq 0 ]]; then
+        fzf --preview 'bat -n --color=always {}' --bind 'enter:become(nvim {+})'
+    else
+        nvim "$@"
+    fi
+}
+
+vg () {
+    local initial_query="$1"
+    local rg_prefix="rg --column --line-number --no-heading --color=always --smart-case "
+    local result="$(FZF_DEFAULT_COMMAND="$rg_prefix '$initial_query'" \
+        fzf --bind "change:reload:$rg_prefix {q} || true" \
+        --ansi --disabled --query "$initial_query" \
+        --height=50% --layout=reverse)"
+
+    if [[ -n "$result" ]]; then
+        local file="$(echo "$result" | cut -d':' -f1)"
+        local line="$(echo "$result" | cut -d':' -f2)"
+        nvim "$file" "+$line"
+    fi
+}
 # End Functions
 
 # Begin Aliases
@@ -402,6 +483,8 @@ alias ls='exa'
 alias lzd='lazydocker'
 alias lzg='lazygit'
 alias pcp='rsync -ah --progress'
+alias prp='pacman -Qq | fzf --multi --preview "pacman -Qi {1}" | xargs -ro sudo pacman -Rcns'
+alias psi='pacman -Slq | fzf --multi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S'
 alias pubip="curl -fsSL https://httpbin.org/get | jq -r '.origin'"
 alias py='python'
 alias rced="${EDITOR:-nvim} ${ZDOTDIR:-$HOME}/.zshrc && source ${ZDOTDIR:-$HOME}/.zshrc"
@@ -426,6 +509,8 @@ alias ytmp3='yt-dlp -x --audio-format mp3 --audio-quality 320k -o "%(title)s.%(e
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 bindkey '^ ' autosuggest-accept
 
