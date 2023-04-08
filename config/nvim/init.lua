@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 local error_handler = function(name)
 	return function(err)
 		local text = "Failed to load module '" .. name .. "':\n" .. (err or "")
