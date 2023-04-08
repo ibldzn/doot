@@ -4,7 +4,7 @@ local M = {
 }
 
 local keys = {
-	{ "<leader>n", desc = "Notification" },
+	{ "<leader>N", desc = "Notification" },
 }
 
 local config = function()
@@ -18,7 +18,7 @@ local config = function()
 	end
 
 	wk.register({
-		["<leader>n"] = {
+		["<leader>N"] = {
 			name = "Notification",
 			["d"] = { notify.dismiss, "Dismiss" },
 			["h"] = { notify._print_history, "History" },
