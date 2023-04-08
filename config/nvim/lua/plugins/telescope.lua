@@ -28,7 +28,7 @@ local telescope_project = {
 		local telescope = require("telescope")
 		local wk = require("which-key")
 
-		project.setup({})
+		project.setup({ manual_mode = true })
 
 		telescope.load_extension("projects")
 
