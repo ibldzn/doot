@@ -26,9 +26,7 @@ local setup_lazy_autocmds = function()
 		group = augroup("CommitLazyLockJSON", { clear = true }),
 		callback = function()
 			local config_dir = vim.fn.stdpath("config")
-			-- cd to the git root directory
 			vim.cmd("silent! lcd " .. config_dir)
-			-- commit the lazy-lock.json file
 			vim.cmd("silent! !git add lazy-lock.json && git commit -m 'chore(nvim): update `lazy-lock.json`'")
 		end,
 	})
