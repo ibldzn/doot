@@ -213,11 +213,20 @@ local get_capabilities = function()
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 	local cmp_capabilities = cmp_nvim_lsp.default_capabilities()
-	local fidget_capabilities = {
-		capabilities = { window = { workDoneProgress = true } },
+	local additional_capabilities = {
+		capabilities = {
+			window = {
+				workDoneProgress = true,
+			},
+			workspace = {
+				didChangeWatchedFiles = {
+					dynamicRegistration = true,
+				},
+			},
+		},
 	}
 
-	return vim.tbl_deep_extend("force", capabilities, cmp_capabilities, fidget_capabilities)
+	return vim.tbl_deep_extend("force", capabilities, cmp_capabilities, additional_capabilities)
 end
 
 M.servers = servers
