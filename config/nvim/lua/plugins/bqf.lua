@@ -15,6 +15,7 @@ local M = {
 			},
 		},
 		func_map = {
+			openc = "<CR>",
 			pscrollup = "<C-u>",
 			pscrolldown = "<C-d>",
 		},
