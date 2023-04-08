@@ -17,6 +17,23 @@ local lazy_bootstrap = function()
 	vim.opt.runtimepath:prepend(lazypath)
 end
 
+local setup_lazy_autocmds = function()
+	local augroup = vim.api.nvim_create_augroup
+	local autocmd = vim.api.nvim_create_autocmd
+
+	autocmd("User", {
+		pattern = "LazyUpdate",
+		group = augroup("CommitLazyLockJSON", { clear = true }),
+		callback = function()
+			local config_dir = vim.fn.stdpath("config")
+			-- cd to the git root directory
+			vim.cmd("silent! lcd " .. config_dir)
+			-- commit the lazy-lock.json file
+			vim.cmd("silent! !git add lazy-lock.json && git commit -m 'chore(nvim): update `lazy-lock.json`'")
+		end,
+	})
+end
+
 local lazy_setup = function()
 	local lazy = require("lazy")
 
@@ -65,6 +82,7 @@ end
 local setup = function()
 	lazy_bootstrap()
 	lazy_setup()
+	setup_lazy_autocmds()
 end
 
 M.setup = setup
