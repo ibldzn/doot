@@ -1,6 +1,7 @@
 # awk '/^[^#]/ {print $1}' pkgs | yay -S --needed -
 
 alacritty                 # a cross-platform, gpu-accelerated terminal emulator
+aria2                     # download utility that supports http(s), ftp, bittorrent, and metalink
 bat                       # cat clone with syntax highlighting and git integration
 bluez                     # daemons for the bluetooth protocol stack
 bluez-utils               # development and debugging utilities for the bluetooth protocol stack

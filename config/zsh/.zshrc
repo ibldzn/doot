@@ -455,6 +455,10 @@ vg () {
 
 # Begin Aliases
 alias :q='exit'
+alias a2c-http='aria2c --lowest-speed-limit=1K --http-user-agent="Mozilla/5.0" --http-accept-gzip=true'
+alias a2c-max='aria2c --max-connection-per-server=16 --split=16 --min-split-size=1M --continue=true'
+alias a2c-torrent='a2c-max --bt-metadata-only=true --follow-torrent=true --check-certificate=false'
+alias a2c='aria2c'
 alias ac='ani-cli'
 alias clear='tput clear'
 alias cls='tput clear'
