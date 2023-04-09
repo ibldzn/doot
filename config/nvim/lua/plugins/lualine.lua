@@ -61,7 +61,7 @@ local position = function()
 end
 
 local lsp_indicator = function()
-	local clients = vim.lsp.buf_get_clients()
+	local clients = vim.lsp.get_active_clients()
 	local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
 	local prog = vim.lsp.util.get_progress_messages()[1]
 
@@ -94,6 +94,23 @@ local lsp_indicator = function()
 		"⣯",
 		"⣷",
 	}
+	local ms = vim.loop.hrtime() / 1000000
+	local frame = math.floor(ms / 120) % #spinners
+
+	return spinners[frame + 1]
+end
+
+local copilot_indicator = function()
+	local client = vim.lsp.get_active_clients({ name = "copilot" })[1]
+	if client == nil then
+		return ""
+	end
+
+	if vim.tbl_isempty(client.requests) then
+		return "󰚩 "
+	end
+
+	local spinners = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
 	local ms = vim.loop.hrtime() / 1000000
 	local frame = math.floor(ms / 120) % #spinners
 
@@ -139,8 +156,17 @@ local config = function()
 				},
 				{ get_matchup },
 			},
-			lualine_x = { lsp_indicator, "filetype", fileformat, "encoding" },
+			lualine_x = { "filetype", fileformat, "encoding" },
 			lualine_y = {
+				{
+					copilot_indicator,
+					cond = function()
+						return not vim.tbl_isempty(vim.lsp.get_active_clients({
+							name = "copilot",
+						}))
+					end,
+					color = "CopilotIndicator",
+				},
 				{ "branch" },
 				{
 					"diagnostics",

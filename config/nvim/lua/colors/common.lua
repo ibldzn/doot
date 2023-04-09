@@ -169,13 +169,16 @@ local highlights = function(pal)
     DapStopped    = { fg=pal.lgreen  },
 
     -- indent-blankline
-    IndentBlanklineIndent1     = { fg=pal.lred,    nocombine = true  },
-    IndentBlanklineIndent2     = { fg=pal.lyellow, nocombine = true  },
-    IndentBlanklineIndent3     = { fg=pal.lblue,   nocombine = true  },
-    IndentBlanklineIndent4     = { fg=pal.lcyan,   nocombine = true  },
-    IndentBlanklineIndent5     = { fg=pal.lyellow, nocombine = true  },
-    IndentBlanklineIndent6     = { fg=pal.lgreen,  nocombine = true  },
-    IndentBlanklineContextChar = { fg=pal.todo,    nocombine = true  },
+    IndentBlanklineIndent1     = { fg=pal.lred,    nocombine=true  },
+    IndentBlanklineIndent2     = { fg=pal.lyellow, nocombine=true  },
+    IndentBlanklineIndent3     = { fg=pal.lblue,   nocombine=true  },
+    IndentBlanklineIndent4     = { fg=pal.lcyan,   nocombine=true  },
+    IndentBlanklineIndent5     = { fg=pal.lyellow, nocombine=true  },
+    IndentBlanklineIndent6     = { fg=pal.lgreen,  nocombine=true  },
+    IndentBlanklineContextChar = { fg=pal.todo,    nocombine=true  },
+
+    -- copilot indicator
+    CopilotIndicator           = { fg=pal.lgreen, bg=pal.surface3, bold = true },
   }
 	-- stylua: ignore end
 end
