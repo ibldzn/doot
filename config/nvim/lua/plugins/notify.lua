@@ -11,11 +11,7 @@ local config = function()
 	local notify = require("notify")
 	local wk = require("which-key")
 
-	vim.notify = function(msg, ...)
-		if not msg:find("No information available") then
-			return notify(msg, ...)
-		end
-	end
+	vim.notify = notify
 
 	wk.register({
 		["<leader>N"] = {
