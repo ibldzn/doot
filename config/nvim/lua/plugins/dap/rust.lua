@@ -153,12 +153,16 @@ end
 function M.debug(args, prompt)
 	local cargo_args = get_cargo_args_from_runnables_args(args)
 
-	vim.notify("Compiling a debug build for debugging. This might take some time...")
-
 	local cmd_args = {}
 	if prompt then
-		cmd_args = vim.split(vim.fn.input("args: "), " ")
+		cmd_args = require("util").split_args(vim.fn.input("args: "))
+		if cmd_args == nil then
+			scheduled_error("Invalid arguments")
+			return
+		end
 	end
+
+	vim.notify("Compiling a debug build for debugging. This might take some time...")
 
 	Job:new({
 		command = "cargo",

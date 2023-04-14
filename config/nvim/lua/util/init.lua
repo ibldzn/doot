@@ -58,10 +58,39 @@ local get_env = function(file)
 	return env
 end
 
+local split_args = function(args)
+	local arg = {}
+	local i = 1
+	local argstr = ""
+	local quote = false
+
+	while i <= #args do
+		local c = args:sub(i, i)
+		if c == '"' then
+			quote = not quote
+		elseif c == " " and not quote then
+			table.insert(arg, argstr)
+			argstr = ""
+		else
+			argstr = argstr .. c
+		end
+		i = i + 1
+	end
+
+	-- make sure all quotes are closed
+	if quote then
+		return nil
+	end
+
+	table.insert(arg, argstr)
+	return arg
+end
+
 M.wrap = wrap
 M.get_env = get_env
 M.join_paths = join_paths
 M.is_windows = is_windows
+M.split_args = split_args
 M.append_at_eol = append_at_eol
 M.path_separator = path_separator
 

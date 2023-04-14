@@ -169,7 +169,12 @@ local run_dap = function(prompt)
 		end,
 	}, function(cfg)
 		if prompt then
-			cfg.args = vim.split(vim.fn.input("args: "), " ")
+			local args = require("util").split_args(vim.fn.input("args: "))
+			if args == nil then
+				vim.notify("Invalid args", vim.log.levels.ERROR)
+				return
+			end
+			cfg.args = args
 		end
 		dap.run(cfg)
 	end)
