@@ -5,12 +5,9 @@ return {
 	{
 		"AckslD/messages.nvim",
 		cmd = "Messages",
-		init = function()
-			pcall(function()
-				Msg = function(...)
-					require("messages.api").capture_thing(...)
-				end
-			end)
+		config = function()
+			require("messages").setup()
+			Msg = require("messages.api").capture_thing
 		end,
 	},
 
