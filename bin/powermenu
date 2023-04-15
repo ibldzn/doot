@@ -1,13 +1,28 @@
 #!/usr/bin/env bash
 
-op=$(echo -e " Poweroff\n Reboot\n Suspend\n Lock\n Logout" | \
-    wofi --insensitive --dmenu | \
-    awk '{print tolower($2)}')
+op=$(echo -e " Poweroff\n Reboot\n Suspend\n Lock\n Logout" |
+  wofi --insensitive --dmenu |
+  awk '{print tolower($2)}')
 
-case $op in 
-    lock)     swaylock  -i ~/dot/papes/hollow-knight.png ;;
-    logout)   swaymsg   exit                              ;;
-    reboot)   systemctl reboot                            ;;
-    suspend)  systemctl suspend                           ;;
-    poweroff) systemctl poweroff                          ;;
+log-out() {
+  local wm
+  wm="$XDG_CURRENT_DESKTOP"
+
+  case "$wm" in
+    Hyprland) hyprctl dispatch exit ;;
+    *) swaymsg exit ;;
+    # *) notify-send \
+    #   --urgency=critical \
+    #   --expire-time=5000 \
+    #   --icon=dialog-error-symbolic \
+    #   "Unknown WM" "$wm is not a known WM type" ;;
+  esac
+}
+
+case $op in
+  lock) swaylock -i ~/dot/papes/hollow-knight.png ;;
+  logout) log-out ;;
+  reboot) systemctl reboot ;;
+  suspend) systemctl suspend ;;
+  poweroff) systemctl poweroff ;;
 esac
