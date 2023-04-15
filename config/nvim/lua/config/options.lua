@@ -71,6 +71,7 @@ local setup = function()
 	vim.opt.background = "dark"
 	vim.opt.showtabline = 0
 	vim.opt.cmdheight = 1
+	vim.opt.splitkeep = "screen"
 
 	-----------------------------------------------------------
 	-- Search
