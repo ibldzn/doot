@@ -24,6 +24,7 @@ local M = {
 		"meson",
 		"nix",
 		"php",
+		"prisma",
 		"python",
 		"query",
 		"rust",

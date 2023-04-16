@@ -93,6 +93,7 @@ local format_buffer = function()
 	end
 
 	vim.lsp.buf.format({
+		timeout = 3000,
 		filter = function(client)
 			local metadata = get_lsp_client_metadata(client)
 			return client.name == "null-ls" or (metadata and metadata.allow_fmt)
