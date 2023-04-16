@@ -1,6 +1,7 @@
 local M = {
 	"nvim-telescope/telescope.nvim",
 	keys = { { "<leader>f", desc = "Find" } },
+	cmd = { "Telescope" },
 }
 
 local telescope_dap = {
