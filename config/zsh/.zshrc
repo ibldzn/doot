@@ -421,7 +421,7 @@ dockershellshhere() {
 findprojects () {
     builtin cd -- \
         "$(fd . --max-depth 1 --threads $(nproc) --type directory --hidden --follow --exclude .git ~/Projects ~/Playground | \
-        fzf --preview 'exa --tree --icons --git --group-directories-first --color=always --level=3 {}')"
+        fzf --preview 'exa --tree --icons --git --git-ignore --group-directories-first --color=always --level=3 {}')"
     zle reset-prompt
 }
 
@@ -450,6 +450,19 @@ vg () {
         local line="$(echo "$result" | cut -d':' -f2)"
         nvim "$file" "+$line"
     fi
+}
+
+nvim-server () {
+    local ip="${1:-0.0.0.0}"
+    local port="${2:-6666}"
+    echo "[$(date "+%Y/%m/%d %H:%M:%S")] Starting nvim server at $ip:$port"
+    nvim --listen "$ip:$port" --headless
+    echo "[$(date "+%Y/%m/%d %H:%M:%S")] Stopped nvim server at $ip:$port"
+}
+
+nvim-client () {
+    local ipport="${1:?IP:PORT is required}"
+    nvim --remote-ui --server "$ipport"
 }
 # End Functions
 
