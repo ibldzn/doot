@@ -1,6 +1,6 @@
 local M = {
 	"utilyre/barbecue.nvim",
-	event = "BufReadPre",
+	event = "UIEnter",
 	dependencies = {
 		"SmiteshP/nvim-navic",
 		"nvim-tree/nvim-web-devicons", -- optional dependency

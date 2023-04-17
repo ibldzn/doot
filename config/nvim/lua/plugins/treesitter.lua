@@ -1,6 +1,27 @@
 local M = {
 	"nvim-treesitter/nvim-treesitter",
-	ft = {
+	lazy = false,
+	dependencies = {
+		"windwp/nvim-ts-autotag",
+		"nvim-treesitter/playground",
+		"nvim-treesitter/nvim-treesitter-context",
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		"nvim-treesitter/nvim-treesitter-textobjects",
+	},
+	build = ":TSUpdate",
+}
+
+local init = function()
+	vim.opt.foldmethod = "expr"
+	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+end
+
+local config = function()
+	local wk = require("which-key")
+	local shared = require("config.shared")
+	local ts_config = require("nvim-treesitter.configs")
+	local ts_context = require("treesitter-context")
+	local filetypes = {
 		"bash",
 		"c",
 		"cmake",
@@ -35,30 +56,10 @@ local M = {
 		"vim",
 		"yaml",
 		"zig",
-	},
-	dependencies = {
-		"windwp/nvim-ts-autotag",
-		"nvim-treesitter/playground",
-		"nvim-treesitter/nvim-treesitter-context",
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		"nvim-treesitter/nvim-treesitter-textobjects",
-	},
-	build = ":TSUpdate",
-}
-
-local init = function()
-	vim.opt.foldmethod = "expr"
-	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-end
-
-local config = function()
-	local wk = require("which-key")
-	local shared = require("config.shared")
-	local ts_config = require("nvim-treesitter.configs")
-	local ts_context = require("treesitter-context")
+	}
 
 	ts_config.setup({
-		ensure_installed = M.ft,
+		ensure_installed = filetypes,
 		incremental_selection = {
 			enable = true,
 			keymaps = {
