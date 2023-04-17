@@ -179,6 +179,9 @@ local highlights = function(pal)
 
     -- copilot indicator
     CopilotIndicator           = { fg=pal.lgreen, bg=pal.surface3, bold = true },
+
+    -- Neotree
+    NeoTreeTitleBar            = { fg=pal.text2 },
   }
 	-- stylua: ignore end
 end
