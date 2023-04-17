@@ -3,15 +3,6 @@ return {
 	"nvim-tree/nvim-web-devicons",
 
 	{
-		"AckslD/messages.nvim",
-		cmd = "Messages",
-		config = function()
-			require("messages").setup()
-			Msg = require("messages.api").capture_thing
-		end,
-	},
-
-	{
 		"nvim-neo-tree/neo-tree.nvim",
 		keys = { { "<A-n>", "<cmd>Neotree toggle<CR>", desc = "Neotree" } },
 		opts = {
