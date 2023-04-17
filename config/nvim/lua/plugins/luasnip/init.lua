@@ -34,6 +34,9 @@ local config = function()
 	require("luasnip.loaders.from_vscode").lazy_load()
 	local snippets = vim.fn.stdpath("config") .. "/lua/plugins/luasnip/snippets"
 	require("luasnip.loaders.from_lua").load({ paths = snippets })
+
+	luasnip.filetype_extend("javascript", { "javascriptreact" })
+	luasnip.filetype_extend("typescript", { "typescriptreact" })
 end
 
 M.config = config
