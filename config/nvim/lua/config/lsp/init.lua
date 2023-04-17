@@ -9,7 +9,7 @@ local servers = {
 	gopls = { filetypes = { "go", "gomod", "gowork", "gotmpl" } },
 	html = { filetypes = "html" },
 	intelephense = { filetypes = "php", allow_fmt = true },
-	-- jdtls = { filetypes = "java" },
+	jdtls = { filetypes = "java" },
 	jsonls = { filetypes = { "json", "jsonc" } },
 	lua_ls = { filetypes = "lua" },
 	pyright = { filetypes = "python" },
