@@ -32,11 +32,21 @@ local config = function()
 	})
 
 	require("luasnip.loaders.from_vscode").lazy_load()
+
 	local snippets = vim.fn.stdpath("config") .. "/lua/plugins/luasnip/snippets"
 	require("luasnip.loaders.from_lua").load({ paths = snippets })
 
 	luasnip.filetype_extend("javascript", { "javascriptreact" })
 	luasnip.filetype_extend("typescript", { "typescriptreact" })
+
+	vim.api.nvim_create_autocmd("InsertLeave", {
+		group = vim.api.nvim_create_augroup("LuaSnip", { clear = true }),
+		callback = function(args)
+			if luasnip.session.current_nodes[args.buf] and not luasnip.session.jump_active then
+				luasnip.unlink_current()
+			end
+		end,
+	})
 end
 
 M.config = config
