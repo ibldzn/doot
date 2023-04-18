@@ -59,31 +59,28 @@ local get_env = function(file)
 end
 
 local split_args = function(args)
-	local arg = {}
-	local i = 1
-	local argstr = ""
-	local quote = false
+	local result = {}
+	local current_arg = ""
+	local in_quotes = false
 
-	while i <= #args do
+	for i = 1, #args do
 		local c = args:sub(i, i)
 		if c == '"' then
-			quote = not quote
-		elseif c == " " and not quote then
-			table.insert(arg, argstr)
-			argstr = ""
+			in_quotes = not in_quotes
+		elseif c == " " and not in_quotes then
+			table.insert(result, current_arg)
+			current_arg = ""
 		else
-			argstr = argstr .. c
+			current_arg = current_arg .. c
 		end
-		i = i + 1
 	end
 
-	-- make sure all quotes are closed
-	if quote then
-		return nil
+	if in_quotes then
+		return nil, "Unclosed quote"
 	end
 
-	table.insert(arg, argstr)
-	return arg
+	table.insert(result, current_arg)
+	return result
 end
 
 M.wrap = wrap
