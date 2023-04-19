@@ -107,26 +107,4 @@ return {
 			"BlackJackResetScores",
 		},
 	},
-
-	{
-		"nvim-neorg/neorg",
-		ft = "norg",
-		cmd = "Neorg",
-		build = ":Neorg sync-parsers",
-		opts = {
-			load = {
-				["core.defaults"] = {}, -- Loads default behaviour
-				["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-				["core.norg.dirman"] = { -- Manages Neorg workspaces
-					config = {
-						workspaces = {
-							notes = "~/notes",
-						},
-						default_workspace = "notes",
-					},
-				},
-			},
-		},
-		dependencies = { { "nvim-lua/plenary.nvim" } },
-	},
 }
