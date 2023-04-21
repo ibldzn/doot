@@ -159,6 +159,8 @@ bindkey '^L' clear-screen-and-scrollback
 # End Hooks
 
 # Begin exports
+export WORDCHARS=${WORDCHARS/\/}
+
 export GPG_TTY=$(tty)
 gpgconf --launch gpg-agent
 
