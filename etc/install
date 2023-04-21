@@ -3,10 +3,7 @@
 script_dir="$(printf "%q " "$(realpath -s "$0")")"
 cur_dir="${script_dir%/*}"
 
-sudo mkdir -p /etc/pacman.d/hooks
-sudo cp -r "$cur_dir"/pacman.d /etc/pacman.d
-
-if grep -i pc /etc/hostname; then
-  sudo mkdir -p /etc/udev/rules.d
-  sudo cp "$cur_dir"/udev/rules.d/30-amdgpu-pm.rules /etc/udev/rules.d
-fi
+for dir in "$cur_dir"/*/; do
+  sudo mkdir -p "/etc/$(basename "$dir")"
+  sudo cp -r "$dir"* "/etc/$(basename "$dir")"
+done
