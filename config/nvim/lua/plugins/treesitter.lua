@@ -1,6 +1,6 @@
 local M = {
 	"nvim-treesitter/nvim-treesitter",
-	lazy = false,
+	event = { "BufRead", "BufWinEnter", "BufNewFile" },
 	dependencies = {
 		"windwp/nvim-ts-autotag",
 		"nvim-treesitter/playground",
@@ -34,6 +34,7 @@ local config = function()
 		"gomod",
 		"graphql",
 		"html",
+		"http",
 		"java",
 		"javascript",
 		"json",
@@ -46,6 +47,7 @@ local config = function()
 		"nix",
 		"php",
 		"prisma",
+		"proto",
 		"python",
 		"query",
 		"rust",
