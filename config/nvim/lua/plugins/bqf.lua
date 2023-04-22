@@ -2,11 +2,8 @@ local M = {
 	"kevinhwang91/nvim-bqf",
 	ft = "qf",
 	dependencies = {
+		"junegunn/fzf",
 		"nvim-treesitter/nvim-treesitter",
-		{
-			"junegunn/fzf",
-			build = vim.fn["fzf#install"],
-		},
 	},
 	opts = {
 		filter = {
