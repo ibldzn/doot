@@ -1,6 +1,6 @@
 local M = {}
 
-local setup = function(server, on_init, on_attach, capabilities)
+local setup = function(server, on_init, on_attach, capabilities, filetypes)
 	local neodev_ok, neodev = pcall(require, "neodev")
 	if neodev_ok then
 		neodev.setup({})
@@ -9,6 +9,7 @@ local setup = function(server, on_init, on_attach, capabilities)
 	server.setup({
 		on_init = on_init,
 		on_attach = on_attach,
+		filetypes = filetypes,
 		capabilities = capabilities,
 		settings = {
 			Lua = {

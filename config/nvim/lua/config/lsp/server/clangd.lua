@@ -1,10 +1,11 @@
 local M = {}
 
-local setup = function(server, on_init, on_attach, capabilities)
+local setup = function(server, on_init, on_attach, capabilities, filetypes)
 	local new_capabilities = vim.tbl_deep_extend("force", capabilities, { offsetEncoding = "utf-8" })
 	server.setup({
 		on_init = on_init,
 		on_attach = on_attach,
+		filetypes = filetypes,
 		capabilities = new_capabilities,
 		cmd = {
 			"clangd",

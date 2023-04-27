@@ -2,7 +2,8 @@ local M = {}
 
 local servers = {
 	bashls = { filetypes = "sh" },
-	clangd = { filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" } },
+	bufls = { filetypes = "proto" },
+	clangd = { filetypes = { "c", "cpp", "objc", "objcpp", "cuda" } },
 	cmake = { filetypes = "cmake" },
 	cssls = { filetypes = { "css", "less", "scss", "sass" } },
 	dartls = { filetypes = "dart", use_mason = false },

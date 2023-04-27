@@ -173,7 +173,8 @@ local config = function()
 		if not metadata.skip_config then
 			local ok, sv = pcall(require, "config.lsp.server." .. server)
 			if ok then
-				sv.setup(lspconfig[server], lsp.on_init, lsp.on_attach, lsp.get_capabilities())
+				local filetypes = type(metadata.filetypes) == "table" and metadata.filetypes or { metadata.filetypes }
+				sv.setup(lspconfig[server], lsp.on_init, lsp.on_attach, lsp.get_capabilities(), filetypes)
 			else
 				lspconfig[server].setup({
 					on_init = lsp.on_init,

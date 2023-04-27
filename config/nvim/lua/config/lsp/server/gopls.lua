@@ -21,14 +21,14 @@ local setup_autocmd = function()
 	})
 end
 
-local setup = function(server, on_init, on_attach, capabilities)
+local setup = function(server, on_init, on_attach, capabilities, filetypes)
 	setup_autocmd()
 	server.setup({
 		on_init = on_init,
 		on_attach = on_attach,
 		capabilities = capabilities,
 		cmd = { "gopls", "serve" },
-		filetypes = { "go", "gomod" },
+		filetypes = filetypes,
 		settings = {
 			gopls = {
 				analyses = {
