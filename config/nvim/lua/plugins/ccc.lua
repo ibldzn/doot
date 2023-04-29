@@ -45,6 +45,7 @@ local opts = {
 			"dapui_scopes",
 			"dapui_stacks",
 			"help",
+			"lazy",
 			"lspinfo",
 			"mason",
 			"packer",
