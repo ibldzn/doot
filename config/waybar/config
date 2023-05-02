@@ -35,18 +35,18 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""]
     },
     "network": {
         // "interface": "*", // (Optional) To force the use of this interface
         "format-wifi": "  {essid}",
-        "format-ethernet": "  {ipaddr}/{cidr}",
+        "format-ethernet": "󰈀  {ipaddr}/{cidr}",
         // "tooltip-format": "{ifname} via {gwaddr} ",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-        "format-linked": "  {ifname} (No IP)",
+        "format-linked": "󰈀  {ifname} (No IP)",
         "format-disconnected": "⚠  Disconnected",
         "format-alt": "{bandwidthUpBytes}   {bandwidthDownBytes}  ",
         "interval": 1
