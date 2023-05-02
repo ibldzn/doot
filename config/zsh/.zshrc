@@ -466,6 +466,12 @@ nvim-client () {
     local ipport="${1:?IP:PORT is required}"
     nvim --remote-ui --server "$ipport"
 }
+
+dirdiff () {
+    local left="${1:?Left directory is required}"
+    local right="${2:?Right directory is required}"
+    diff --unified --recursive "$left" "$right" | delta
+}
 # End Functions
 
 # Begin Aliases
