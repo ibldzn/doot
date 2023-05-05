@@ -39,7 +39,7 @@ local mason = {
 			ui = {
 				border = shared.window.borders,
 				icons = {
-					package_pending = " ﲊ",
+					package_pending = "󰔟",
 					package_installed = " ",
 					package_uninstalled = " ",
 				},
