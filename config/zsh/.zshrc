@@ -472,6 +472,10 @@ dirdiff () {
     local right="${2:?Right directory is required}"
     diff --unified --recursive "$left" "$right" | delta
 }
+
+exit_zsh() { exit }
+zle -N exit_zsh
+bindkey '^D' exit_zsh
 # End Functions
 
 # Begin Aliases
