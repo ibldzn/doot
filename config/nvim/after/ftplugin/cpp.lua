@@ -6,46 +6,35 @@ end
 
 local Terminal = toggleterm_terminal.Terminal
 
-local compile_debug = function()
+local compile = function(mode, flags)
 	local filepath = vim.fn.expand("%:p")
 	local filename_no_ext = vim.fn.expand("%:t:r")
 	local dirpath = vim.fn.expand("%:p:h")
 	local outpath = dirpath .. "/" .. filename_no_ext
 
-	vim.cmd.write()
-	Terminal
-		:new({
-			cmd = [[ g++ -O0 -g -std=c++20 -Wall -Wshadow -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG ]]
-				.. filepath
-				.. [[ -o ]]
-				.. outpath
-				.. [[; if [ $? -eq 0 ]; then echo '\nOutput (debug)\t:' && /usr/bin/time -f '\nTime\t: %e seconds\nMemory\t: %M Kbytes' ]]
-				.. outpath
-				.. [[ ; else echo '\nCompilation error'; fi ]],
-			close_on_exit = false,
-		})
-		:toggle(nil, "float")
+	-- vim.cmd.write()
+	Terminal:new({
+		cmd = [[ g++ ]]
+			.. flags
+			.. [[ ]]
+			.. filepath
+			.. [[ -o ]]
+			.. outpath
+			.. [[; if [ $? -eq 0 ]; then echo '\nOutput (]]
+			.. mode
+			.. [[)\t:' && /usr/bin/time -f '\nTime\t: %e seconds\nMemory\t: %M Kbytes' ]]
+			.. outpath
+			.. [[ ; else echo '\nCompilation error'; fi ]],
+		close_on_exit = false,
+	}):toggle(nil, "horizontal")
+end
+
+local compile_debug = function()
+	compile("debug", "-O0 -g -std=c++20 -Wall -Wshadow -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG")
 end
 
 local compile_release = function()
-	local filepath = vim.fn.expand("%:p")
-	local filename_no_ext = vim.fn.expand("%:t:r")
-	local dirpath = vim.fn.expand("%:p:h")
-	local outpath = dirpath .. "/" .. filename_no_ext
-
-	vim.cmd.write()
-	Terminal
-		:new({
-			cmd = [[ g++ -O3 -std=c++20 -Wall -Wshadow -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG ]]
-				.. filepath
-				.. [[ -o ]]
-				.. outpath
-				.. [[; if [ $? -eq 0 ]; then echo '\nOutput (release)\t:' && /usr/bin/time -f '\nTime\t: %e seconds\nMemory\t: %M Kbytes' ]]
-				.. outpath
-				.. [[ ; else echo '\nCompilation error'; fi ]],
-			close_on_exit = false,
-		})
-		:toggle(nil, "float")
+	compile("release", "-O3 -std=c++20 -Wall -Wshadow -fsanitize=address -fsanitize=undefined")
 end
 
 vim.keymap.set(
