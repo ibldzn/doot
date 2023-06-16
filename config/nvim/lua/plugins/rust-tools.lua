@@ -116,8 +116,6 @@ local config = function()
 		inlay_hints()
 	end
 
-	local lsp_capabilities = vim.tbl_deep_extend("force", lsp.get_capabilities(), { offsetEncoding = "utf-8" })
-
 	---@diagnostic disable-next-line: redundant-parameter
 	rust_tools.setup({
 		tools = {
@@ -132,7 +130,6 @@ local config = function()
 		server = {
 			on_init = lsp.on_init,
 			on_attach = m_on_attach,
-			capabilities = lsp_capabilities,
 			settings = {
 				["rust-analyzer"] = {
 					assist = {
