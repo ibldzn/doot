@@ -69,6 +69,8 @@ local setup = function()
 	end, { noremap = true, expr = true, desc = "Center first search result" })
 
 	wk.register({
+		["c"] = { '"_c', "Delete and enter insert mode" },
+		["C"] = { '"_C', "Delete until end of line and enter insert mode" },
 		["S"] = {
 			name = "Split",
 			["H"] = { "<C-w>t<C-w>K", "Vertical to horizontal" },
@@ -152,6 +154,8 @@ local setup = function()
 	}, { mode = "n" })
 
 	wk.register({
+		["c"] = { '"_c', "Delete and enter insert mode" },
+		["C"] = { '"_C', "Delete until end of line and enter insert mode" },
 		["<C-c>"] = { '"+y', "Copy to system clipboard" },
 		["<A-u>"] = { ":m'<-2<CR>gv=gv", "Move current line up" },
 		["<A-d>"] = { ":m'>+1<CR>gv=gv", "Move current line down" },
