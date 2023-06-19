@@ -422,8 +422,8 @@ dockershellshhere() {
 
 findprojects () {
     builtin cd -- \
-        "$(fd . --max-depth 1 --threads $(nproc) --type directory --hidden --follow --exclude .git ~/Projects ~/Playground | \
-        fzf --preview 'exa --tree --icons --git --git-ignore --group-directories-first --color=always --level=3 {}')"
+        "$(fd . --max-depth=1 --threads=$(nproc) --type=directory --hidden --follow --exclude={.bzr,CVS,.git,.hg,.svn,.idea,.tox,node_modules,target,build} ~/Projects ~/Playground | \
+        fzf --preview 'exa --tree --icons --git --git-ignore --group-directories-first --color=always --level=3 --ignore-glob="node_modules|target|build" {}')"
     zle reset-prompt
 }
 
