@@ -1,46 +1,5 @@
 local M = {}
 
-local wk = require("which-key")
-
-local map = function(mode, rhs, lhs, opts)
-	opts = vim.tbl_deep_extend("keep", opts or {}, { silent = true })
-	return vim.keymap.set(mode, rhs, lhs, opts)
-end
-
-local nmap = function(rhs, lhs, opts)
-	return map("n", rhs, lhs, opts)
-end
-
-local imap = function(rhs, lhs, opts)
-	return map("i", rhs, lhs, opts)
-end
-
-local setup_normal_mode_mappings = function()
-	nmap("j", "gj", { desc = "Move down (respect wrap)" })
-	nmap("k", "gk", { desc = "Move up (respect wrap)" })
-	nmap("gj", "j", { desc = "Move down" })
-	nmap("gk", "k", { desc = "Move up" })
-
-	nmap("dd", function()
-		return vim.api.nvim_get_current_line():match("^%s*$") and '"_dd' or "dd"
-	end, { expr = true, desc = "Smart dd" })
-end
-
-local setup_insert_mode_mappings = function()
-	--
-end
-
-local setup_other_mode_mappings = function()
-	map("c", "<CR>", function()
-		local cmdtype = vim.fn.getcmdtype()
-		if cmdtype == "/" or cmdtype == "?" then
-			return "<CR>zzzv"
-		else
-			return "<CR>"
-		end
-	end, { expr = true, desc = "Center first search result" })
-end
-
 local setup = function()
 	local wk_ok, wk = pcall(require, "which-key")
 	local map = vim.keymap.set
@@ -50,10 +9,12 @@ local setup = function()
 		return
 	end
 
-	map("n", "j", "gj", { noremap = true })
-	map("n", "gj", "j", { noremap = true })
-	map("n", "k", "gk", { noremap = true })
-	map("n", "gk", "k", { noremap = true })
+	for _, mode in ipairs({ "n", "v" }) do
+		map(mode, "j", "gj", { noremap = true })
+		map(mode, "gj", "j", { noremap = true })
+		map(mode, "k", "gk", { noremap = true })
+		map(mode, "gk", "k", { noremap = true })
+	end
 
 	map("n", "dd", function()
 		return vim.api.nvim_get_current_line():match("^%s*$") and '"_dd' or "dd"
@@ -154,6 +115,7 @@ local setup = function()
 	}, { mode = "n" })
 
 	wk.register({
+		["y"] = { "myy`y", "Yank without moving cursor" },
 		["c"] = { '"_c', "Delete and enter insert mode" },
 		["C"] = { '"_C', "Delete until end of line and enter insert mode" },
 		["<C-c>"] = { '"+y', "Copy to system clipboard" },

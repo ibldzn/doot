@@ -75,7 +75,6 @@ local config = function()
 		numhl = false,
 		linehl = false,
 		word_diff = false,
-		keymaps = {},
 		current_line_blame = true,
 		current_line_blame_formatter = current_line_blame_formatter,
 		current_line_blame_formatter_opts = {
