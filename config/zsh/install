@@ -7,5 +7,35 @@ ln -s "$(realpath "$cur_dir"/.zshenv)" ~
 
 . "$cur_dir"/.zshenv
 
-mkdir -p "$(dirname "$HISTFILE")"
-touch "$HISTFILE"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+mkdir -p "$XDG_DATA_HOME"
+
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+mkdir -p "$XDG_CONFIG_HOME"
+
+XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+mkdir -p "$XDG_STATE_HOME"
+
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+mkdir -p "$XDG_CACHE_HOME"
+
+XDG_DIRS=("$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME")
+
+env_vars=($(env | cut -d= -f1))
+for env_var in "${env_vars[@]}"; do
+    for xdg_dir in "${XDG_DIRS[@]}"; do
+        var="${(P)env_var}"
+        if [[ "$var" == "$xdg_dir"/* ]]; then
+            base_path="${var#$xdg_dir/}"
+
+            if [[ "$(dirname "$base_path")" == "." ]]; then
+                dirname="$var"
+            else
+                dirname="$(dirname "$var")"
+            fi
+
+            mkdir -p "$dirname"
+            break
+        fi
+    done
+done
