@@ -217,6 +217,8 @@ local config = function()
 			["l"] = { vim.cmd.MasonLog, "Install Log" },
 		},
 	})
+
+	vim.api.nvim_exec_autocmds("FileType", {})
 end
 
 M.config = config
