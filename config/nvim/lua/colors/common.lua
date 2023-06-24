@@ -162,6 +162,7 @@ local highlights = function(pal)
     LspReferenceText  = { bg=pal.ref_text  },
     LspReferenceRead  = { bg=pal.ref_read  },
     LspReferenceWrite = { bg=pal.ref_write },
+    LspInlayHint      = { link="NonText"   },
 
     -- dap
     DapBreakpoint = { fg=pal.lred    },

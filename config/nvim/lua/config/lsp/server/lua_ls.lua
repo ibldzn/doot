@@ -13,6 +13,9 @@ local setup = function(server, on_init, on_attach, capabilities, filetypes)
 		capabilities = capabilities,
 		settings = {
 			Lua = {
+				hint = {
+					enable = true,
+				},
 				completion = {
 					callSnippet = "Replace",
 				},

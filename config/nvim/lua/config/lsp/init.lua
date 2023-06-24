@@ -165,6 +165,10 @@ local on_attach = function(client, buf)
 		})
 	end
 
+	if client.supports_method("textDocument/inlayHint") and vim.fn.has("nvim-0.10") then
+		vim.lsp.buf.inlay_hint(buf, true)
+	end
+
 	if client.supports_method("textDocument/colorProvider") then
 		vim.defer_fn(function()
 			pcall(vim.cmd.CccHighlighterEnable)

@@ -147,6 +147,8 @@ local config = function()
 			},
 		},
 	})
+
+	vim.api.nvim_exec_autocmds("FileType", {})
 end
 
 M.config = config
