@@ -31,6 +31,15 @@ local setup = function(server, on_init, on_attach, capabilities, filetypes)
 		filetypes = filetypes,
 		settings = {
 			gopls = {
+				hints = {
+					assignVariableTypes = true,
+					compositeLiteralFields = true,
+					compositeLiteralTypes = true,
+					constantValues = true,
+					functionTypeParameters = true,
+					parameterNames = true,
+					rangeVariableTypes = true,
+				},
 				analyses = {
 					unusedparams = true,
 				},
