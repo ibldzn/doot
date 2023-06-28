@@ -156,6 +156,8 @@ clear-screen-and-scrollback() {
 
 zle -N clear-screen-and-scrollback
 bindkey '^L' clear-screen-and-scrollback
+
+bindkey -s '^f' 'tmux-sessionizer\n'
 # End Hooks
 
 # Begin exports
@@ -520,6 +522,7 @@ alias rced="${EDITOR:-nvim} ${ZDOTDIR:-$HOME}/.zshrc && source ${ZDOTDIR:-$HOME}
 alias sd='systemd-analyze'
 alias shn='shutdown now'
 alias tmp='cd $(mktemp -d)'
+alias tn='tmux new -s "$(basename $(pwd))"'
 alias v='nvim'
 alias vd='neovide'
 alias x='exit'
