@@ -1,119 +1,120 @@
 # awk '/^[^#]/ {print $1}' pkgs | yay -S --needed -
 
-alacritty                 # a cross-platform, gpu-accelerated terminal emulator
-aria2                     # download utility that supports http(s), ftp, bittorrent, and metalink
-bat                       # cat clone with syntax highlighting and git integration
-bluez                     # daemons for the bluetooth protocol stack
-bluez-utils               # development and debugging utilities for the bluetooth protocol stack
-breeze-gtk                # breeze widget theme for gtk 2 and 3
-brightnessctl             # lightweight brightness control tool
-clang                     # c language family frontend for llvm
-cmake                     # a cross-platform open-source make system
-delve                     # a debugger for the go programming language.
-docker                    # pack, ship and run any application as a lightweight container
-docker-buildx             # docker cli plugin for extended build capabilities with buildkit
-docker-compose            # fast, isolated development environments using docker
-dunst                     # customizable and lightweight notification-daemon
-exa                       # ls replacement
-extra-cmake-modules       # extra modules and scripts for cmake
-fcitx5-im                 # fcitx5 input method
-fcitx5-mozc               # fcitx5 module of a japanese input method for chromium os, windows, mac and linux (the open source edition of google japanese input)
-fd                        # simple, fast and user-friendly alternative to find
-feh                       # fast and light imlib2-based image viewer
-ffmpegthumbnailer         # lightweight video thumbnailer that can be used by file managers
-firefox                   # standalone web browser from mozilla.org
-fzf                       # command-line fuzzy finder
-git                       # the fast distributed version control system
-git-delta                 # syntax-highlighting pager for git and diff output
-gnome-keyring             # stores passwords and encryption keys
-go                        # core compiler tools for the go programming language
-gopls                     # language server for go programming language
-grim                      # screenshot utility for wayland
-hyperfine                 # a command-line benchmarking tool
-jq                        # command-line json processor
-just                      # a handy way to save and run project-specific commands
-lazygit                   # simple terminal ui for git commands
-libnotify                 # library for sending desktop notifications
-libqalculate              # multi-purpose desktop calculator
-lldb                      # next generation, high-performance debugger
-lua                       # powerful lightweight programming language designed for extending applications
-lua-language-server       # lua language server coded by lua
-luajit                    # just-in-time compiler and drop-in replacement for lua 5.1
-lxappearance              # feature-rich gtk+ theme switcher of the lxde desktop
-man-db                    # a utility for reading man pages
-man-pages                 # linux man pages
-mpc                       # minimalist command line interface to mpd
-mpd                       # flexible, powerful, server-side application for playing music
-mpv                       # a free, open source, and cross-platform media player
-ncmpcpp                   # almost exact clone of ncmpc with some new features
-nodejs                    # evented i/o for v8 javascript
-noto-fonts                # google noto ttf fonts
-noto-fonts-cjk            # google noto cjk fonts
-noto-fonts-emoji          # google noto emoji fonts
-noto-fonts-extra          # google noto ttf fonts - additional variants
-npm                       # a package manager for javascript
-ntfs-3g                   # ntfs filesystem driver and utilities
-p7zip                     # command-line file archiver with high compression ratio
-pacman-contrib            # contributed scripts and tools for pacman systems
-pavucontrol               # pulseaudio volume control
-pcmanfm                   # extremely fast and lightweight file manager
-pipewire                  # low-latency audio/video router and processor
-pipewire-alsa             # low-latency audio/video router and processor - alsa configuration
-pipewire-jack             # low-latency audio/video router and processor - jack support
-pipewire-pulse            # low-latency audio/video router and processor - pulseaudio replacement
-polkit                    # application development toolkit for controlling system-wide privileges
-polkit-gnome              # legacy polkit authentication agent for gnome
-prettier                  # an opinionated code formatter for js, json, css, yaml and much more
-pyright                   # type checker for the python language
-python                    # next generation of the python high-level scripting language
-python-black              # uncompromising python code formatter
-python-debugpy            # an implementation of the debug adapter protocol for python
-qbittorrent               # an advanced bittorrent client programmed in c++, based on qt toolkit and libtorrent-rasterbar
-qt5-wayland               # provides apis for wayland
-qt5ct                     # qt5 configuration utility
-qt6-wayland               # provides apis for wayland
-ripgrep                   # a search tool that combines the usability of ag with the raw speed of grep
-rust-analyzer             # rust compiler front-end for ides
-rustup                    # the rust toolchain installer
-samba                     # smb fileserver and ad domain server
-shfmt                     # format shell programs
-slurp                     # select a region in a wayland compositor
-starship                  # the cross-shell prompt for astronauts
-stylua                    # code formatter for lua
-sway                      # tiling wayland compositor and replacement for the i3 window manager
-swaybg                    # wallpaper tool for wayland compositors
-swaylock                  # screen locker for wayland
-syncthing                 # open source continuous replication / cluster synchronization thing
-tlp                       # linux advanced power management
-tmux                      # terminal multiplexer
-ttf-cascadia-code         # a monospaced font by microsoft that includes programming ligatures
-ttf-jetbrains-mono-nerd   # patched font jetbrains mono from nerd fonts library
-udiskie                   # removable disk automounter using udisks
-udisks2                   # disk management service, version 2
-unrar                     # the rar uncompression program
-unzip                     # for extracting and viewing files in .zip archives
-waybar                    # highly customizable wayland bar for sway and wlroots based compositors
-wine                      # a compatibility layer for running windows programs
-wine-mono                 # wine's built-in replacement for microsoft's .net framework
-wl-clipboard              # command-line copy/paste utilities for wayland
-wofi                      # launcher for wlroots-based wayland compositors
-xdg-desktop-portal        # desktop integration portals for sandboxed apps
-xdg-desktop-portal-wlr    # xdg-desktop-portal backend for wlroots
-xdg-user-dirs             # manage user directories like ~/desktop and ~/music
-xorg-xwayland             # run x clients under wayland
-zathura                   # minimalistic document viewer
-zathura-pdf-mupdf         # pdf support for zathura (mupdf backend) (supports pdf, epub, and openxps)
-zellij                    # a terminal multiplexer
-zsh                       # a very advanced and programmable command interpreter (shell) for unix
-zsh-autosuggestions       # fish-like autosuggestions for zsh
-zsh-syntax-highlighting   # fish shell like syntax highlighting for zsh
+alacritty               # a cross-platform, gpu-accelerated terminal emulator
+aria2                   # download utility that supports http(s), ftp, bittorrent, and metalink
+bat                     # cat clone with syntax highlighting and git integration
+bluez                   # daemons for the bluetooth protocol stack
+bluez-utils             # development and debugging utilities for the bluetooth protocol stack
+breeze-gtk              # breeze widget theme for gtk 2 and 3
+brightnessctl           # lightweight brightness control tool
+clang                   # c language family frontend for llvm
+cmake                   # a cross-platform open-source make system
+delve                   # a debugger for the go programming language.
+docker                  # pack, ship and run any application as a lightweight container
+docker-buildx           # docker cli plugin for extended build capabilities with buildkit
+docker-compose          # fast, isolated development environments using docker
+dunst                   # customizable and lightweight notification-daemon
+exa                     # ls replacement
+extra-cmake-modules     # extra modules and scripts for cmake
+fcitx5-im               # fcitx5 input method
+fcitx5-mozc             # fcitx5 module of a japanese input method for chromium os, windows, mac and linux (the open source edition of google japanese input)
+fd                      # simple, fast and user-friendly alternative to find
+feh                     # fast and light imlib2-based image viewer
+ffmpegthumbnailer       # lightweight video thumbnailer that can be used by file managers
+firefox                 # standalone web browser from mozilla.org
+fzf                     # command-line fuzzy finder
+git                     # the fast distributed version control system
+git-delta               # syntax-highlighting pager for git and diff output
+gnome-keyring           # stores passwords and encryption keys
+go                      # core compiler tools for the go programming language
+gopls                   # language server for go programming language
+grim                    # screenshot utility for wayland
+hyperfine               # a command-line benchmarking tool
+jq                      # command-line json processor
+just                    # a handy way to save and run project-specific commands
+lazygit                 # simple terminal ui for git commands
+libnotify               # library for sending desktop notifications
+libqalculate            # multi-purpose desktop calculator
+lldb                    # next generation, high-performance debugger
+lua                     # powerful lightweight programming language designed for extending applications
+lua-language-server     # lua language server coded by lua
+luajit                  # just-in-time compiler and drop-in replacement for lua 5.1
+lxappearance            # feature-rich gtk+ theme switcher of the lxde desktop
+man-db                  # a utility for reading man pages
+man-pages               # linux man pages
+mpc                     # minimalist command line interface to mpd
+mpd                     # flexible, powerful, server-side application for playing music
+mpv                     # a free, open source, and cross-platform media player
+ncmpcpp                 # almost exact clone of ncmpc with some new features
+nodejs                  # evented i/o for v8 javascript
+noto-fonts              # google noto ttf fonts
+noto-fonts-cjk          # google noto cjk fonts
+noto-fonts-emoji        # google noto emoji fonts
+noto-fonts-extra        # google noto ttf fonts - additional variants
+npm                     # a package manager for javascript
+ntfs-3g                 # ntfs filesystem driver and utilities
+p7zip                   # command-line file archiver with high compression ratio
+pacman-contrib          # contributed scripts and tools for pacman systems
+pavucontrol             # pulseaudio volume control
+pcmanfm                 # extremely fast and lightweight file manager
+pipewire                # low-latency audio/video router and processor
+pipewire-alsa           # low-latency audio/video router and processor - alsa configuration
+pipewire-jack           # low-latency audio/video router and processor - jack support
+pipewire-pulse          # low-latency audio/video router and processor - pulseaudio replacement
+polkit                  # application development toolkit for controlling system-wide privileges
+polkit-gnome            # legacy polkit authentication agent for gnome
+prettier                # an opinionated code formatter for js, json, css, yaml and much more
+pyright                 # type checker for the python language
+python                  # next generation of the python high-level scripting language
+python-black            # uncompromising python code formatter
+python-debugpy          # an implementation of the debug adapter protocol for python
+qbittorrent             # an advanced bittorrent client programmed in c++, based on qt toolkit and libtorrent-rasterbar
+qt5-wayland             # provides apis for wayland
+qt5ct                   # qt5 configuration utility
+qt6-wayland             # provides apis for wayland
+ripgrep                 # a search tool that combines the usability of ag with the raw speed of grep
+rust-analyzer           # rust compiler front-end for ides
+rustup                  # the rust toolchain installer
+samba                   # smb fileserver and ad domain server
+shfmt                   # format shell programs
+slurp                   # select a region in a wayland compositor
+starship                # the cross-shell prompt for astronauts
+stylua                  # code formatter for lua
+sway                    # tiling wayland compositor and replacement for the i3 window manager
+swaybg                  # wallpaper tool for wayland compositors
+swayidle                # idle management daemon for wayland
+swaylock                # screen locker for wayland
+syncthing               # open source continuous replication / cluster synchronization thing
+tlp                     # linux advanced power management
+tmux                    # terminal multiplexer
+ttf-cascadia-code       # a monospaced font by microsoft that includes programming ligatures
+ttf-jetbrains-mono-nerd # patched font jetbrains mono from nerd fonts library
+udiskie                 # removable disk automounter using udisks
+udisks2                 # disk management service, version 2
+unrar                   # the rar uncompression program
+unzip                   # for extracting and viewing files in .zip archives
+waybar                  # highly customizable wayland bar for sway and wlroots based compositors
+wine                    # a compatibility layer for running windows programs
+wine-mono               # wine's built-in replacement for microsoft's .net framework
+wl-clipboard            # command-line copy/paste utilities for wayland
+wofi                    # launcher for wlroots-based wayland compositors
+xdg-desktop-portal      # desktop integration portals for sandboxed apps
+xdg-desktop-portal-wlr  # xdg-desktop-portal backend for wlroots
+xdg-user-dirs           # manage user directories like ~/desktop and ~/music
+xorg-xwayland           # run x clients under wayland
+zathura                 # minimalistic document viewer
+zathura-pdf-mupdf       # pdf support for zathura (mupdf backend) (supports pdf, epub, and openxps)
+zellij                  # a terminal multiplexer
+zsh                     # a very advanced and programmable command interpreter (shell) for unix
+zsh-autosuggestions     # fish-like autosuggestions for zsh
+zsh-syntax-highlighting # fish shell like syntax highlighting for zsh
 
 # AUR
-autotiling                # script for sway and i3 to automatically switch the horizontal / vertical window split orientation
-cmake-language-server     # python based cmake language server
-lazydocker                # a simple terminal ui for docker and docker-compose, written in go with the gocui library.
-neovim-git                # fork of vim aiming to improve user experience, plugins, and guis.
-nwg-displays              # output management utility for sway wayland compositor
-shellcheck-bin            # shell script analysis tool (binary release, static)
-visual-studio-code-bin    # visual studio code (vscode): editor for building and debugging modern web and cloud applications (official binary version)
-zsh-completions-git       # additional completion definitions for zsh
+autotiling              # script for sway and i3 to automatically switch the horizontal / vertical window split orientation
+cmake-language-server   # python based cmake language server
+lazydocker              # a simple terminal ui for docker and docker-compose, written in go with the gocui library.
+neovim-git              # fork of vim aiming to improve user experience, plugins, and guis.
+nwg-displays            # output management utility for sway and hyprland wayland compositors
+shellcheck-bin          # shell script analysis tool (binary release, static)
+visual-studio-code-bin  # visual studio code (vscode): editor for building and debugging modern web and cloud applications (official binary version)
+zsh-completions-git     # additional completion definitions for zsh
