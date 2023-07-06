@@ -34,10 +34,9 @@
   "cmake.buildDirectory": "${workspaceFolder}/_build",
   "cmake.generator": "Ninja",
   "cmake.configureOnEdit": false,
-  "C_Cpp.intelliSenseEngine": "Disabled",
+  "C_Cpp.intelliSenseEngine": "disabled",
   "C_Cpp.default.cppStandard": "c++20",
   "C_Cpp.formatting": "clangFormat",
-  "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.rustfmt.extraArgs": ["+nightly"],
   "vim.leader": "<Space>",
   "vim.hlsearch": true,
@@ -301,5 +300,17 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     }
-  }
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "clangd.arguments": [
+    "--clang-tidy",
+    "--background-index",
+    "--cross-file-rename",
+    "--all-scopes-completion",
+    "--header-insertion=iwyu",
+    "--fallback-style=webkit",
+    "--suggest-missing-includes",
+    "--completion-style=detailed"
+  ]
 }
