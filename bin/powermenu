@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-op=$(echo -e " Poweroff\n Reboot\n Suspend\n Lock\n Logout" |
+op=$(echo -e " Poweroff\n Reboot\n Reboot (Windows)\n Suspend\n Lock\n Logout" |
   wofi --insensitive --dmenu |
-  awk '{print tolower($2)}')
+  cut -d' ' -f2- | tr '[:upper:]' '[:lower:]')
 
 log-out() {
   local wm
@@ -11,11 +11,11 @@ log-out() {
   case "$wm" in
     Hyprland) hyprctl dispatch exit ;;
     *) swaymsg exit ;;
-    # *) notify-send \
-    #   --urgency=critical \
-    #   --expire-time=5000 \
-    #   --icon=dialog-error-symbolic \
-    #   "Unknown WM" "$wm is not a known WM type" ;;
+      # *) notify-send \
+      #   --urgency=critical \
+      #   --expire-time=5000 \
+      #   --icon=dialog-error-symbolic \
+      #   "Unknown WM" "$wm is not a known WM type" ;;
   esac
 }
 
@@ -25,4 +25,5 @@ case $op in
   reboot) systemctl reboot ;;
   suspend) systemctl suspend ;;
   poweroff) systemctl poweroff ;;
+  "reboot (windows)") systemctl reboot --boot-loader-entry=auto-windows ;;
 esac
