@@ -107,4 +107,15 @@ return {
 			"BlackJackResetScores",
 		},
 	},
+
+	{
+		"tommcdo/vim-lion",
+		keys = {
+			{ "gl" },
+			{ "gL" },
+		},
+		init = function()
+			vim.g.lion_squeeze_spaces = 1
+		end,
+	},
 }
