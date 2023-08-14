@@ -206,7 +206,6 @@ local config = function()
 	})
 
 	wk.register({
-		["K"] = { lsp.show_docs, "Show documentation" },
 		["<leader>i"] = {
 			name = "Lsp",
 			["s"] = { vim.cmd.LspStart, "Start" },

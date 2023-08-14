@@ -165,6 +165,7 @@ local on_attach = function(client, buf)
 		})
 	end
 
+	-- TODO: remove the check for nvim-0.10 when it's officially released
 	if client.supports_method("textDocument/inlayHint") and vim.fn.has("nvim-0.10") then
 		vim.lsp.inlay_hint(buf, true)
 	end
@@ -176,6 +177,7 @@ local on_attach = function(client, buf)
 	end
 
 	wk.register({
+		["K"] = { show_docs, "Show documentation" },
 		["<S-A-f>"] = { format_buffer, "Format current buffer" },
 		["<S-A-k>"] = { vim.lsp.buf.signature_help, "Signature help" },
 		["g"] = {
@@ -238,7 +240,6 @@ end
 M.servers = servers
 M.on_init = on_init
 M.on_attach = on_attach
-M.show_docs = show_docs
 M.get_capabilities = get_capabilities
 M.filetypes_with_lsp = filetypes_with_lsp
 
