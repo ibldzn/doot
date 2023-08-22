@@ -5,7 +5,7 @@ local M = {
 local toggle_lazygit = function()
 	local Terminal = require("toggleterm.terminal").Terminal
 	local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-	lazygit:toggle(nil, "float")
+	lazygit:toggle(nil, "tab")
 end
 
 local keys = {
