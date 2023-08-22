@@ -166,6 +166,8 @@ export WORDCHARS=${WORDCHARS/\/}
 export GPG_TTY=$(tty)
 gpgconf --launch gpg-agent
 
+export FZF_DEFAULT_COMMAND="fd --threads $(nproc) --type file --strip-cwd-prefix --hidden --follow --exclude .git"
+
 export FZF_DEFAULT_OPTS="
     --layout=reverse
     --bind 'ctrl-e:preview-down'
@@ -179,7 +181,7 @@ export FZF_DEFAULT_OPTS="
 
 export FZF_ALT_C_COMMAND="fd --threads $(nproc) --type directory --hidden --follow --exclude .git"
 
-export FZF_CTRL_T_COMMAND="fd --threads $(nproc) --type file --strip-cwd-prefix --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export FZF_CTRL_T_OPTS="
   --preview 'bat -n --color=always {}'
