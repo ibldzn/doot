@@ -29,7 +29,7 @@ local setup = function()
 	vim.opt.undolevels = 1000
 	vim.opt.undodir = util.join_paths(vim.fn.stdpath("data"), "undo")
 	vim.opt.undofile = true
-	vim.opt.clipboard = "unnamedplus"
+	vim.opt.clipboard:append("unnamedplus")
 	vim.opt.backspace = "indent,eol,start"
 	vim.opt.signcolumn = "number"
 	vim.opt.compatible = false
