@@ -60,46 +60,6 @@ local position = function()
 	return string.format(template, cursor[1], cursor[2])
 end
 
-local lsp_indicator = function()
-	local clients = vim.lsp.get_active_clients()
-	local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-	local prog = vim.lsp.util.get_progress_messages()[1]
-
-	local client = nil
-	for _, cl in pairs(clients) do
-		local filetypes = cl.config.filetypes
-		if cl.name ~= "null-ls" then
-			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-				client = cl
-				break
-			end
-		end
-	end
-
-	if client == nil then
-		return ""
-	end
-
-	if not prog then
-		return ""
-	end
-
-	local spinners = { -- dots2
-		"⣾",
-		"⣽",
-		"⣻",
-		"⢿",
-		"⡿",
-		"⣟",
-		"⣯",
-		"⣷",
-	}
-	local ms = vim.loop.hrtime() / 1000000
-	local frame = math.floor(ms / 120) % #spinners
-
-	return spinners[frame + 1]
-end
-
 local copilot_indicator = function()
 	local client = vim.lsp.get_active_clients({ name = "copilot" })[1]
 	if client == nil then
