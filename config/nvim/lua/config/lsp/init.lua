@@ -15,6 +15,7 @@ local servers = {
 	lua_ls = { filetypes = "lua" },
 	pyright = { filetypes = "python" },
 	rust_analyzer = { filetypes = "rust", skip_config = true }, -- let rust-tools handle the configuration
+	svelte = { filetypes = "svelte" },
 	tailwindcss = {
 		filetypes = {
 			"aspnetcorerazor",
