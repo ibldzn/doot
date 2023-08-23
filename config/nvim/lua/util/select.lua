@@ -82,7 +82,11 @@ local select = function(items, opts, on_choice)
 	-- create buf
 	M.buf = vim.api.nvim_create_buf(false, true)
 	vim.api.nvim_buf_set_lines(M.buf, 0, 1, false, formatted_items)
-	vim.api.nvim_buf_set_option(M.buf, "modifiable", false)
+
+	-- TODO: remove this once 0.10 is released
+	-- vim.api.nvim_buf_set_option(M.buf, "modifiable", false)
+
+	vim.api.nvim_set_option_value("modifiable", false, { buf = M.buf })
 
 	-- get word start
 	local old_pos = vim.api.nvim_win_get_cursor(0)
@@ -133,14 +137,21 @@ local select = function(items, opts, on_choice)
 		callback = highlight,
 	})
 
-	vim.api.nvim_win_set_option(M.win, "number", true)
-	vim.api.nvim_win_set_option(M.win, "wrap", false)
+	-- TODO: remove this once 0.10 is released
+	-- vim.api.nvim_win_set_option(M.win, "number", true)
+	-- vim.api.nvim_win_set_option(M.win, "wrap", false)
 
+	vim.api.nvim_set_option_value("number", true, { win = M.win })
+	vim.api.nvim_set_option_value("wrap", false, { win = M.win })
+
+	local numberwidth = 3
 	if #formatted_items < 10 then
-		vim.api.nvim_win_set_option(M.win, "numberwidth", 2)
-	else
-		vim.api.nvim_win_set_option(M.win, "numberwidth", 3)
+		numberwidth = 2
 	end
+
+	-- TODO: remove this once 0.10 is released
+	-- vim.api.nvim_win_set_option(M.win, "numberwidth", numberwidth)
+	vim.api.nvim_set_option_value("numberwidth", numberwidth, { win = M.win })
 
 	-- focus window
 	vim.api.nvim_set_current_win(M.win)

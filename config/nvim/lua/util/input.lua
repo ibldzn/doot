@@ -40,7 +40,9 @@ local input = function(opts, on_confirm)
 		border = "none",
 	}
 	M.win = vim.api.nvim_open_win(M.buf, false, win_opts)
-	vim.api.nvim_win_set_option(M.win, "sidescrolloff", 0)
+	-- TODO: remove this once 0.10 is released
+	-- vim.api.nvim_win_set_option(M.win, "sidescrolloff", 0)
+	vim.api.nvim_set_option_value("sidescrolloff", 0, { win = M.win })
 
 	-- key mappings
 	vim.api.nvim_buf_set_keymap(M.buf, "n", "<CR>", "", { callback = M.submit, noremap = true, silent = true })
