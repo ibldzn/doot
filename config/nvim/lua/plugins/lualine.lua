@@ -170,7 +170,7 @@ local config = function()
 			name = "Toggle",
 			["l"] = {
 				function()
-					lualine.hide({ unhide = not lualine_enabled })
+					lualine.hide({ unhide = not lualine_enabled, place = "statusline" })
 					lualine_enabled = not lualine_enabled
 				end,
 				"Statusline",
