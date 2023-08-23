@@ -4,7 +4,7 @@ return {
 
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		keys = { { "<A-n>", "<cmd>Neotree toggle<CR>", desc = "Neotree" } },
+		keys = { { "<A-n>", "<cmd>Neotree toggle reveal_force_cwd<CR>", desc = "Neotree" } },
 		opts = {
 			window = {
 				width = 30,
