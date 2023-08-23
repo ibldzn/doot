@@ -38,6 +38,7 @@ local config = function()
 
 	luasnip.filetype_extend("javascript", { "javascriptreact" })
 	luasnip.filetype_extend("typescript", { "typescriptreact" })
+	luasnip.filetype_extend("blade", { "html", "php" })
 
 	vim.api.nvim_create_autocmd("InsertLeave", {
 		group = vim.api.nvim_create_augroup("LuaSnip", { clear = true }),
