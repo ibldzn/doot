@@ -64,46 +64,63 @@ local mason = {
 	end,
 }
 
-local null_ls = {
-	"jose-elias-alvarez/null-ls.nvim",
-	config = function()
-		local ns = require("null-ls")
-		local lspconfig = require("config.lsp")
+local get_formatters_by_ft = function()
+	local formatters_by_ft = {}
+	local lsp = require("config.lsp")
 
-		local fm = ns.builtins.formatting
-		local dg = ns.builtins.diagnostics
-		local ca = ns.builtins.code_actions
+	for formatter, metadata in pairs(lsp.formatters) do
+		for _, ft in ipairs(metadata.ft) do
+			formatters_by_ft[ft] = formatters_by_ft[ft] or {}
+			table.insert(formatters_by_ft[ft], type(formatter) == "table" and { unpack(formatter) } or { formatter })
+		end
+	end
 
-		---@diagnostic disable-next-line: redundant-parameter
-		ns.setup({
-			on_attach = lspconfig.on_attach,
-			debug = false,
-			sources = {
-				ca.shellcheck,
+	return formatters_by_ft
+end
 
-				-- dg.eslint,
-				dg.shellcheck,
+local conform = {
+	"stevearc/conform.nvim",
+	opts = {
+		formatters_by_ft = get_formatters_by_ft(),
+		format_on_save = function(bufnr)
+			if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+				return
+			end
+			return { timeout_ms = 500, lsp_fallback = true }
+		end,
+	},
+	config = function(_, opts)
+		local lsp = require("config.lsp")
+		local add_command = vim.api.nvim_create_user_command
 
-				fm.black,
-				fm.gofmt,
-				fm.stylua,
-				fm.prettier,
-				fm.clang_format.with({
-					extra_args = { "--fallback-style=webkit" },
-				}),
-				fm.shfmt.with({
-					extra_args = { "--indent=2", "--case-indent" },
-				}),
-				fm.rustfmt.with({
-					args = {
-						"+nightly",
-						"--unstable-features",
-						"--edition=2021",
-						"--emit=stdout",
-					},
-				}),
-			},
+		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+		add_command("FormatDisable", function(args)
+			if args.bang then
+				-- FormatDisable! will disable formatting just for this buffer
+				vim.b.disable_autoformat = true
+			else
+				vim.g.disable_autoformat = true
+			end
+		end, {
+			desc = "Disable autoformat-on-save",
+			bang = true,
 		})
+
+		add_command("FormatEnable", function()
+			vim.b.disable_autoformat = false
+			vim.g.disable_autoformat = false
+		end, {
+			desc = "Re-enable autoformat-on-save",
+		})
+
+		require("conform").setup(opts)
+
+		for formatter, metadata in pairs(lsp.formatters) do
+			if metadata.args then
+				require("conform.formatters." .. formatter).args = metadata.args
+			end
+		end
 	end,
 }
 
@@ -148,7 +165,7 @@ local neodev = {
 
 local dependencies = {
 	mason,
-	null_ls,
+	conform,
 	fidget,
 	lsp_signature,
 	neodev,

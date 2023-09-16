@@ -60,7 +60,7 @@ local servers = {
 			"javascriptreact",
 			"reason",
 			"rescript",
-			"typescript",
+			-- "typescript",
 			"typescriptreact",
 			"vue",
 			"svelte",
@@ -78,29 +78,54 @@ local servers = {
 	},
 }
 
+local formatters = {
+	clang_format = {
+		ft = { "c", "cpp" },
+		args = {
+			"--fallback-style=webkit",
+		},
+	},
+	[{ "prettierd", "prettier" }] = {
+		ft = {
+			"css",
+			"html",
+			"javascript",
+			"javascriptreact",
+			"json",
+			"markdown",
+			"typescript",
+			"typescriptreact",
+			"yaml",
+		},
+	},
+	black = {
+		ft = { "python" },
+	},
+	rustfmt = {
+		ft = { "rust" },
+		args = {
+			"+nightly",
+			"--unstable-features",
+			"--edition=2021",
+			"--emit=stdout",
+		},
+	},
+	shfmt = {
+		ft = { "sh" },
+		args = {
+			"--indent=2",
+			"--case-indent",
+		},
+	},
+	stylua = {
+		ft = { "lua" },
+	},
+}
+
 local filetypes_with_lsp = function()
 	return vim.tbl_flatten(vim.tbl_values(vim.tbl_map(function(server)
 		return server.filetypes
 	end, servers)))
-end
-
-local format_buffer = function()
-	local get_lsp_client_metadata = function(client)
-		for server, metadata in pairs(servers) do
-			if server == client.name then
-				return metadata
-			end
-		end
-		return nil
-	end
-
-	vim.lsp.buf.format({
-		timeout = 3000,
-		filter = function(client)
-			local metadata = get_lsp_client_metadata(client)
-			return client.name == "null-ls" or (metadata and metadata.allow_fmt)
-		end,
-	})
 end
 
 local show_docs = function()
@@ -156,16 +181,6 @@ local on_attach = function(client, buf)
 		})
 	end
 
-	if client.supports_method("textDocument/formatting") then
-		local group = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
-		vim.api.nvim_clear_autocmds({ buffer = buf, group = group })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = group,
-			buffer = buf,
-			callback = format_buffer,
-		})
-	end
-
 	-- TODO: remove the check for nvim-0.10 when it's officially released
 	if client.supports_method("textDocument/inlayHint") and vim.fn.has("nvim-0.10") then
 		vim.lsp.inlay_hint(buf, true)
@@ -179,7 +194,6 @@ local on_attach = function(client, buf)
 
 	wk.register({
 		["K"] = { show_docs, "Show documentation" },
-		["<S-A-f>"] = { format_buffer, "Format current buffer" },
 		["<S-A-k>"] = { vim.lsp.buf.signature_help, "Signature help" },
 		["g"] = {
 			name = "Go",
@@ -239,6 +253,7 @@ local get_capabilities = function()
 end
 
 M.servers = servers
+M.formatters = formatters
 M.on_init = on_init
 M.on_attach = on_attach
 M.get_capabilities = get_capabilities
