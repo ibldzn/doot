@@ -1,3 +1,4 @@
+export MANROFFOPT="-c"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MOZ_ENABLE_WAYLAND=1
 export NEXT_TELEMETRY_DISABLED=1
