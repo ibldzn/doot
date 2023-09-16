@@ -6,6 +6,7 @@ return {
 		"nvim-neo-tree/neo-tree.nvim",
 		keys = { { "<A-n>", "<cmd>Neotree toggle reveal_force_cwd<CR>", desc = "Neotree" } },
 		opts = {
+			enable_git_status = false,
 			window = {
 				width = 30,
 				position = "right",
