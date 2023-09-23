@@ -163,12 +163,17 @@ local neodev = {
 	"folke/neodev.nvim",
 }
 
+local format_ts_errors = {
+	"davidosomething/format-ts-errors.nvim",
+}
+
 local dependencies = {
 	mason,
 	conform,
 	fidget,
 	lsp_signature,
 	neodev,
+	format_ts_errors,
 }
 
 local config = function()
