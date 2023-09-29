@@ -4,7 +4,7 @@ export MOZ_ENABLE_WAYLAND=1
 export NEXT_TELEMETRY_DISABLED=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 export JAVA_OPTS="-XX:+IgnoreUnrecognizedVMOptions"
-export JAVA_HOME='/usr/lib/jvm/java-20-openjdk'
+export JAVA_HOME='/usr/lib/jvm/default'
 export ANDROID_SDK_ROOT='/opt/android-sdk'
 
 export GTK_IM_MODULE=fcitx
