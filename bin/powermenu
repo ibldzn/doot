@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 op=$(echo -e " Poweroff\n Reboot\n Reboot (Windows)\n Suspend\n Lock\n Logout" |
-  wofi --insensitive --dmenu |
+  wofi --insensitive --dmenu --prompt "" |
   cut -d' ' -f2- | tr '[:upper:]' '[:lower:]')
 
 log-out() {
