@@ -3,6 +3,7 @@ fpath=(/usr/share/zsh/site-functions $fpath)
 setopt autocd
 setopt histverify
 unsetopt beep
+setopt hist_ignore_space
 bindkey -e
 stty stop undef		# Disable ctrl-s to freeze terminal.
 
