@@ -5,7 +5,7 @@ local M = {
 		"windwp/nvim-ts-autotag",
 		"nvim-treesitter/playground",
 		"nvim-treesitter/nvim-treesitter-context",
-		"JoosepAlviste/nvim-ts-context-commentstring",
+		{ "JoosepAlviste/nvim-ts-context-commentstring", opts = {} },
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	build = ":TSUpdate",
@@ -95,10 +95,6 @@ local config = function()
 		},
 		matchup = {
 			enable = true,
-		},
-		context_commentstring = {
-			enable = true,
-			enable_autocmd = false,
 		},
 		playground = {
 			enable = true,
