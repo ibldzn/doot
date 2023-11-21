@@ -425,6 +425,11 @@ dockershellshhere() {
     docker run --rm --interactive --tty --entrypoint=/bin/sh -v $(pwd):/${dirname} --workdir /${dirname} "$@"
 }
 
+tmuxhere () {
+    local session_name="${1:-$(basename "$PWD")}"
+    tmux new-session -s "$session_name"
+}
+
 findprojects () {
     builtin cd -- \
         "$(fd . --max-depth=1 --threads=$(nproc) --type=directory --hidden --follow --exclude={.bzr,CVS,.git,.hg,.svn,.idea,.tox,node_modules,target,build} ~/Projects ~/Playground | \
