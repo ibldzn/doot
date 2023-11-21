@@ -183,7 +183,7 @@ local on_attach = function(client, buf)
 
 	-- TODO: remove the check for nvim-0.10 when it's officially released
 	if client.supports_method("textDocument/inlayHint") and vim.fn.has("nvim-0.10") then
-		vim.lsp.inlay_hint(buf, true)
+		vim.lsp.inlay_hint.enable(buf, true)
 	end
 
 	if client.supports_method("textDocument/colorProvider") then
